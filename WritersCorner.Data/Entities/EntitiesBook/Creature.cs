@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using WritersCorner.Data.Contracts;
 using WritersCorner.Data.Entities.EntitiesBook.BookManyToMany;
+using WritersCorner.Data.Enums;
 
 namespace WritersCorner.Data.Entities.EntitiesBook
 {
@@ -23,12 +24,14 @@ namespace WritersCorner.Data.Entities.EntitiesBook
         public string Location { get; set; }
         public string Benefits { get; set; }
         public string History { get; set; }
+        public Gender Gender { get; set; }
         #endregion
 
         public string ImagePath { get; set; }
 
         #region Appearance and Features
         public string Color { get; set; }
+        public string EyesColor { get; set; }
         public string Size { get; set; }
         public string Features { get; set; }
         public string Anathomy { get; set; }

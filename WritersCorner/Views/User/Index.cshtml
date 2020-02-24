@@ -1,0 +1,88 @@
+﻿@model UserIndexViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>Users list</h3>
+
+<form asp-action="Index" asp-controller="User" method="post">
+    <div class="input-group mb-1">
+        <input type="text" name="search" id="search" class="btn btn-outline-primary" />
+        <div class="input-group-append btn">
+            <input type="submit" value="Search" class="btn btn-outline-primary" />
+        </div>
+    </div>
+</form>
+
+<table class="table" style="border-color: #808080">
+    <thead>
+        <tr style="text-align: center">
+            <th>Username</th>
+            <th>Email</th>
+            <th>Register on</th>
+            <th>Role</th>
+            <th>Bans count</th>
+            <th>Ban end</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in @Model.Users)
+        {
+            <tr style="text-align: center">
+                <td>@user.Username</td>
+                <td>@user.Email</td>
+                <td>@user.RegisterOn</td>
+                <td>@user.Role</td>
+                <td>@user.BansCount</td>
+                <td>@user.BanEnd</td>
+                <td>
+                    <form asp-route-userId="@user.Id" asp-action="Detail" asp-controller="User">
+                        <button type="submit" class="btn btn-lg btn-light; float-left">Details</button>
+                    </form>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <form asp-route-userId="@user.Id" asp-action="BanUser" asp-controller="User" asp-area="Administrator">
+                            <button type="submit" class="btn btn-lg btn-light; float-right">Ban</button>
+                        </form>
+                    }
+                </td>
+                <td>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p></p>
+<div class="align-content-center">
+    @if (Model.PreviousPage == null)
+    {
+        <a class="btn btn-sm btn-lighter btn-auto disabled">Prev</a>
+    }
+    else
+    {
+        <a asp-action="Index" asp-route-currentPage="@Model.PreviousPage" class="btn btn-sm btn-lighter btn-auto previous-pagination-button-table" at="@Model.PreviousPage">Prev</a>
+        <a asp-action="Index" asp-route-currentPage="@Model.PreviousPage" class="btn btn-sm btn-lighter btn-auto previous-pagination-button-table" at="@Model.PreviousPage">@Model.PreviousPage</a>
+    }
+
+    <button class="btn btn-sm btn-primary btn-auto">@Model.CurrentPage</button>
+
+    @if (Model.NextPage == null)
+    {
+        <a class="btn btn-sm btn-lighter btn-auto disabled">Next</a>
+    }
+    else
+    {
+        <a asp-action="Index" asp-route-currentPage="@Model.NextPage" class="btn btn-sm btn-lighter btn-auto previous-pagination-button-table" at="@Model.NextPage">@Model.NextPage</a>
+        <a asp-action="Index" asp-route-currentPage="@Model.NextPage" class="btn btn-sm btn-lighter btn-auto next-pagination-button-table" at="@Model.NextPage">Next</a>
+    }
+</div>
+
+<p></p>
+
+<div>
+    <a asp-action="Index" asp-controller="Home">> Back to home page <</a>
+</div>

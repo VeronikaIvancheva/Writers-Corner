@@ -18,6 +18,9 @@ namespace WritersCorner.Data.Entities
 
         public DateTime? RegisterOn { get; set; }
         public int BansCount { get; set; }
+        public int BanDays { get; set; }
+        public string BanReason { get; set; }
+        public string BanedFrom { get; set; }
 
         public ICollection<Book> Book { get; set; }
         public ICollection<SiteInfo> SiteInfo { get; set; }

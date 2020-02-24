@@ -29,6 +29,7 @@ namespace WritersCorner
 
             services.AddDefaultIdentity<User>(options =>
                 options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<WritersCornerContext>();
             
             services.AddControllersWithViews();
@@ -45,8 +46,6 @@ namespace WritersCorner
             });
 
             services.AddScoped<IUserServices, UserServices>();
-
-            //services.AddScoped<ILoggingServices, LoggingServices>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -71,6 +70,17 @@ namespace WritersCorner
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapAreaControllerRoute(
+                     name: "AdminThings",
+                     areaName: "Administrator",
+                     pattern: "{area:exists}/{controller=User}/{action=BanUser}/{id?}");
+
+
+                endpoints.MapAreaControllerRoute(
+                     name: "AdminThings",
+                     areaName: "Administrator",
+                     pattern: "{area:exists}/{controller=User}/{id?}");
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

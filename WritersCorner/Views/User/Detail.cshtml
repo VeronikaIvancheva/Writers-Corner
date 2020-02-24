@@ -1,0 +1,55 @@
+﻿@model UserViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container">
+    <div class="header clearfix detailHeading">
+        <h2 class="text-muted">User Information</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div>
+                <h2>@Model.Username</h2>
+                <div>
+                    <div>ID: @Model.Id</div>
+                    <div>Username: @Model.Username</div>
+                    <div>Email: @Model.Email</div>
+                    <div>Role: @Model.Role</div>
+                    <div>Member Since: @Model.RegisterOn</div>
+                    <div>Ban user ends: @Model.BanEnd</div>
+                    <div>Bans count: @Model.BansCount</div>
+                </div>
+                <div class="main main-raised">
+                    <div class="profile-content">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div>
+                                        <br />
+                                        @if (User.IsInRole("Admin"))
+                                        {
+                                            <partial name="_BanUserPartialView" />
+                                        }
+                                        <br />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p></p>
+                    <p>User's _____: (imagine) drop-down list of user's things + button</p>
+                    <p>Top rated user's books</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

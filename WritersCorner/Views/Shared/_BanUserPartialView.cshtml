@@ -1,0 +1,41 @@
+﻿@model UserViewModel
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+<button type="button" class="btn btn-primary btn-block btn-lg" data-toggle="modal" data-target="#exampleModal">
+    Ban
+</button>
+
+<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ban @Model.Username</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form enctype="multipart/form-data" asp-controller="User" asp-action="BanUser" asp-route-userId="@Model.Id">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="BanDays" class="control-label"></label>
+                        <input asp-for="BanDays" class="form-control" />
+                        <span asp-validation-for="BanDays" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="BanReason" class="control-label"></label>
+                        <input asp-for="BanReason" class="form-control" />
+                        <span asp-validation-for="BanReason" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                        <button type="reset" value="Reset" class="btn btn-secondary">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using WritersCorner.Data.Context.Configurations;
 using WritersCorner.Data.Context.Configurations.BookConfigurations;
+using WritersCorner.Data.DbSeed;
 using WritersCorner.Data.Entities;
 using WritersCorner.Data.Entities.EntitiesBook;
 using WritersCorner.Data.Entities.EntitiesBook.BookManyToMany;
@@ -76,9 +77,14 @@ namespace WritersCorner.Data.Context
             modelBuilder.ApplyConfiguration(new SiteInfoConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
 
-
-
-            //modelBuilder.UpdateDatabase();
+            modelBuilder.UpdateUsers();
+            modelBuilder.UpdateCharacter();
+            modelBuilder.UpdateCreature();
+            modelBuilder.UpdateItem();
+            modelBuilder.UpdatePlace();
+            modelBuilder.UpdateStratum();
+            modelBuilder.UpdateStructure();
+            modelBuilder.UpdateWorld();
 
             base.OnModelCreating(modelBuilder);
         }

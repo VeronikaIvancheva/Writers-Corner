@@ -26,6 +26,8 @@ namespace WritersCorner.Data.Entities.EntitiesBook
         public string Size { get; set; }
         #endregion
 
+        public string Location { get; set; }
+
         public string Rareness { get; set; }
 
         public string ImagePath { get; set; }
