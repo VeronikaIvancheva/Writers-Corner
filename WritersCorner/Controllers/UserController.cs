@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -20,11 +21,11 @@ namespace WritersCorner.Controllers
             this._userService = userService;
         }
 
-        public async Task<IActionResult>  Index(int? currentPage, string search = null)
+        public async Task<IActionResult> Index(int? currentPage, string search = null)
         {
             int currentP = currentPage ?? 1;
             int totalPages = await _userService.GetPageCount(10);
-                       
+
             IEnumerable<User> allUsers = null;
 
             if (!string.IsNullOrEmpty(search))
@@ -68,12 +69,21 @@ namespace WritersCorner.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult BanUser(string userId, int banDays, string banReason)
         {
-            string bannedFrom = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            User user = _userService.BanUser(userId, banDays, banReason, bannedFrom);
+            try
+            {
+                //TODO - to find how to clear the text in the ban form
+                string bannedFrom = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                User user = _userService.BanUser(userId, banDays, banReason, bannedFrom);
 
-            var userModel = UserMapper.MapUser(user);
+                var userModel = UserMapper.MapUser(user);
 
-            return View("Detail", userModel);
+                return View("Detail", userModel);
+            }
+            catch (Exception e)
+            {
+                //TODO - pop-up message - not new page?
+                return BadRequest(e.Message);
+            }
         }
     }
 }

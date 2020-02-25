@@ -54,28 +54,37 @@ namespace WritersCorner.Service.Implementations
             User user = _context.User
                 .FirstOrDefault(u => u.Id == id);
 
+            if (user == null)
+            {
+                throw new Exception(ExceptionMessage.NoUser);
+            }
+
             if (user.LockoutEnabled == false)
             {
                 user.LockoutEnabled = true;
             }
 
-            if (user.LockoutEnd == null)
+            try
             {
-                user.LockoutEnd = DateTime.Now.AddDays(days);
-                user.BanDays = days;
-                user.BanedFrom = bannedFrom;
-                user.BanReason = banReason;
-                user.BansCount += 1;
+                if (user.LockoutEnd == null)
+                {
+                    user.LockoutEnd = DateTime.Now.AddDays(days);
+                    user.BanDays = days;
+                    user.BanedFrom = bannedFrom;
+                    user.BanReason = banReason;
+                    user.BansCount += 1;
 
-                _context.SaveChanges();
-                //return user;
+                    _context.SaveChanges();
+                    return user;
+                }
             }
-            //else
-            //{
-            //    throw new Exception(ExceptionMessage.BanErrorMessage);
+            catch (Exception)
+            {
 
-            //}
-            return user;
+                throw new Exception(ExceptionMessage.GlobalErrorMessage);
+            }
+
+            throw new Exception(ExceptionMessage.BanErrorMessage);
         }
 
         public User RemoveBan(string id)
