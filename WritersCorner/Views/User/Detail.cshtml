@@ -28,7 +28,7 @@
                                 <div class="col-md-4">
                                     <div>
                                         <br />
-                                        @if (User.IsInRole("Admin"))
+                                        @if (User.IsInRole("Admin") && Model.BanEnd == null)
                                         {
                                             <partial name="_BanUserPartialView" />
                                         }

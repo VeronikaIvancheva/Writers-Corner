@@ -19,6 +19,7 @@ namespace WritersCorner.Data.DbSeed
 
             var admin = SeedAdmin();
             var user = SeedUser();
+            var user1 = SeedUser1();
 
             modelBuilder.Entity<User>()
                 .HasData(admin);
@@ -38,6 +39,16 @@ namespace WritersCorner.Data.DbSeed
                 {
                     RoleId = "2",
                     UserId = user.Id
+                });
+
+            modelBuilder.Entity<User>()
+                .HasData(user1);
+
+            modelBuilder.Entity<IdentityUserRole<string>>()
+                .HasData(new IdentityUserRole<string>
+                {
+                    RoleId = "2",
+                    UserId = user1.Id
                 });
         }
 
@@ -82,6 +93,29 @@ namespace WritersCorner.Data.DbSeed
             };
 
             var hashePass = new PasswordHasher<User>().HashPassword(user, "testuser");
+            user.PasswordHash = hashePass;
+
+            return user;
+        }
+
+        private static User SeedUser1()
+        {
+            var user = new User
+            {
+                Id = "3",
+                UserName = "testuser1",
+                NormalizedUserName = "testuser1".ToUpper(),
+                Email = "testuser1@abv.bg",
+                NormalizedEmail = "testuser1@abv.bg".ToUpper(),
+                EmailConfirmed = true,
+                PhoneNumber = "+0895674532",
+                PhoneNumberConfirmed = true,
+                SecurityStamp = Guid.NewGuid().ToString("D"),
+                Role = "User",
+                RegisterOn = DateTime.Now
+            };
+
+            var hashePass = new PasswordHasher<User>().HashPassword(user, "testuser1");
             user.PasswordHash = hashePass;
 
             return user;

@@ -66,11 +66,10 @@ namespace WritersCorner.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public IActionResult BanUser(string userId, int days, string banReason)
+        public IActionResult BanUser(string userId, int banDays, string banReason)
         {
             string bannedFrom = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            //User user = _userService.GetUser(userId);
-            User user = _userService.BanUser(userId, days, banReason, bannedFrom);
+            User user = _userService.BanUser(userId, banDays, banReason, bannedFrom);
 
             var userModel = UserMapper.MapUser(user);
 

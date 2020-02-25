@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using WritersCorner.Data.Context;
 using WritersCorner.Data.Entities;
 using WritersCorner.Service.Contracts;
+using WritersCorner.Service.CustomException;
 
 namespace WritersCorner.Service.Implementations
 {
@@ -58,14 +59,22 @@ namespace WritersCorner.Service.Implementations
                 user.LockoutEnabled = true;
             }
 
-            user.LockoutEnd = DateTime.Now.AddDays(days);
-            user.BanDays = days;
-            user.BanedFrom = bannedFrom;
-            user.BanReason = banReason;
-            user.BansCount += 1;
+            if (user.LockoutEnd == null)
+            {
+                user.LockoutEnd = DateTime.Now.AddDays(days);
+                user.BanDays = days;
+                user.BanedFrom = bannedFrom;
+                user.BanReason = banReason;
+                user.BansCount += 1;
 
-            _context.SaveChanges();
+                _context.SaveChanges();
+                //return user;
+            }
+            //else
+            //{
+            //    throw new Exception(ExceptionMessage.BanErrorMessage);
 
+            //}
             return user;
         }
 

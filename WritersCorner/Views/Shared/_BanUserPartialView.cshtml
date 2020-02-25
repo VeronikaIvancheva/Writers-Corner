@@ -21,18 +21,17 @@
                 <form enctype="multipart/form-data" asp-controller="User" asp-action="BanUser" asp-route-userId="@Model.Id">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
-                        <label asp-for="BanDays" class="control-label"></label>
+                        <label asp-for="BanDays" class="control-label">Ban for days:</label>
                         <input asp-for="BanDays" class="form-control" />
                         <span asp-validation-for="BanDays" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="BanReason" class="control-label"></label>
+                        <label asp-for="BanReason" class="control-label">Ban reason:</label>
                         <input asp-for="BanReason" class="form-control" />
                         <span asp-validation-for="BanReason" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Create" class="btn btn-primary" />
-                        <button type="reset" value="Reset" class="btn btn-secondary">Reset</button>
                     </div>
                 </form>
             </div>
