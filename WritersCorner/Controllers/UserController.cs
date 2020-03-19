@@ -56,9 +56,9 @@ namespace WritersCorner.Controllers
             return View(userModel);
         }
 
-        public IActionResult Detail(string userId)
+        public async Task<IActionResult> Detail(string userId)
         {
-            User user = _userService.GetUser(userId);
+            User user = await _userService.GetUser(userId);
             UserViewModel userModel = UserMapper.MapUser(user);
 
             return View("Detail", userModel);
@@ -67,13 +67,13 @@ namespace WritersCorner.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public IActionResult BanUser(string userId, int banDays, string banReason)
+        public async Task<IActionResult> BanUser(string userId, int banDays, string banReason)
         {
             try
             {
                 //TODO - to find how to clear the text in the ban form
                 string bannedFrom = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                User user = _userService.BanUser(userId, banDays, banReason, bannedFrom);
+                User user = await _userService.BanUser(userId, banDays, banReason, bannedFrom);
 
                 var userModel = UserMapper.MapUser(user);
 
@@ -82,6 +82,25 @@ namespace WritersCorner.Controllers
             catch (Exception e)
             {
                 //TODO - pop-up message - not new page?
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> RemoveBan(string userId)
+        {
+            try
+            {
+                User user = await _userService.RemoveBan(userId);
+                var userModel = UserMapper.MapUser(user);
+
+                return View("Detail", userModel);
+            }
+            catch (Exception e)
+            {
+
                 return BadRequest(e.Message);
             }
         }

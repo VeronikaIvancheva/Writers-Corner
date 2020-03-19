@@ -22,7 +22,7 @@
             <th>Email</th>
             <th>Register on</th>
             <th>Role</th>
-            <th>Bans count</th>
+            <th>Is banned</th>
             <th>Ban end</th>
             <th></th>
             <th></th>
@@ -36,18 +36,27 @@
                 <td>@user.Email</td>
                 <td>@user.RegisterOn</td>
                 <td>@user.Role</td>
-                <td>@user.BansCount</td>
-                <td>@user.BanEnd</td>
+                <td>@user.IsBanned</td>
+                <td>
+                    @*TODO Да видя как да го накарам да работи*@
+                    @if (user.BanEnd < DateTimeOffset.Now)
+                    {
+                        @user.BanEnd
+                    }
+                </td>
                 <td>
                     <form asp-route-userId="@user.Id" asp-action="Detail" asp-controller="User">
                         <button type="submit" class="btn btn-lg btn-light; float-left">Details</button>
                     </form>
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <form asp-route-userId="@user.Id" asp-action="BanUser" asp-controller="User" asp-area="Administrator">
-                            <button type="submit" class="btn btn-lg btn-light; float-right">Ban</button>
-                        </form>
-                    }
+                    @*@if (User.IsInRole("Admin"))
+                        {
+                            <form asp-route-userId="@user.Id" asp-action="BanUser" asp-controller="User" asp-area="Administrator">
+                                <button type="submit" class="btn btn-lg btn-light; float-right">Ban</button>
+                            </form>
+                            <form asp-route-userId="@user.Id" asp-action="RemoveBan" asp-controller="User" asp-area="Administrator">
+                                <button type="submit" class="btn btn-lg btn-light; float-right">Unban</button>
+                            </form>
+                        }*@
                 </td>
                 <td>
                 </td>

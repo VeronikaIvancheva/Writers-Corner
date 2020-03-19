@@ -33,6 +33,14 @@
                                             <partial name="_BanUserPartialView" />
                                         }
                                         <br />
+                                        <br />
+                                        @if (User.IsInRole("Admin") && Model.BanEnd != null)
+                                        {
+                                            <form asp-controller="User" asp-action="RemoveBan" method="post" asp-route-userId="@Model.Id">
+                                                <button type="submit" class="btn btn-lg btn-light">Unban</button>
+                                            </form>
+                                        }
+                                        <br />
                                     </div>
                                 </div>
                             </div>

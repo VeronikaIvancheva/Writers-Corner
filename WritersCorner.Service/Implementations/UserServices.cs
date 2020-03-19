@@ -23,8 +23,8 @@ namespace WritersCorner.Service.Implementations
         public async Task<IEnumerable<User>> GetAllUsers(int currentPage)
         {
             IEnumerable<User> users = await _context.User
-                .OrderBy(u => u.UserName)
-                .ToListAsync();
+                 .OrderBy(u => u.UserName)
+                 .ToListAsync();
 
             if (currentPage == 1)
             {
@@ -41,18 +41,18 @@ namespace WritersCorner.Service.Implementations
             return users;
         }
 
-        public User GetUser(string id)
+        public async Task<User> GetUser(string id)
         {
-            User user = _context.User
-                .FirstOrDefault(u => u.Id == id);
+            User user = await _context.User
+                    .FirstOrDefaultAsync(u => u.Id == id);
 
             return user;
         }
 
-        public User BanUser(string id, int days, string banReason, string bannedFrom)
+        public async Task<User> BanUser(string id, int days, string banReason, string bannedFrom)
         {
-            User user = _context.User
-                .FirstOrDefault(u => u.Id == id);
+            User user = await _context.User
+                .FirstOrDefaultAsync(u => u.Id == id);
 
             if (user == null)
             {
@@ -66,15 +66,17 @@ namespace WritersCorner.Service.Implementations
 
             try
             {
-                if (user.LockoutEnd == null)
+                if (user.LockoutEnd == null && user.IsBanned == false)
                 {
                     user.LockoutEnd = DateTime.Now.AddDays(days);
                     user.BanDays = days;
                     user.BanedFrom = bannedFrom;
                     user.BanReason = banReason;
                     user.BansCount += 1;
+                    user.IsBanned = true;
 
                     _context.SaveChanges();
+
                     return user;
                 }
             }
@@ -87,15 +89,26 @@ namespace WritersCorner.Service.Implementations
             throw new Exception(ExceptionMessage.BanErrorMessage);
         }
 
-        public User RemoveBan(string id)
+        public async Task<User> RemoveBan(string id)
         {
-            User user = _context.User
-                .FirstOrDefault(u => u.Id == id);
+            try
+            {
+                User user = await _context.User
+                    .FirstOrDefaultAsync(u => u.Id == id);
 
-            user.LockoutEnd = DateTime.Now;
-            _context.SaveChanges();
+                user.LockoutEnd = DateTime.Now;
+                user.BanRemovedDate = DateTime.Now;
+                user.IsBanned = false;
 
-            return user;
+                _context.SaveChanges();
+
+                return user;
+            }
+            catch (Exception)
+            {
+
+                throw new Exception(ExceptionMessage.GlobalErrorMessage);
+            }
         }
 
         public async Task<IEnumerable<User>> SearchUser(string search, int currentPage)
