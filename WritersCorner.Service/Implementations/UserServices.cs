@@ -75,7 +75,7 @@ namespace WritersCorner.Service.Implementations
                     user.BansCount += 1;
                     user.IsBanned = true;
 
-                    _context.SaveChanges();
+                    await _context.SaveChangesAsync();
 
                     return user;
                 }
@@ -100,7 +100,7 @@ namespace WritersCorner.Service.Implementations
                 user.BanRemovedDate = DateTime.Now;
                 user.IsBanned = false;
 
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
 
                 return user;
             }
