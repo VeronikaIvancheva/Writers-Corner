@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using WritersCorner.Data.Entities;
-using WritersCorner.Models.UserViewModel;
+using WritersCorner.Models.UserVM;
 
 namespace WritersCorner.Mappers
 {

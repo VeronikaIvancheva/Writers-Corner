@@ -5,23 +5,30 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using WritersCorner.Data.Entities;
+using WritersCorner.Mappers;
 using WritersCorner.Models;
+using WritersCorner.Service.Contracts;
 
 namespace WritersCorner.Controllers
 {
+    //TODO - to move it to another controller? // SiteInfo Controller
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ISiteInfoServices _siteInfoServices;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ISiteInfoServices siteInfoServices)
         {
-            _logger = logger;
+            this._logger = logger;
+            this._siteInfoServices = siteInfoServices;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        #region in-build
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
 
         public IActionResult Privacy()
         {
@@ -32,6 +39,27 @@ namespace WritersCorner.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        #endregion
+
+        public async Task<IActionResult> Index()
+        {
+            try
+            {
+                ICollection<SiteInfo> allSi = await _siteInfoServices.GetAll();
+
+                //var siteInfoModel = SiteInfoMapper.MapSiteInfo(allSi);
+
+                var siteInfoListing = allSi
+                .Select(m => SiteInfoMapper.MapSiteInfo(m));
+
+                return View("Index", siteInfoListing);
+            }
+            catch (Exception e)
+            {
+                //TODO - pop-up message - not new page?
+                return BadRequest(e.Message);
+            }
         }
     }
 }

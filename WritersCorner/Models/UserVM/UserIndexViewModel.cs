@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace WritersCorner.Models.UserViewModel
+namespace WritersCorner.Models.UserVM
 {
     public class UserIndexViewModel
     {

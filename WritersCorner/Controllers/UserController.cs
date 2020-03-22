@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WritersCorner.Data.Entities;
 using WritersCorner.Mappers;
-using WritersCorner.Models.UserViewModel;
+using WritersCorner.Models.UserVM;
 using WritersCorner.Service.Contracts;
 
 namespace WritersCorner.Controllers

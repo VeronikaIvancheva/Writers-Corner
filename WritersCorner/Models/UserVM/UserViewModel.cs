@@ -1,7 +1,7 @@
 ﻿using System;
 using WritersCorner.Data.Entities;
 
-namespace WritersCorner.Models.UserViewModel
+namespace WritersCorner.Models.UserVM
 {
     public class UserViewModel
     {
@@ -38,5 +38,4 @@ namespace WritersCorner.Models.UserViewModel
         public string BanedFrom { get; set; }
         public bool IsBanned { get; set; }
     }
-
 }

@@ -46,6 +46,7 @@ namespace WritersCorner
             });
 
             services.AddScoped<IUserServices, UserServices>();
+            services.AddScoped<ISiteInfoServices, SiteInfoServices>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

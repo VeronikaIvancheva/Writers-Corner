@@ -1,4 +1,6 @@
-﻿@{
+﻿@model HomeViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -6,3 +8,45 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<table>
+    <tr>
+        <td>
+            <img src="~/Pictures/Icons/AboutUs.png" />
+        </td>
+        <td>
+            @Model.AboutUs
+        </td>
+    </tr>
+</table>
+
+<table>
+    <tr>
+        <td>
+            @Model.ContactUs
+        </td>
+        <td>
+            <img src="~/Pictures/Icons/ContackUs.png" />
+        </td>
+    </tr>
+</table>
+
+<table>
+    <tr>
+        <td>
+            <img src="~/Pictures/Icons/FAQ.png" />
+
+            @*<a href="/Book/Detail/@Model.BookId">
+                <img src="~/Images/BookCovers/@(Model.ImageUrl)" height="300" width="250" />
+            </a>
+            <div class="img-magnifier-container">
+                <img id="tamriel" src="~/Images/Maps/tamriel_map.jpg" height="150" width="300" alt="Tamriel map" />
+            </div>*@
+            Picture
+        </td>
+        <td>
+            @Model.FAQ
+        </td>
+
+    </tr>
+</table>

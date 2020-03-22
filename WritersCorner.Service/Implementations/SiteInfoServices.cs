@@ -1,14 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WritersCorner.Data.Context;
 using WritersCorner.Data.Entities;
+using WritersCorner.Service.Contracts;
 using WritersCorner.Service.CustomException;
 
 namespace WritersCorner.Service.Implementations
 {
-    public class SiteInfoServices
+    public class SiteInfoServices : ISiteInfoServices
     {
         private readonly WritersCornerContext _context;
 
@@ -205,6 +207,17 @@ namespace WritersCorner.Service.Implementations
                 throw new Exception(ExceptionMessage.GlobalErrorMessage);
             }
 
+        }
+        #endregion
+
+        #region All
+
+        public async Task<ICollection<SiteInfo>> GetAll()
+        {
+            ICollection<SiteInfo> allSi = await _context.SiteInfos
+                .ToListAsync();
+
+            return allSi;
         }
         #endregion
     }
