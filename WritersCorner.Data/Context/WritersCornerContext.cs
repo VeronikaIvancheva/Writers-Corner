@@ -85,6 +85,7 @@ namespace WritersCorner.Data.Context
             modelBuilder.UpdateStratum();
             modelBuilder.UpdateStructure();
             modelBuilder.UpdateWorld();
+            modelBuilder.UpdateSiteInfo();
 
             base.OnModelCreating(modelBuilder);
         }

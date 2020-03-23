@@ -1,4 +1,4 @@
-﻿@model HomeViewModel
+﻿@*@model HomeViewModel*@
 
 @{
     ViewData["Title"] = "Home Page";
@@ -6,34 +6,41 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">in</h1>
+    <h1 class="display-4">Writers Corner</h1>
 </div>
 
 <table>
     <tr>
-        <td>
+        <th style="float: left">
             <img src="~/Pictures/Icons/AboutUs.png" />
-        </td>
-        <td>
-            @Model.AboutUs
-        </td>
+        </th>
+        <th style="float: right">
+            @*@if (Model.AboutUs != null)
+                {
+                    @Model.AboutUs
+                }*@
+            About Us Text About Us Text About Us Text About Us Text About Us Text About Us Text About Us Text About Us Text
+            About Us Text About Us Text About Us Text About Us Text About Us Text About Us Text About Us Text About Us Text
+            About Us Text About Us Text About Us Text About Us Text About Us Text About Us Text About Us Text About Us Text
+        </th>
     </tr>
-</table>
-
-<table>
     <tr>
-        <td>
-            @Model.ContactUs
-        </td>
-        <td>
+        <th style="float: left">
+            @*@if (Model.ContactUs != null)
+                {
+                    @Model.ContactUs
+                }*@
+            Contact Us Text Contact Us Text Contact Us Text Contact Us Text Contact Us Text Contact Us Text Contact Us Text
+            Contact Us Text Contact Us Text Contact Us Text Contact Us Text Contact Us Text Contact Us Text Contact Us Text
+            Contact Us Text Contact Us Text Contact Us Text Contact Us Text Contact Us Text Contact Us Text Contact Us Text
+        </th>
+        <th style="float: right">
             <img src="~/Pictures/Icons/ContackUs.png" />
-        </td>
+        </th>
     </tr>
-</table>
-
-<table>
     <tr>
-        <td>
+        <th style="float: left">
             <img src="~/Pictures/Icons/FAQ.png" />
 
             @*<a href="/Book/Detail/@Model.BookId">
@@ -42,11 +49,15 @@
             <div class="img-magnifier-container">
                 <img id="tamriel" src="~/Images/Maps/tamriel_map.jpg" height="150" width="300" alt="Tamriel map" />
             </div>*@
-            Picture
-        </td>
-        <td>
+        </th>
+        <th style="float: right">
+            @*@if (Model.FAQ != null)
+            {
             @Model.FAQ
-        </td>
-
+            }*@
+            FAQ Text FAQ Text FAQ Text FAQ Text FAQ Text FAQ Text FAQ Text FAQ Text FAQ Text FAQ Text FAQ Text FAQ Text FAQ Text
+            FAQ Text FAQ Text FAQ Text FAQ Text FAQ Text FAQ Text FAQ Text FAQ Text FAQ Text FAQ Text FAQ Text FAQ Text FAQ Text
+            FAQ Text FAQ Text FAQ Text FAQ Text FAQ Text FAQ Text FAQ Text FAQ Text FAQ Text FAQ Text FAQ Text FAQ Text FAQ Text
+        </th>
     </tr>
 </table>

@@ -14,6 +14,8 @@ namespace WritersCorner.Data.DbSeed
                 AboutUs = "Some random text for about us thing",
                 ContactUs = "Some random text for contact us thing",
                 FAQ = "For more information or any questions please contact the admins.",
+
+                UserId = "1",
             });
         }
     }

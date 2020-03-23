@@ -4,7 +4,7 @@ using WritersCorner.Data.Entities;
 
 namespace WritersCorner.Service.Contracts
 {
-    public interface ISiteInfoServices
+    public interface ISiteinfoServices
     {
         //Contact Us
         Task<SiteInfo> GetContactUs(string contactUs);

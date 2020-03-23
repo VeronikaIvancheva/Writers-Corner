@@ -10,7 +10,7 @@ using WritersCorner.Service.CustomException;
 
 namespace WritersCorner.Service.Implementations
 {
-    public class SiteInfoServices : ISiteInfoServices
+    public class SiteInfoServices : ISiteinfoServices
     {
         private readonly WritersCornerContext _context;
 

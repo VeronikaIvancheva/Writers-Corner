@@ -16,9 +16,9 @@ namespace WritersCorner.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly ISiteInfoServices _siteInfoServices;
+        private readonly ISiteinfoServices _siteInfoServices;
 
-        public HomeController(ILogger<HomeController> logger, ISiteInfoServices siteInfoServices)
+        public HomeController(ILogger<HomeController> logger, ISiteinfoServices siteInfoServices)
         {
             this._logger = logger;
             this._siteInfoServices = siteInfoServices;
