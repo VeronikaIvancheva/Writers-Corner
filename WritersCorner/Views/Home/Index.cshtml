@@ -1,96 +1,97 @@
-﻿@*@model HomeViewModel*@
+﻿@model HomeIndexViewModel
 
-@*@{
-        ViewData["Title"] = "Home Page";
-    }
-*@
+@{
+    ViewData["Title"] = "Home Page";
+}
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- load CSS -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/templatemo-style.css">
-
-    <script>
+<script>
     var renderPage = true;
 
-    if(navigator.userAgent.indexOf('MSIE')!==-1
-      || navigator.appVersion.indexOf('Trident/') > 0){
+    if (navigator.userAgent.indexOf('MSIE') !== -1
+        || navigator.appVersion.indexOf('Trident/') > 0) {
         /* Microsoft Internet Explorer detected in. */
         alert("Please view this in a modern browser such as Chrome or Microsoft Edge.");
         renderPage = false;
     }
-    </script>
+</script>
 
-</head>
+<!-- Loader -->
+<div id="loader-wrapper">
+    <div id="loader"></div>
+</div>
 
-<body>
-    <!-- Loader -->
-    <div id="loader-wrapper">
-        <div id="loader"></div>
-    </div>
+<div class="container">
 
-    <div class="container">
-
-        <!-- 1st Section -->
-        <section class="row tm-section tm-mb-30">
-            <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8">
-                <div class="tm-flex-center pl-5 pr-5 pt-5 pb-5">
-                    <div class="tm-md-flex-center">
-                        <h2 class="mb-4 tm-text-color-primary">Welcome to Writer's Corner!</h2>
-                        <p>Our goal is to help writers with they book planing.</p>
-                        <p></p>
-                        <p class="mb-4">Fusce porta lectus vel elit condimentum porttitor. Maecenas at quam congue, sollicitudin risus quis, ultricies enim. Vivamus sodales, tellus ac quismod dignissim, metus ligula porttitor enim.</p>
-                        <p class="mb-4">Sed fermentum odio mollis libero iaculis ultrices. Mauris et nibh mi. Nullam vel sapien dolor. Vestibulum ipsum quam, aliquet ac pharetra in, suscipit eu risus. Etiam rutrum eros ultrices, consectetur felis ultrices, vehicula purus.</p>
-                        <a href="#" class="btn btn-primary float-lg-right tm-md-align-center">Read More</a>
-                    </div>
+    <!-- 1st Section -->
+    <section class="row tm-section tm-mb-30">
+        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8">
+            <div class="tm-flex-center pl-5 pr-5 pt-5 pb-5">
+                <div class="tm-md-flex-center">
+                    <h2 class="mb-4 tm-text-color-primary">Welcome to Writer's Corner!</h2>
+                    <p>
+                        @foreach (var item in Model.SiteInfo)
+                        {
+                            @item.AboutUs
+                        }
+                    </p>
+                    @*<p></p>
+                        <p class="mb-4">Test place: @Model.AboutUs</p>*@
+                    <a href="#" class="btn btn-primary float-lg-right tm-md-align-center">Read More</a>
                 </div>
             </div>
-            @*<div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 text-xl-right text-md-center text-center mt-5 mt-lg-0 pr-lg-0">
+        </div>
+        @*<div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 text-xl-right text-md-center text-center mt-5 mt-lg-0 pr-lg-0">
                 <img src="img/image-02.jpg" alt="Image" class="img-fluid">
             </div>*@
-        </section>
+    </section>
 
-        <!-- 2nd section -->
-        <section class="row tm-section">
-            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 p-0">
-                <div class="tm-flex-center p-5 tm-bg-color-primary tm-section-min-h">
-                    <h1 class="tm-text-color-white tm-site-name">Contact Us</h1>
-                </div>
+    <!-- 2nd section -->
+    <section class="row tm-section">
+        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 p-0">
+            <div class="tm-flex-center p-5 tm-bg-color-primary tm-section-min-h">
+                <h1 class="tm-text-color-white tm-site-name">Contact Us</h1>
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                <div class="tm-flex-center p-5">
-                    <q class="tm-quote tm-text-color-gray">Contact us here!</q>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+            <div class="tm-flex-center p-5">
+                <q class="tm-quote tm-text-color-gray">
+                @foreach (var item in Model.SiteInfo)
+                {
+                    @item.ContactUs
+                }
+                </q>
+                <!-- TODO - to fix it to be shown under the texr-->
+                <a href="#" class="btn btn-primary float-lg-right tm-md-align-center">Read more</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3th section -->
+    <section class="row tm-section tm-col-md-reverse">
+        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+            <div class="tm-flex-center p-5">
+                <div class="tm-md-flex-center">
+                    @*<h2 class="tm-text-color-primary mb-4">Contact Us</h2>*@
+                    <p class="mb-4">
+                    @foreach (var item in Model.SiteInfo)
+                    {
+                        @item.FAQ
+                    }
+                    </p>
                     <a href="#" class="btn btn-primary float-lg-right tm-md-align-center">Read more</a>
                 </div>
             </div>
-        </section>
-
-        <!-- 3th section -->
-        <section class="row tm-section tm-col-md-reverse">
-            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                <div class="tm-flex-center p-5">
-                    <div class="tm-md-flex-center">
-                        @*<h2 class="tm-text-color-primary mb-4">Contact Us</h2>*@
-                        <p class="mb-4">Here you can see our frequently asked questions.</p>
-                        <a href="#" class="btn btn-primary float-lg-right tm-md-align-center">Read more</a>
-                    </div>
-                </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 p-0">
+            <div class="tm-flex-center p-5 tm-bg-color-primary tm-section-min-h">
+                <h1 class="tm-text-color-white tm-site-name">FAQ</h1>
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 p-0">
-                <div class="tm-flex-center p-5 tm-bg-color-primary tm-section-min-h">
-                    <h1 class="tm-text-color-white tm-site-name">FAQ</h1>
-                </div>
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- 4th Section -->
-        @*<section class="row tm-section tm-mb-30">
+    <!-- 4th Section -->
+    @*<section class="row tm-section tm-mb-30">
             <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 p-0 text-center">
                 <img src="img/image-01.jpg" alt="Image" class="img-fluid">
             </div>
@@ -104,23 +105,7 @@
                 </div>
             </div>
         </section>*@
-    </div>
+</div>
 
-    <!-- load JS -->
-    <script src="js/jquery-3.2.1.slim.min.js"></script>
-    <script>
-
-        /* DOM is ready */
-        $(function () {
-
-            if (renderPage) {
-                $('body').addClass('loaded');
-            }
-
-            $('.tm-current-year').text(new Date().getFullYear());  // Update year in copyright
-        });
-
-    </script>
-
-</body>
-</html>
+<!-- load JS -->
+<script src="js/jquery-3.2.1.slim.min.js"></script>

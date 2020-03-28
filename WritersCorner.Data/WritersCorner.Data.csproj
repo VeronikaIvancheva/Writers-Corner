@@ -31,6 +31,10 @@
     <Compile Remove="Migrations\20200322175014_I.Designer.cs" />
     <Compile Remove="Migrations\20200322210454_I.cs" />
     <Compile Remove="Migrations\20200322210454_I.Designer.cs" />
+    <Compile Remove="Migrations\20200322210726_I.cs" />
+    <Compile Remove="Migrations\20200322210726_I.Designer.cs" />
+    <Compile Remove="Migrations\20200328213549_I.cs" />
+    <Compile Remove="Migrations\20200328213549_I.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -212,9 +212,9 @@ namespace WritersCorner.Service.Implementations
 
         #region All
 
-        public async Task<ICollection<SiteInfo>> GetAll()
+        public async Task<IEnumerable<SiteInfo>> GetAll()
         {
-            ICollection<SiteInfo> allSi = await _context.SiteInfos
+            IEnumerable<SiteInfo> allSi = await _context.SiteInfos
                 .ToListAsync();
 
             return allSi;

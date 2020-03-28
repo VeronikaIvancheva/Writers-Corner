@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using WritersCorner.Data.Entities;
 
-namespace WritersCorner.Models.HomeVm
+namespace WritersCorner.Models.HomeVM
 {
     public class HomeViewModel
     {

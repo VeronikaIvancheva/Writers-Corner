@@ -1,5 +1,6 @@
-﻿using WritersCorner.Data.Entities;
-using WritersCorner.Models.HomeVm;
+﻿using System.Collections.Generic;
+using WritersCorner.Data.Entities;
+using WritersCorner.Models.HomeVM;
 
 namespace WritersCorner.Mappers
 {
@@ -7,7 +8,12 @@ namespace WritersCorner.Mappers
     {
         public static HomeViewModel MapSiteInfo(this SiteInfo siteInfo)
         {
-            var siteInfoVM = new HomeViewModel
+            if (siteInfo == null)
+            {
+                return null;
+            }
+
+            HomeViewModel siteInfoVM = new HomeViewModel
             {
                 ContactUs = siteInfo.ContactUs,
                 AboutUs = siteInfo.AboutUs,
@@ -15,6 +21,16 @@ namespace WritersCorner.Mappers
             };
 
             return siteInfoVM;
+        }
+
+        public static HomeIndexViewModel MapFromSiteInfo(this IEnumerable<HomeViewModel> siteInfos)
+        {
+            var model = new HomeIndexViewModel
+            {
+                SiteInfo = siteInfos
+            };
+
+            return model;
         }
     }
 }

@@ -22,6 +22,6 @@ namespace WritersCorner.Service.Contracts
         Task<SiteInfo> DeleteFAQ(string faq);
 
         //All
-        Task<ICollection<SiteInfo>> GetAll();
+        Task<IEnumerable<SiteInfo>> GetAll();
     }
 }
