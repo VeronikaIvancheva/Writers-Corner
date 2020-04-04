@@ -24,17 +24,17 @@ namespace WritersCorner.Controllers
         public async Task<IActionResult> Index(int? currentPage, string search = null)
         {
             int currentP = currentPage ?? 1;
-            int totalPages = await _userService.GetPageCount(10);
+            int totalPages = await _userService.GetPageCountAsync(10);
 
             IEnumerable<User> allUsers = null;
 
             if (!string.IsNullOrEmpty(search))
             {
-                allUsers = await _userService.SearchUser(search, currentP);
+                allUsers = await _userService.SearchUserAsync(search, currentP);
             }
             else
             {
-                allUsers = await _userService.GetAllUsers(currentP);
+                allUsers = await _userService.GetAllUsersAsync(currentP);
             }
 
             var userListing = allUsers
@@ -58,7 +58,7 @@ namespace WritersCorner.Controllers
 
         public async Task<IActionResult> Detail(string userId)
         {
-            User user = await _userService.GetUser(userId);
+            User user = await _userService.GetUserAsync(userId);
             UserViewModel userModel = UserMapper.MapUser(user);
 
             return View("Detail", userModel);
@@ -73,7 +73,7 @@ namespace WritersCorner.Controllers
             {
                 //TODO - to find how to clear the text in the ban form
                 string bannedFrom = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                User user = await _userService.BanUser(userId, banDays, banReason, bannedFrom);
+                User user = await _userService.BanUserAsync(userId, banDays, banReason, bannedFrom);
 
                 var userModel = UserMapper.MapUser(user);
 
@@ -93,7 +93,7 @@ namespace WritersCorner.Controllers
         {
             try
             {
-                User user = await _userService.RemoveBan(userId);
+                User user = await _userService.RemoveBanAsync(userId);
                 var userModel = UserMapper.MapUser(user);
 
                 return View("Detail", userModel);

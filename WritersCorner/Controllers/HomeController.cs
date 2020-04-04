@@ -44,7 +44,7 @@ namespace WritersCorner.Controllers
         {
             try
             {
-                IEnumerable<SiteInfo> allSi = await _siteInfoServices.GetAll();
+                IEnumerable<SiteInfo> allSi = await _siteInfoServices.GetAllAsync();
 
                 //var siteInfoModel = SiteInfoMapper.MapSiteInfo(allSi);
 

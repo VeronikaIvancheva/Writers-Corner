@@ -7,21 +7,21 @@ namespace WritersCorner.Service.Contracts
     public interface ISiteinfoServices
     {
         //Contact Us
-        Task<SiteInfo> GetContactUs(string contactUs);
-        Task<SiteInfo> EditContactUs(string oldContactUs, string newContactUs);
-        Task<SiteInfo> DeleteContactUs(string contactUs);
+        Task<SiteInfo> GetContactUsAsync(string contactUs);
+        Task<SiteInfo> EditContactUsAsync(string oldContactUs, string newContactUs);
+        Task<SiteInfo> DeleteContactUsAsync(string contactUs);
 
         //About Us
-        Task<SiteInfo> GetAboutUs(string aboutUs);
-        Task<SiteInfo> EditAboutUs(string oldAboutUs, string newAboutUs);
-        Task<SiteInfo> DeleteAboutUs(string aboutUs);
+        Task<SiteInfo> GetAboutUsAsync(string aboutUs);
+        Task<SiteInfo> EditAboutUsAsync(string oldAboutUs, string newAboutUs);
+        Task<SiteInfo> DeleteAboutUsAsync(string aboutUs);
 
         //FAQ
-        Task<SiteInfo> GetFAQ(string faq);
-        Task<SiteInfo> EditFAQ(string oldFAQ, string newFAQ);
-        Task<SiteInfo> DeleteFAQ(string faq);
+        Task<SiteInfo> GetFAQAsync(string faq);
+        Task<SiteInfo> EditFAQAsync(string oldFAQ, string newFAQ);
+        Task<SiteInfo> DeleteFAQAsync(string faq);
 
         //All
-        Task<IEnumerable<SiteInfo>> GetAll();
+        Task<IEnumerable<SiteInfo>> GetAllAsync();
     }
 }

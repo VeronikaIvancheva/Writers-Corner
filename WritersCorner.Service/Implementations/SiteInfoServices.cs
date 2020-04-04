@@ -21,7 +21,7 @@ namespace WritersCorner.Service.Implementations
 
         #region Contact Us methods
 
-        public async Task<SiteInfo> GetContactUs(string contactUs)
+        public async Task<SiteInfo> GetContactUsAsync(string contactUs)
         {
             SiteInfo siteContactUs = await _context.SiteInfos
                 .FirstOrDefaultAsync(c => c.ContactUs == contactUs);
@@ -34,9 +34,9 @@ namespace WritersCorner.Service.Implementations
             return siteContactUs;
         }
 
-        public async Task<SiteInfo> EditContactUs(string oldContactUs, string newContactUs)
+        public async Task<SiteInfo> EditContactUsAsync(string oldContactUs, string newContactUs)
         {
-            SiteInfo currentContactUs = await GetContactUs(oldContactUs);
+            SiteInfo currentContactUs = await GetContactUsAsync(oldContactUs);
 
             if (currentContactUs == null)
             {
@@ -57,9 +57,9 @@ namespace WritersCorner.Service.Implementations
             }
         }
 
-        public async Task<SiteInfo> DeleteContactUs(string contactUs)
+        public async Task<SiteInfo> DeleteContactUsAsync(string contactUs)
         {
-            SiteInfo getContactUs = await GetContactUs(contactUs);
+            SiteInfo getContactUs = await GetContactUsAsync(contactUs);
 
             if (getContactUs == null)
             {
@@ -85,7 +85,7 @@ namespace WritersCorner.Service.Implementations
 
         #region About Us methods
 
-        public async Task<SiteInfo> GetAboutUs(string aboutUs)
+        public async Task<SiteInfo> GetAboutUsAsync(string aboutUs)
         {
             SiteInfo siteAboutUs = await _context.SiteInfos
                 .FirstOrDefaultAsync(c => c.AboutUs == aboutUs);
@@ -98,9 +98,9 @@ namespace WritersCorner.Service.Implementations
             return siteAboutUs;
         }
 
-        public async Task<SiteInfo> EditAboutUs(string oldAboutUs, string newAboutUs)
+        public async Task<SiteInfo> EditAboutUsAsync(string oldAboutUs, string newAboutUs)
         {
-            SiteInfo currentAboutUs = await GetAboutUs(oldAboutUs);
+            SiteInfo currentAboutUs = await GetAboutUsAsync(oldAboutUs);
 
             if (currentAboutUs == null)
             {
@@ -121,9 +121,9 @@ namespace WritersCorner.Service.Implementations
             }
         }
 
-        public async Task<SiteInfo> DeleteAboutUs(string aboutUs)
+        public async Task<SiteInfo> DeleteAboutUsAsync(string aboutUs)
         {
-            SiteInfo getAboutUs = await GetAboutUs(aboutUs);
+            SiteInfo getAboutUs = await GetAboutUsAsync(aboutUs);
 
             if (getAboutUs == null)
             {
@@ -149,7 +149,7 @@ namespace WritersCorner.Service.Implementations
 
         #region FAQ methods
 
-        public async Task<SiteInfo> GetFAQ(string faq)
+        public async Task<SiteInfo> GetFAQAsync(string faq)
         {
             SiteInfo siteFAQ = await _context.SiteInfos
                 .FirstOrDefaultAsync(f => f.FAQ == faq);
@@ -162,9 +162,9 @@ namespace WritersCorner.Service.Implementations
             return siteFAQ;
         }
 
-        public async Task<SiteInfo> EditFAQ(string oldFAQ, string newFAQ)
+        public async Task<SiteInfo> EditFAQAsync(string oldFAQ, string newFAQ)
         {
-            SiteInfo currentFAQ = await GetFAQ(oldFAQ);
+            SiteInfo currentFAQ = await GetFAQAsync(oldFAQ);
 
             if (currentFAQ == null)
             {
@@ -185,9 +185,9 @@ namespace WritersCorner.Service.Implementations
             }
         }
 
-        public async Task<SiteInfo> DeleteFAQ(string faq)
+        public async Task<SiteInfo> DeleteFAQAsync(string faq)
         {
-            SiteInfo getFAQ = await GetFAQ(faq);
+            SiteInfo getFAQ = await GetFAQAsync(faq);
 
             if (getFAQ == null)
             {
@@ -212,7 +212,7 @@ namespace WritersCorner.Service.Implementations
 
         #region All
 
-        public async Task<IEnumerable<SiteInfo>> GetAll()
+        public async Task<IEnumerable<SiteInfo>> GetAllAsync()
         {
             IEnumerable<SiteInfo> allSi = await _context.SiteInfos
                 .ToListAsync();

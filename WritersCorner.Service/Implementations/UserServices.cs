@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using WritersCorner.Data.Context;
 using WritersCorner.Data.Entities;
@@ -20,7 +19,7 @@ namespace WritersCorner.Service.Implementations
             this._context = context;
         }
 
-        public async Task<IEnumerable<User>> GetAllUsers(int currentPage)
+        public async Task<IEnumerable<User>> GetAllUsersAsync(int currentPage)
         {
             IEnumerable<User> users = await _context.User
                  .OrderBy(u => u.UserName)
@@ -41,7 +40,7 @@ namespace WritersCorner.Service.Implementations
             return users;
         }
 
-        public async Task<User> GetUser(string id)
+        public async Task<User> GetUserAsync(string id)
         {
             User user = await _context.User
                     .FirstOrDefaultAsync(u => u.Id == id);
@@ -49,7 +48,7 @@ namespace WritersCorner.Service.Implementations
             return user;
         }
 
-        public async Task<User> BanUser(string id, int days, string banReason, string bannedFrom)
+        public async Task<User> BanUserAsync(string id, int days, string banReason, string bannedFrom)
         {
             User user = await _context.User
                 .FirstOrDefaultAsync(u => u.Id == id);
@@ -89,7 +88,7 @@ namespace WritersCorner.Service.Implementations
             throw new Exception(ExceptionMessage.BanErrorMessage);
         }
 
-        public async Task<User> RemoveBan(string id)
+        public async Task<User> RemoveBanAsync(string id)
         {
             try
             {
@@ -111,7 +110,7 @@ namespace WritersCorner.Service.Implementations
             }
         }
 
-        public async Task<IEnumerable<User>> SearchUser(string search, int currentPage)
+        public async Task<IEnumerable<User>> SearchUserAsync(string search, int currentPage)
         {
             IEnumerable<User> searchResult = await _context.User
                 .Where(u => u.UserName.Contains(search) || u.Email.Contains(search))
@@ -134,7 +133,7 @@ namespace WritersCorner.Service.Implementations
             return searchResult;
         }
 
-        public async Task<int> GetPageCount(int usersPerPage)
+        public async Task<int> GetPageCountAsync(int usersPerPage)
         {
             int allUsers = await _context.User
                 .CountAsync();

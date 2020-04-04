@@ -6,11 +6,11 @@ namespace WritersCorner.Service.Contracts
 {
     public interface IUserServices
     {
-        Task<IEnumerable<User>> GetAllUsers(int currentPage);
-        Task<User> GetUser(string id);
-        Task<User> BanUser(string id, int days, string banReason, string bannedFrom);
-        Task<User> RemoveBan(string id);
-        Task<IEnumerable<User>> SearchUser(string search, int currentPage);
-        Task<int> GetPageCount(int usersPerPage);
+        Task<IEnumerable<User>> GetAllUsersAsync(int currentPage);
+        Task<User> GetUserAsync(string id);
+        Task<User> BanUserAsync(string id, int days, string banReason, string bannedFrom);
+        Task<User> RemoveBanAsync(string id);
+        Task<IEnumerable<User>> SearchUserAsync(string search, int currentPage);
+        Task<int> GetPageCountAsync(int usersPerPage);
     }
 }

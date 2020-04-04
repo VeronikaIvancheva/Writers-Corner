@@ -9,6 +9,7 @@ using WritersCorner.Data.Context;
 using WritersCorner.Service.Implementations;
 using WritersCorner.Service.Contracts;
 using WritersCorner.Data.Entities;
+using WritersCorner.Service.Implementations.BookImplementations;
 
 namespace WritersCorner
 {
@@ -47,6 +48,9 @@ namespace WritersCorner
 
             services.AddScoped<IUserServices, UserServices>();
             services.AddScoped<ISiteinfoServices, SiteInfoServices>();
+
+            //Book Services
+            services.AddScoped<ICharacterServices, CharacterServices>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
