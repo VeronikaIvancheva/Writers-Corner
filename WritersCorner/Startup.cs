@@ -9,7 +9,7 @@ using WritersCorner.Data.Context;
 using WritersCorner.Service.Implementations;
 using WritersCorner.Service.Contracts;
 using WritersCorner.Data.Entities;
-using WritersCorner.Service.Implementations.BookImplementations;
+using WritersCorner.Service.Implementations.UserBookImplementations;
 
 namespace WritersCorner
 {

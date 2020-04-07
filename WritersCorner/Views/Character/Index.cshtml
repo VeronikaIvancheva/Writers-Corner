@@ -1,0 +1,75 @@
+﻿@model CharacterIndexViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<section style="background-color: white">
+
+    <h3 class="mb-4 tm-text-color-primary">Character's list</h3>
+
+    <form asp-action="Index" asp-controller="Character" method="post">
+        <div class="input-group mb-1">
+            <input type="text" name="search" id="search" class="btn btn-outline-primary" />
+            <div class="input-group-append btn">
+                <input type="submit" value="Search" class="btn btn-outline-primary" />
+            </div>
+        </div>
+    </form>
+
+    <p></p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>IMAGE</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var character in @Model.Characters)
+            {
+                <tr>
+                    <td>IMAGE</td>
+                    <td>@character.Name</td>
+                    <td>@character.Gender</td>
+                    <td>@character.Age</td>
+                    <td>
+                        <form asp-route-userId="@character.Id" asp-action="Detail" asp-controller="Character">
+                            <button type="submit" class="btn btn-primary float-lg-left tm-md-align-center">Details</button>
+                        </form>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <p></p>
+    <div class="align-content-center">
+        @if (Model.PreviousPage == null)
+        {
+            <a class="btn btn-sm btn-outline-secondary btn-auto disabled">Prev</a>
+        }
+        else
+        {
+            <a asp-action="Index" asp-route-currentPage="@Model.PreviousPage" class="btn btn-sm btn-outline-secondary btn-auto previous-pagination-button-table" at="@Model.PreviousPage">Prev</a>
+            <a asp-action="Index" asp-route-currentPage="@Model.PreviousPage" class="btn btn-sm btn-outline-secondary btn-auto previous-pagination-button-table" at="@Model.PreviousPage">@Model.PreviousPage</a>
+        }
+
+        <button class="btn btn-sm btn-outline-secondary">@Model.CurrentPage</button>
+
+        @if (Model.NextPage == null)
+        {
+            <a class="btn btn-sm btn-outline-secondary btn-auto disabled">Next</a>
+        }
+        else
+        {
+            <a asp-action="Index" asp-route-currentPage="@Model.NextPage" class="btn btn-sm btn-outline-secondary btn-auto previous-pagination-button-table" at="@Model.NextPage">@Model.NextPage</a>
+            <a asp-action="Index" asp-route-currentPage="@Model.NextPage" class="btn btn-sm btn-outline-secondary btn-auto next-pagination-button-table" at="@Model.NextPage">Next</a>
+        }
+    </div>
+</section>

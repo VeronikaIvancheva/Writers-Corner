@@ -14,15 +14,15 @@ namespace WritersCorner.Data.DbSeed
                 Name = "The easten forest",
 
                 Desctiption = "Forest from tall oak trees that is uninhabitable from other people",
-                History = null,
+                History = "",
 
                 Travelling = "on foot",
 
                 Environment = "Oak trees",
 
-                CreationOn = null,
+                CreationOn = "",
                 Resources = "wood, forest fruits",
-                Hierarchy = null,
+                Hierarchy = "",
 
                 Rulers = "Executive Forest Agency",
 
@@ -37,7 +37,7 @@ namespace WritersCorner.Data.DbSeed
                 Clothes = "wathever you buy or make",
 
                 Languages = "wathever language you speak but mostly bulgarian",
-                Dialects = null,
+                Dialects = "",
                 Asscents = "english",
 
                 Trading = "none",
@@ -51,11 +51,11 @@ namespace WritersCorner.Data.DbSeed
 
                 Culture = "none",
                 Religion = "none",
-                Cults = null,
-                Rituals = null,
+                Cults = "",
+                Rituals = "",
 
                 Wars = "with the rest of humanity that wishes to destroy the place",
-                Unions = null,
+                Unions = "",
 
                 Fears = "bears and wolves",
 
@@ -66,7 +66,7 @@ namespace WritersCorner.Data.DbSeed
 
                 ImagePath = "balkanmountains.jpg",
 
-                Punishments = null,
+                Punishments = "",
                 Characteristics = "beautiful and peaceful",
                 EmotionalState = "peaceful",
             });

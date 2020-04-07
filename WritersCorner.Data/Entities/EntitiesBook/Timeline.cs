@@ -1,6 +1,5 @@
-﻿
-using System.Collections.Generic;
-using WritersCorner.Data.Entities.EntitiesBook.BookManyToMany;
+﻿using System.Collections.Generic;
+using WritersCorner.Data.Entities.EntitiesBook.UserBooksItemsManyToMany;
 
 namespace WritersCorner.Data.Entities.EntitiesBook
 {
@@ -9,11 +8,11 @@ namespace WritersCorner.Data.Entities.EntitiesBook
     {
         public Timeline()
         {
-            this.BookTimelines = new List<BookTimeline>();
+            this.UserTimelines = new List<UserTimeline>();
         }
 
         public int Id { get; set; }
 
-        public ICollection<BookTimeline> BookTimelines { get; set; }
+        public ICollection<UserTimeline> UserTimelines { get; set; }
     }
 }

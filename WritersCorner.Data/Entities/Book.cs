@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using WritersCorner.Data.Contracts;
-using WritersCorner.Data.Entities.EntitiesBook.BookManyToMany;
+using WritersCorner.Data.Entities.EntitiesBook.UserBooksItemsManyToMany;
 
 namespace WritersCorner.Data.Entities
 {
@@ -9,14 +9,14 @@ namespace WritersCorner.Data.Entities
     {
         public Book()
         {
-            this.BookCharacters = new List<BookCharacter>();
-            this.BookCreatures = new List<BookCreature>();
-            this.BookItems = new List<BookItem>();
-            this.BookPlaces = new List<BookPlace>();
-            this.BookStratums = new List<BookStratum>();
-            this.BookStructures = new List<BookStructure>();
-            this.BookTimelines = new List<BookTimeline>();
-            this.BookWorlds = new List<BookWorld>();
+            //this.UserCharacters = new List<UserCharacter>();
+            //this.UserCreatures = new List<UserCreature>();
+            //this.UserItems = new List<UserItem>();
+            //this.UserPlaces = new List<UserPlace>();
+            //this.UserStratums = new List<UserStratum>();
+            //this.UserStructures = new List<UserStructure>();
+            //this.UserTimelines = new List<UserTimeline>();
+            //this.UserWorlds = new List<UserWorld>();
         }
 
         [Key]
@@ -26,14 +26,14 @@ namespace WritersCorner.Data.Entities
         public string Name { get; set; }
         public string ImagePath { get; set; }
 
-        public ICollection<BookCharacter> BookCharacters { get; set; }
-        public ICollection<BookCreature> BookCreatures { get; set; }
-        public ICollection<BookItem> BookItems { get; set; }
-        public ICollection<BookPlace> BookPlaces { get; set; }
-        public ICollection<BookStratum> BookStratums { get; set; }
-        public ICollection<BookStructure> BookStructures { get; set; }
-        public ICollection<BookTimeline> BookTimelines { get; set; }
-        public ICollection<BookWorld> BookWorlds { get; set; }
+        //public ICollection<UserCharacter> UserCharacters { get; set; }
+        //public ICollection<UserCreature> UserCreatures { get; set; }
+        //public ICollection<UserItem> UserItems { get; set; }
+        //public ICollection<UserPlace> UserPlaces { get; set; }
+        //public ICollection<UserStratum> UserStratums { get; set; }
+        //public ICollection<UserStructure> UserStructures { get; set; }
+        //public ICollection<UserTimeline> UserTimelines { get; set; }
+        //public ICollection<UserWorld> UserWorlds { get; set; }
 
         public string UserId { get; set; }
         public User User { get; set; }

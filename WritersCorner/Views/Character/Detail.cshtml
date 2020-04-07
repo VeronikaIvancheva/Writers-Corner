@@ -1,0 +1,102 @@
+﻿@model CharacterViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container">
+    <div class="header clearfix detailHeading">
+        <h2 class="text-muted">@Model.Name</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div>
+                <h2>@Model.Nickname</h2>
+                <div>
+                    <div>IMAGE!!!!!!</div>
+                    <div>Name: @Model.Name</div>
+                    <div>Nickname: @Model.Nickname</div>
+                    <div>Gender: @Model.Gender</div>
+                    <div>Age: @Model.Age</div>
+
+                    <div>Birthday: @Model.Birthday</div>
+                    <div>Death: @Model.Death</div>
+
+                    <div>Athletic ability: @Model.AthleticAbility</div>
+                    <div>Special ablilty: @Model.SpecialAblilty</div>
+
+                    <div>Languages Spoken: @Model.LanguagesSpoken</div>
+
+                    <div>Background: @Model.Background</div>
+                    <div>Family: @Model.Family</div>
+                    <div>Family information: @Model.FamilyInfo</div>
+                    <div>Education: @Model.Education</div>
+
+                    <div>Eye color: @Model.EyeColor</div>
+                    <div>Face shape: @Model.FaceShape</div>
+                    <div>Facial hair: @Model.FacialHair</div>
+                    <div>Hair color: @Model.HairColor</div>
+                    <div>Hair texture: @Model.HairTexture</div>
+                    <div>Skin tone: @Model.SkinTone</div>
+                    <div>Body type: @Model.BodyType</div>
+                    <div>Height: @Model.Height</div>
+                    <div>Clothes: @Model.Clothes</div>
+
+                    <div>Tatoos: @Model.Tatoos</div>
+                    <div>Piercing: @Model.Piercing</div>
+                    <div>Birthmarks: @Model.Birthmarks</div>
+                    <div>Scars: @Model.Scars</div>
+
+                    <div>Fears: @Model.Fears</div>
+                    <div>Vices: @Model.Vices</div>
+                    <div>Regrets: @Model.Regrets</div>
+                    <div>Despise: @Model.Despise</div>
+
+                    <div>Motivation: @Model.Motivation</div>
+                    <div>Goals: @Model.Goals</div>
+                    <div>Admire of: @Model.AdmireOf</div>
+                    <div>Despise: @Model.Despise</div>
+
+                    <div>Internal conflicts: @Model.InternalConflicts</div>
+                    <div>External conflicts: @Model.ExternalConflicts</div>
+
+                    <div>Race: @Model.Race</div>
+                    <div>Religion: @Model.Religion</div>
+                    <div>Occupation: @Model.Occupation</div>
+                    <div>Marital status: @Model.MaritalStatus</div>
+                    <div>Stratum: @Model.Stratum</div>
+
+                    <div>Disabilities: @Model.Disabilities</div>
+                    <div>Personality: @Model.Personality</div>
+                    <div>Hobbies: @Model.Hobbies</div>
+                    <div>Habits: @Model.Habits</div>
+                    <div>Odds: @Model.Odds</div>
+                    <div>Skills: @Model.Skills</div>
+                    <div>Skills they lack: @Model.SkillsTheyLack</div>
+                    <div>Emotional state: @Model.EmotionalState</div>
+                </div>
+                <div class="main main-raised">
+                    <div class="profile-content">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div>
+                                        <form asp-controller="Character" asp-action="EditCharacter" method="post"
+                                              asp-route-characterId="@Model.Id">
+                                            <button type="submit" class="btn btn-lg btn-light">Edit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p></p>
+                    <p>User's _____: (imagine) drop-down list of user's things + button</p>
+                    <p>Top rated user's books</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

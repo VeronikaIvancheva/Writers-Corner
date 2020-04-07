@@ -13,7 +13,7 @@ namespace WritersCorner.Data.Context.Configurations.BookConfigurations
         {
             builder.HasKey(t => t.Id);
 
-            builder.HasMany(bt => bt.BookTimelines)
+            builder.HasMany(bt => bt.UserTimelines)
                  .WithOne(t => t.Timeline);
         }
     }

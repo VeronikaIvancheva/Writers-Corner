@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using WritersCorner.Data.Contracts;
-using WritersCorner.Data.Entities.EntitiesBook.BookManyToMany;
+using WritersCorner.Data.Entities.EntitiesBook.UserBooksItemsManyToMany;
 
 namespace WritersCorner.Data.Entities.EntitiesBook
 {
@@ -9,7 +9,7 @@ namespace WritersCorner.Data.Entities.EntitiesBook
     {
         public World()
         {
-            this.BookWorlds = new List<BookWorld>();
+            this.UserWorlds = new List<UserWorld>();
         }
 
         [Key]
@@ -44,6 +44,6 @@ namespace WritersCorner.Data.Entities.EntitiesBook
         public string Characteristics { get; set; }
         public string EmotionalState { get; set; }
 
-        public ICollection<BookWorld> BookWorlds { get; set; }
+        public ICollection<UserWorld> UserWorlds { get; set; }
     }
 }

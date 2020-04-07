@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using WritersCorner.Data.Contracts;
-using WritersCorner.Data.Entities.EntitiesBook.BookManyToMany;
+using WritersCorner.Data.Entities.EntitiesBook.UserBooksItemsManyToMany;
 
 namespace WritersCorner.Data.Entities.EntitiesBook
 {
@@ -10,7 +10,7 @@ namespace WritersCorner.Data.Entities.EntitiesBook
     {
         public Structure()
         {
-            this.BookStructures = new List<BookStructure>();
+            this.UserStructures = new List<UserStructure>();
         }
 
         [Key]
@@ -32,6 +32,6 @@ namespace WritersCorner.Data.Entities.EntitiesBook
 
         public string ImagePath { get; set; }
 
-        public ICollection<BookStructure> BookStructures { get; set; }
+        public ICollection<UserStructure> UserStructures { get; set; }
     }
 }

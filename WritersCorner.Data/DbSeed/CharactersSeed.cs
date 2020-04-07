@@ -21,7 +21,7 @@ namespace WritersCorner.Data.DbSeed
                 Age = 17,
                 Gender = Enums.Gender.Male,
                 ImagePath = "graycharacter.jpg",
-                Nickname = null,
+                Nickname = "",
                 AthleticAbility = "Poor",
                 SpecialAblilty = "Can make unique magical wood items.",
                 LanguagesSpoken = "English, Spanish",
@@ -36,7 +36,7 @@ namespace WritersCorner.Data.DbSeed
                 FacialHair = "no",
 
                 HairColor = "Gray",
-                HairTexture = null,
+                HairTexture = "",
 
                 SkinTone = "White",
                 BodyType = "Thin, Muscular",
@@ -51,14 +51,14 @@ namespace WritersCorner.Data.DbSeed
                 Fears = "afraid to be left alone again",
                 Vices = "too obsessive",
                 Regrets = "that he let her go",
-                Despise = null,
+                Despise = "",
 
                 Motivation = "her smile",
                 Goals = "to make a real live wooden doll that look exactly like her",
                 AdmireOf = "her everything",
 
-                InternalConflicts = null,
-                ExternalConflicts = null,
+                InternalConflicts = "",
+                ExternalConflicts = "",
 
                 Race = "Human",
                 Religion = "Christian",
@@ -70,10 +70,10 @@ namespace WritersCorner.Data.DbSeed
                 Personality = "Indecisive",
                 Hobbies = "Woodcarving",
                 Habits = "to make non-magical items",
-                Odds = null,
-                Skills = null,
-                SkillsTheyLack = null,
-                EmotionalState = null,
+                Odds = "",
+                Skills = "",
+                SkillsTheyLack = "",
+                EmotionalState = "",
             });
         }
     }

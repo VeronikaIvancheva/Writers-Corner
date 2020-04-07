@@ -14,24 +14,24 @@ namespace WritersCorner.Data.DbSeed
                 Name = "Earth",
                 ImagePath = "world.jpg",
 
-                CreationOn = null,
+                CreationOn = "",
                 Resources = "Light, air, water, plants, animals, soil, stone, minerals, and fossil fuels",
-                Hierarchy = null,
+                Hierarchy = "",
 
-                Rulers = null,
+                Rulers = "",
 
-                Flaws = null,
-                Merits = null,
+                Flaws = "",
+                Merits = "",
 
                 Size = "small",
                 SituatedIn = "Solar System",
 
                 BargainingChip = "Money, plants, animals",
 
-                Clothes = null,
+                Clothes = "",
 
                 Punishments = "prison",
-                Characteristics = null,
+                Characteristics = "",
                 EmotionalState = "unstable",
             });
         }

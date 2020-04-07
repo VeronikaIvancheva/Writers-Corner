@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using WritersCorner.Data.Contracts;
-using WritersCorner.Data.Entities.EntitiesBook.BookManyToMany;
+using WritersCorner.Data.Entities.EntitiesBook.UserBooksItemsManyToMany;
 using WritersCorner.Data.Enums;
 
 namespace WritersCorner.Data.Entities.EntitiesBook
@@ -11,7 +11,7 @@ namespace WritersCorner.Data.Entities.EntitiesBook
     {
         public Creature()
         {
-            this.BookCreatures = new List<BookCreature>();
+            this.UserCreatures = new List<UserCreature>();
         }
 
         [Key]
@@ -65,6 +65,6 @@ namespace WritersCorner.Data.Entities.EntitiesBook
         public string Superstitions { get; set; }
         public string Rituals { get; set; }
 
-        public ICollection<BookCreature> BookCreatures { get; set; }
+        public ICollection<UserCreature> UserCreatures { get; set; }
     }
 }

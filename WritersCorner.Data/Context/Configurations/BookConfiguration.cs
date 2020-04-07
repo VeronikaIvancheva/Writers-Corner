@@ -15,29 +15,29 @@ namespace WritersCorner.Data.Context.Configurations
 
             builder.Property(bip => bip.ImagePath);
 
-            builder.HasMany(c => c.BookCharacters)
-                .WithOne(b => b.Book);
+            //builder.HasMany(c => c.UserCharacters)
+            //    .WithOne(b => b.Book);
 
-            builder.HasMany(c => c.BookCreatures)
-                .WithOne(b => b.Book);
+            //builder.HasMany(c => c.UserCreatures)
+            //    .WithOne(b => b.Book);
 
-            builder.HasMany(c => c.BookItems)
-                .WithOne(b => b.Book);
+            //builder.HasMany(c => c.UserItems)
+            //    .WithOne(b => b.Book);
 
-            builder.HasMany(c => c.BookPlaces)
-                .WithOne(b => b.Book);
+            //builder.HasMany(c => c.UserPlaces)
+            //    .WithOne(b => b.Book);
 
-            builder.HasMany(c => c.BookStratums)
-                .WithOne(b => b.Book);
+            //builder.HasMany(c => c.UserStratums)
+            //    .WithOne(b => b.Book);
 
-            builder.HasMany(c => c.BookStructures)
-                .WithOne(b => b.Book);
+            //builder.HasMany(c => c.UserStructures)
+            //    .WithOne(b => b.Book);
 
-            builder.HasMany(c => c.BookTimelines)
-                .WithOne(b => b.Book);
+            //builder.HasMany(c => c.UserTimelines)
+            //    .WithOne(b => b.Book);
 
-            builder.HasMany(c => c.BookWorlds)
-                .WithOne(b => b.Book);
+            //builder.HasMany(c => c.UserWorlds)
+            //    .WithOne(b => b.Book);
         }
     }
 }

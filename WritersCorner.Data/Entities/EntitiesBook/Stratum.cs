@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using WritersCorner.Data.Contracts;
-using WritersCorner.Data.Entities.EntitiesBook.BookManyToMany;
+using WritersCorner.Data.Entities.EntitiesBook.UserBooksItemsManyToMany;
 
 namespace WritersCorner.Data.Entities.EntitiesBook
 {
@@ -11,7 +11,7 @@ namespace WritersCorner.Data.Entities.EntitiesBook
     {
         public Stratum()
         {
-            this.BookStratums = new List<BookStratum>();
+            this.UserStratums = new List<UserStratum>();
         }
 
         [Key]
@@ -88,6 +88,6 @@ namespace WritersCorner.Data.Entities.EntitiesBook
         public string Characteristics { get; set; }
         public string EmotionalState { get; set; }
 
-        public ICollection<BookStratum> BookStratums { get; set; }
+        public ICollection<UserStratum> UserStratums { get; set; }
     }
 }
