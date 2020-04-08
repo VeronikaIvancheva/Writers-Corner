@@ -37,7 +37,7 @@
                     <td>@character.Gender</td>
                     <td>@character.Age</td>
                     <td>
-                        <form asp-route-userId="@character.Id" asp-action="Detail" asp-controller="Character">
+                        <form asp-route-characterId="@character.Id" asp-action="Detail" asp-controller="Character">
                             <button type="submit" class="btn btn-primary float-lg-left tm-md-align-center">Details</button>
                         </form>
                     </td>

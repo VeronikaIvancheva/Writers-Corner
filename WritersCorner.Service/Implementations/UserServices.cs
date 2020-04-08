@@ -21,7 +21,9 @@ namespace WritersCorner.Service.Implementations
 
         public async Task<IEnumerable<User>> GetAllUsersAsync(int currentPage)
         {
-            IEnumerable<User> users = await _context.User
+            try
+            {
+                IEnumerable<User> users = await _context.User
                  .OrderBy(u => u.UserName)
                  .ToListAsync();
 
@@ -38,14 +40,28 @@ namespace WritersCorner.Service.Implementations
             }
 
             return users;
+            }
+            catch (Exception)
+            {
+
+                throw new Exception(ExceptionMessage.NoUser);
+            }
         }
 
         public async Task<User> GetUserAsync(string id)
         {
-            User user = await _context.User
+            try
+            {
+                User user = await _context.User
                     .FirstOrDefaultAsync(u => u.Id == id);
 
             return user;
+            }
+            catch (Exception)
+            {
+
+                throw new Exception(ExceptionMessage.NoUser);
+            }
         }
 
         public async Task<User> BanUserAsync(string id, int days, string banReason, string bannedFrom)
@@ -112,25 +128,33 @@ namespace WritersCorner.Service.Implementations
 
         public async Task<IEnumerable<User>> SearchUserAsync(string search, int currentPage)
         {
-            IEnumerable<User> searchResult = await _context.User
+            try
+            {
+                IEnumerable<User> searchResult = await _context.User
                 .Where(u => u.UserName.Contains(search) || u.Email.Contains(search))
                 .OrderBy(u => u.UserName)
                 .ThenBy(u => u.Email)
                 .ToListAsync();
 
-            if (currentPage == 1)
-            {
-                searchResult = searchResult
-                    .Take(10);
-            }
-            else
-            {
-                searchResult = searchResult
-                    .Skip((currentPage - 1) * 10)
-                    .Take(10);
-            }
+                if (currentPage == 1)
+                {
+                    searchResult = searchResult
+                        .Take(10);
+                }
+                else
+                {
+                    searchResult = searchResult
+                        .Skip((currentPage - 1) * 10)
+                        .Take(10);
+                }
 
-            return searchResult;
+                return searchResult;
+            }
+            catch (Exception)
+            {
+
+                throw new Exception(ExceptionMessage.GlobalErrorMessage);
+            }
         }
 
         public async Task<int> GetPageCountAsync(int usersPerPage)

@@ -100,7 +100,7 @@ namespace WritersCorner.Controllers
             }
             catch (Exception e)
             {
-
+                //TODO
                 return BadRequest(e.Message);
             }
         }
