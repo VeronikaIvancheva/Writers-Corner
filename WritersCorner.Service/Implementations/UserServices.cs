@@ -16,7 +16,7 @@ namespace WritersCorner.Service.Implementations
 
         public UserServices(WritersCornerContext context)
         {
-            this._context = context;
+            this._context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         public async Task<IEnumerable<User>> GetAllUsersAsync(int currentPage)

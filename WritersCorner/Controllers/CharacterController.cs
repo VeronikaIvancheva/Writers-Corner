@@ -24,7 +24,7 @@ namespace WritersCorner.Controllers
         {
             try
             {
-                string userId = FindUserById();
+                string userId = FindCurrentUserId();
 
                 int currPage = currentPage ?? 1;
                 int totalPages = await _characterServices.GetPageCount(10);
@@ -85,7 +85,34 @@ namespace WritersCorner.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(CharacterViewModel viewModel)
+        {
+            try
+            {
+                string userId = FindCurrentUserId();
+
+                Character mapCharacter = CharacterMapper.MapCharacter(viewModel);
+
+                Character character = await _characterServices.CreateCharacterAsync(mapCharacter, userId);
+
+                return RedirectToAction("Index", new { id = character.Id });
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditCharacter(int characterId)
         {
             try
@@ -101,11 +128,12 @@ namespace WritersCorner.Controllers
             }
         }
 
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> UserCharacters(int? currentPage, string search = null)
         {
             try
             {
-                string userId = FindUserById();
+                string userId = FindCurrentUserId();
 
                 int currPage = currentPage ?? 1;
                 int totalPages = await _characterServices.GetPageCount(10);
@@ -150,9 +178,9 @@ namespace WritersCorner.Controllers
             }
         }
 
-        public string FindUserById()
+        public string FindCurrentUserId()
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             return userId;
         }

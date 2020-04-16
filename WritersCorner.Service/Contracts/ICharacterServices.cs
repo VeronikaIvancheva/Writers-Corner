@@ -12,7 +12,7 @@ namespace WritersCorner.Service.Contracts
         Task<IEnumerable<Character>> GetAllUserCharactersAsync(int currentPage, string userId);
         Task<IEnumerable<UserCharacter>> GetAllCharactersByUserAsync(string id);
 
-        Task<Character> CreateCharacterAsync(Character newCharacter);
+        Task<Character> CreateCharacterAsync(Character newCharacter, string userId);
         Task<Character> EditCharacterAsync(int id);
         Task<Character> DeleteCharacterAsync(int characterId, string userId);
 

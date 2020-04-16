@@ -16,7 +16,7 @@ namespace WritersCorner.Service.Implementations
 
         public SiteInfoServices(WritersCornerContext context)
         {
-            this._context = context;
+            this._context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         #region Contact Us methods

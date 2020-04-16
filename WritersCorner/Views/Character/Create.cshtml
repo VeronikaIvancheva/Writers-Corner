@@ -1,0 +1,358 @@
+﻿@model CharacterViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h3>Create Character</h3>
+
+<form asp-action="Create" asp-controller="Character" method="post">
+    <div class="row">
+        <div class="row-cols-sm-6">
+            @*TODO - Upload or link!*@ @*TODO - how to ?? on form OR remove value="none" and make it behind the scene*@
+            <div class="form-group">
+                <label asp-for="ImagePath" class="control-label"></label>
+                <input asp-for="ImagePath" class="form-control" value="none" />
+                <span asp-validation-for="ImagePath" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" value="none" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label asp-for="Age" class="control-label"></label>
+                <input asp-for="Age" class="form-control" value="none" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="form-group">
+                <label asp-for="Nickname" class="control-label"></label>
+                <input asp-for="Nickname" class="form-control" value="none" />
+                <span asp-validation-for="Nickname" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label asp-for="Birthday" class="control-label"></label>
+                <input asp-for="Birthday" class="form-control" value="none" />
+                <span asp-validation-for="Birthday" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="form-group">
+                <label asp-for="Death" class="control-label"></label>
+                <input asp-for="Death" class="form-control" value="none" />
+                <span asp-validation-for="Death" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <label asp-for="Gender"></label>
+        <select style="background-color:orangered; color: white" name="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="AthleticAbility" class="control-label"></label>
+            <input asp-for="AthleticAbility" class="form-control" value="none" />
+            <span asp-validation-for="AthleticAbility" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="SpecialAblilty" class="control-label"></label>
+            <input asp-for="SpecialAblilty" class="form-control" value="none" />
+            <span asp-validation-for="SpecialAblilty" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="Background" class="control-label"></label>
+            <input asp-for="Background" class="form-control" value="none" />
+            <span asp-validation-for="Background" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="Family" class="control-label"></label>
+            <input asp-for="Family" class="form-control" value="none" />
+            <span asp-validation-for="Family" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="FamilyInfo" class="control-label"></label>
+            <input asp-for="FamilyInfo" class="form-control" value="none" />
+            <span asp-validation-for="FamilyInfo" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="Education" class="control-label"></label>
+            <input asp-for="Education" class="form-control" value="none" />
+            <span asp-validation-for="Education" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="EyeColor" class="control-label"></label>
+            <input asp-for="EyeColor" class="form-control" value="none" />
+            <span asp-validation-for="EyeColor" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="FaceShape" class="control-label"></label>
+            <input asp-for="FaceShape" class="form-control" value="none" />
+            <span asp-validation-for="FaceShape" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="FacialHair" class="control-label"></label>
+            <input asp-for="FacialHair" class="form-control" value="none" />
+            <span asp-validation-for="FacialHair" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="HairColor" class="control-label"></label>
+            <input asp-for="HairColor" class="form-control" value="none" />
+            <span asp-validation-for="HairColor" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="HairTexture" class="control-label"></label>
+            <input asp-for="HairTexture" class="form-control" value="none" />
+            <span asp-validation-for="HairTexture" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="SkinTone" class="control-label"></label>
+            <input asp-for="SkinTone" class="form-control" value="none" />
+            <span asp-validation-for="SkinTone" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="BodyType" class="control-label"></label>
+            <input asp-for="BodyType" class="form-control" value="none" />
+            <span asp-validation-for="BodyType" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="Height" class="control-label"></label>
+            <input asp-for="Height" class="form-control" value="none" />
+            <span asp-validation-for="Height" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="Clothes" class="control-label"></label>
+            <input asp-for="Clothes" class="form-control" value="none" />
+            <span asp-validation-for="Clothes" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="Tatoos" class="control-label"></label>
+            <input asp-for="Tatoos" class="form-control" value="none" />
+            <span asp-validation-for="Tatoos" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="Piercing" class="control-label"></label>
+            <input asp-for="Piercing" class="form-control" value="none" />
+            <span asp-validation-for="Piercing" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="Birthmarks" class="control-label"></label>
+            <input asp-for="Birthmarks" class="form-control" value="none" />
+            <span asp-validation-for="Birthmarks" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="Scars" class="control-label"></label>
+            <input asp-for="Scars" class="form-control" value="none" />
+            <span asp-validation-for="Scars" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="Fears" class="control-label"></label>
+            <input asp-for="Fears" class="form-control" value="none" />
+            <span asp-validation-for="Fears" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="Vices" class="control-label"></label>
+            <input asp-for="Vices" class="form-control" value="none" />
+            <span asp-validation-for="Vices" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="Regrets" class="control-label"></label>
+            <input asp-for="Regrets" class="form-control" value="none" />
+            <span asp-validation-for="Regrets" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="Despise" class="control-label"></label>
+            <input asp-for="Despise" class="form-control" value="none" />
+            <span asp-validation-for="Despise" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="Motivation" class="control-label"></label>
+            <input asp-for="Motivation" class="form-control" value="none" />
+            <span asp-validation-for="Motivation" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="Goals" class="control-label"></label>
+            <input asp-for="Goals" class="form-control" value="none" />
+            <span asp-validation-for="Goals" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="AdmireOf" class="control-label"></label>
+            <input asp-for="AdmireOf" class="form-control" value="none" />
+            <span asp-validation-for="AdmireOf" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="InternalConflicts" class="control-label"></label>
+            <input asp-for="InternalConflicts" class="form-control" value="none" />
+            <span asp-validation-for="InternalConflicts" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="ExternalConflicts" class="control-label"></label>
+            <input asp-for="ExternalConflicts" class="form-control" value="none" />
+            <span asp-validation-for="ExternalConflicts" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="Race" class="control-label"></label>
+            <input asp-for="Race" class="form-control" value="none" />
+            <span asp-validation-for="Race" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="Religion" class="control-label"></label>
+            <input asp-for="Religion" class="form-control" value="none" />
+            <span asp-validation-for="Religion" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="Occupation" class="control-label"></label>
+            <input asp-for="Occupation" class="form-control" value="none" />
+            <span asp-validation-for="Occupation" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="MaritalStatus" class="control-label"></label>
+            <input asp-for="MaritalStatus" class="form-control" value="none" />
+            <span asp-validation-for="MaritalStatus" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="Stratum" class="control-label"></label>
+            <input asp-for="Stratum" class="form-control" value="none" />
+            <span asp-validation-for="Stratum" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="Disabilities" class="control-label"></label>
+            <input asp-for="Disabilities" class="form-control" value="none" />
+            <span asp-validation-for="Disabilities" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="Personality" class="control-label"></label>
+            <input asp-for="Personality" class="form-control" value="none" />
+            <span asp-validation-for="Personality" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="Hobbies" class="control-label"></label>
+            <input asp-for="Hobbies" class="form-control" value="none" />
+            <span asp-validation-for="Hobbies" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="Habits" class="control-label"></label>
+            <input asp-for="Habits" class="form-control" value="none" />
+            <span asp-validation-for="Habits" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="Odds" class="control-label"></label>
+            <input asp-for="Odds" class="form-control" value="none" />
+            <span asp-validation-for="Odds" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="Skills" class="control-label"></label>
+            <input asp-for="Skills" class="form-control" value="none" />
+            <span asp-validation-for="Skills" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="SkillsTheyLack" class="control-label"></label>
+            <input asp-for="SkillsTheyLack" class="form-control" value="none" />
+            <span asp-validation-for="SkillsTheyLack" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label asp-for="EmotionalState" class="control-label"></label>
+            <input asp-for="EmotionalState" class="form-control" value="none" />
+            <span asp-validation-for="EmotionalState" class="text-danger"></span>
+        </div>
+    </div>
+
+    <p></p>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="form-group">
+                <button type="submit" class="btn btn-lg btn-primary">Create</button>
+            </div>
+        </div>
+    </div>
+</form>

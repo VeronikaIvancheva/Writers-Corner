@@ -20,8 +20,8 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
 
         public CharacterServices(WritersCornerContext context, IUserServices userServices)
         {
-            this._context = context;
-            this._userServices = userServices;
+            this._context = context ?? throw new ArgumentNullException(nameof(context));
+            this._userServices = userServices ?? throw new ArgumentNullException(nameof(userServices));
         }
 
         public async Task<Character> GetCharacterAsync(int id)
@@ -125,11 +125,20 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
             }
         }
 
-        public async Task<Character> CreateCharacterAsync(Character newCharacter)
+        public async Task<Character> CreateCharacterAsync(Character newCharacter, string userId)
         {
             try
             {
-                await _context.Characters.AddAsync(newCharacter);
+                //Character character = CheckIfNull(newCharacter);
+                Character character = PassCharacterParams(newCharacter);
+
+                await _context.Characters.AddAsync(character);
+                await _context.SaveChangesAsync();
+
+                User user = await _userServices.GetUserAsync(userId);
+                UserCharacter userCharacter = PassUserCharacterParams(character, user);
+
+                await _context.UserCharacters.AddAsync(userCharacter);
                 await _context.SaveChangesAsync();
 
                 return newCharacter;
@@ -137,7 +146,7 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
             catch (Exception)
             {
                 throw new Exception(ExceptionMessage.GlobalErrorMessage);
-            }           
+            }
         }
 
         public async Task<Character> EditCharacterAsync(int id)
@@ -227,5 +236,104 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
 
             return totalPages;
         }
+
+        public Character PassCharacterParams(Character viewModel)
+        {
+            var newCharacter = new Character
+            {
+                Name = viewModel.Name,
+
+                Birthday = viewModel.Birthday,
+                Death = viewModel.Death,
+
+                Age = viewModel.Age,
+                Gender = viewModel.Gender,
+
+                ImagePath= viewModel.ImagePath,
+                Nickname = viewModel.Nickname,
+                AthleticAbility = viewModel.AthleticAbility,
+                SpecialAblilty = viewModel.SpecialAblilty,
+
+                Background = viewModel.Background,
+                Family = viewModel.Family,
+                FamilyInfo = viewModel.FamilyInfo,
+                Education = viewModel.Education,
+
+                EyeColor = viewModel.EyeColor,
+                FaceShape = viewModel.FaceShape,
+                FacialHair = viewModel.FacialHair,
+
+                HairColor = viewModel.HairColor,
+                HairTexture = viewModel.HairTexture,
+
+                SkinTone = viewModel.SkinTone,
+                BodyType = viewModel.BodyType,
+                Height = viewModel.Height,
+                Clothes = viewModel.Clothes,
+
+                Tatoos = viewModel.Tatoos,
+                Piercing = viewModel.Piercing,
+                Birthmarks = viewModel.Birthmarks,
+                Scars = viewModel.Scars,
+
+                Fears = viewModel.Fears,
+                Vices = viewModel.Vices,
+                Regrets = viewModel.Regrets,
+                Despise = viewModel.Despise,
+
+                Motivation = viewModel.Motivation,
+                Goals = viewModel.Goals,
+                AdmireOf = viewModel.AdmireOf,
+
+                InternalConflicts = viewModel.InternalConflicts,
+                ExternalConflicts = viewModel.ExternalConflicts,
+
+                Race = viewModel.Race,
+                Religion = viewModel.Religion,
+                Occupation = viewModel.Occupation,
+                MaritalStatus = viewModel.MaritalStatus,
+                Stratum = viewModel.Stratum,
+
+                Disabilities = viewModel.Disabilities,
+                Personality = viewModel.Personality,
+                Hobbies = viewModel.Hobbies,
+                Habits = viewModel.Habits,
+                Odds = viewModel.Odds,
+                Skills = viewModel.Skills,
+                SkillsTheyLack = viewModel.SkillsTheyLack,
+                EmotionalState = viewModel.EmotionalState
+            };
+
+            return newCharacter;
+        }
+
+        public UserCharacter PassUserCharacterParams(Character character, User user)
+        {
+            var newUserCharacter = new UserCharacter
+            {
+                User = user,
+                UserId = user.Id,
+
+                Character = character,
+                CharacterId = character.Id,
+            };
+
+            return newUserCharacter;
+        }
+
+        //public Character CheckIfNull(Character character)
+        //{
+        //    var check = new List<Character>() { character };
+
+        //    for (int i = 0; i < check.Count - 1; i++)
+        //    {
+        //        if (check[i] == null)
+        //        {
+        //            check[i] = "none";
+        //        }
+        //    }
+
+        //    return character;
+        //}
     }
 }

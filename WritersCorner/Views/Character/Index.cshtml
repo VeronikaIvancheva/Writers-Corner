@@ -32,7 +32,12 @@
             @foreach (var character in @Model.Characters)
             {
                 <tr>
-                    <td>IMAGE</td>
+                    <td>
+                        <a @*href="/Character/Detail/@character.Id"*@>
+                            <img src="~/Pictures/DbSeed/@(character.ImagePath ?? "default.png")"
+                                 alt="Character Pic" height="100" width="80" />
+                        </a>
+                    </td>
                     <td>@character.Name</td>
                     <td>@character.Gender</td>
                     <td>@character.Age</td>
