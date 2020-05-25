@@ -38,29 +38,30 @@ namespace WritersCorner.Controllers
                 }
                 else
                 {
-                    characterAllResults = await _characterServices.GetAllCharactersAsync(currPage);
+                    characterAllResults = await _characterServices.GetAllUserCharactersAsync(currPage, userId);
                 }
 
                 IEnumerable<CharacterViewModel> characterListing = characterAllResults
                     .Select(m => CharacterMapper.MapCharacter(m));
-                CharacterIndexViewModel emailModel = CharacterMapper.MapFromCharacterIndex(characterListing,
+                CharacterIndexViewModel characterIVM = CharacterMapper.MapFromCharacterIndex(characterListing,
                     currPage, totalPages);
 
-                //For pagination buttons and distribution
-                emailModel.CurrentPage = currPage;
-                emailModel.TotalPages = totalPages;
+                #region For pagination buttons and distribution
+                characterIVM.CurrentPage = currPage;
+                characterIVM.TotalPages = totalPages;
 
                 if (totalPages > currPage)
                 {
-                    emailModel.NextPage = currPage + 1;
+                    characterIVM.NextPage = currPage + 1;
                 }
 
                 if (currPage > 1)
                 {
-                    emailModel.PreviousPage = currPage - 1;
+                    characterIVM.PreviousPage = currPage - 1;
                 }
+                #endregion
 
-                return View(emailModel);
+                return View(characterIVM);
             }
             catch (Exception e)
             {
@@ -69,11 +70,11 @@ namespace WritersCorner.Controllers
             }
         }
 
-        public async Task<IActionResult> Detail(int characterId)
+        public async Task<IActionResult> Detail(int Id)
         {
             try
             {
-                Character character = await _characterServices.GetCharacterAsync(characterId);
+                Character character = await _characterServices.GetCharacterAsync(Id);
                 CharacterViewModel userModel = CharacterMapper.MapCharacter(character);
 
                 return View("Detail", userModel);
@@ -100,7 +101,6 @@ namespace WritersCorner.Controllers
                 string userId = FindCurrentUserId();
 
                 Character mapCharacter = CharacterMapper.MapCharacter(viewModel);
-
                 Character character = await _characterServices.CreateCharacterAsync(mapCharacter, userId);
 
                 return RedirectToAction("Index", new { id = character.Id });
@@ -113,17 +113,48 @@ namespace WritersCorner.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditCharacter(int characterId)
+        public async Task<IActionResult> Edit(int Id)
+        {
+            Character character = await _characterServices.GetCharacterAsync(Id);
+            CharacterViewModel mapCharacter = CharacterMapper.MapCharacter(character);
+
+            return View("Edit", mapCharacter);
+            //return RedirectToAction("Edit", new { id = mapCharacter.Id });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditCharacter(CharacterViewModel viewModel)
         {
             try
             {
-                Character character = await _characterServices.GetCharacterAsync(characterId);
+                Character mapCharacterToCharacter = CharacterMapper.MapCharacter(viewModel);
+                Character character = await _characterServices.EditCharacterAsync(mapCharacterToCharacter);
+                CharacterViewModel mapCharacter = CharacterMapper.MapCharacter(character);
 
-                return View("Detail", character);
+                return View("Detail", mapCharacter);
             }
             catch (Exception e)
             {
                 //TODO
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteCharacter(int Id)
+        {
+            try
+            {
+                string userId = FindCurrentUserId();
+
+                await _characterServices.DeleteCharacterAsync(Id, userId);
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
                 return BadRequest(e.Message);
             }
         }
@@ -152,24 +183,24 @@ namespace WritersCorner.Controllers
 
                 IEnumerable<CharacterViewModel> characterListing = characterAllResults
                     .Select(m => CharacterMapper.MapCharacter(m));
-                CharacterIndexViewModel emailModel = CharacterMapper.MapFromCharacterIndex(characterListing,
+                CharacterIndexViewModel characterIVM = CharacterMapper.MapFromCharacterIndex(characterListing,
                     currPage, totalPages);
 
                 //For pagination buttons and distribution
-                emailModel.CurrentPage = currPage;
-                emailModel.TotalPages = totalPages;
+                characterIVM.CurrentPage = currPage;
+                characterIVM.TotalPages = totalPages;
 
                 if (totalPages > currPage)
                 {
-                    emailModel.NextPage = currPage + 1;
+                    characterIVM.NextPage = currPage + 1;
                 }
 
                 if (currPage > 1)
                 {
-                    emailModel.PreviousPage = currPage - 1;
+                    characterIVM.PreviousPage = currPage - 1;
                 }
 
-                return View(emailModel);
+                return View(characterIVM);
             }
             catch (Exception e)
             {

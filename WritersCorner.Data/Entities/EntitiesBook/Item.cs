@@ -1,18 +1,10 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using WritersCorner.Data.Contracts;
-using WritersCorner.Data.Entities.EntitiesBook.UserBooksItemsManyToMany;
 
 namespace WritersCorner.Data.Entities.EntitiesBook
 {
     public class Item : IGeneral, IItemEssential
     {
-        public Item()
-        {
-            this.UserItems = new List<UserItem>();
-        }
-
         [Key]
         public int Id { get; set; }
 
@@ -32,6 +24,7 @@ namespace WritersCorner.Data.Entities.EntitiesBook
 
         public string ImagePath { get; set; }
 
-        public ICollection<UserItem> UserItems { get; set; }
+        public string UserId { get; set; }
+        public User User { get; set; }
     }
 }

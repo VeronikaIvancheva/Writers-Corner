@@ -1,19 +1,11 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using WritersCorner.Data.Contracts;
-using WritersCorner.Data.Entities.EntitiesBook.UserBooksItemsManyToMany;
 using WritersCorner.Data.Enums;
 
 namespace WritersCorner.Data.Entities.EntitiesBook
 {
     public class Creature : IGeneral
     {
-        public Creature()
-        {
-            this.UserCreatures = new List<UserCreature>();
-        }
-
         [Key]
         public int Id { get; set; }
 
@@ -65,6 +57,7 @@ namespace WritersCorner.Data.Entities.EntitiesBook
         public string Superstitions { get; set; }
         public string Rituals { get; set; }
 
-        public ICollection<UserCreature> UserCreatures { get; set; }
+        public string UserId { get; set; }
+        public User User { get; set; }
     }
 }

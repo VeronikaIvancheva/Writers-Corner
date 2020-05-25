@@ -1,18 +1,14 @@
-﻿using System.Collections.Generic;
-using WritersCorner.Data.Entities.EntitiesBook.UserBooksItemsManyToMany;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace WritersCorner.Data.Entities.EntitiesBook
 {
     //TODO
     public class Timeline
     {
-        public Timeline()
-        {
-            this.UserTimelines = new List<UserTimeline>();
-        }
-
+        [Key]
         public int Id { get; set; }
 
-        public ICollection<UserTimeline> UserTimelines { get; set; }
+        public string UserId { get; set; }
+        public User User { get; set; }
     }
 }

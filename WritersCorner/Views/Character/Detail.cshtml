@@ -81,22 +81,28 @@
                     <div>Skills they lack: @Model.SkillsTheyLack</div>
                     <div>Emotional state: @Model.EmotionalState</div>
                 </div>
-                <div class="main main-raised">
-                    <div class="profile-content">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div>
-                                        <form asp-controller="Character" asp-action="EditCharacter" method="post"
-                                              asp-route-characterId="@Model.Id">
-                                            <button type="submit" class="btn btn-lg btn-light">Edit</button>
-                                        </form>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="main main-raised">
+                        <div class="profile-content">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div>
+                                            <form asp-controller="Character" asp-action="Edit" method="post" asp-route-Id="@Model.Id">
+                                                <button type="submit" class="btn btn-secondary">Edit</button>
+                                            </form>
+                                            <form asp-controller="Character" asp-action="DeleteCharacter" method="post" asp-route-Id="@Model.Id">
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                }
                 <div>
                     <p></p>
                     <p>User's _____: (imagine) drop-down list of user's things + button</p>

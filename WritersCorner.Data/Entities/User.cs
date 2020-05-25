@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using WritersCorner.Data.Entities.EntitiesBook.UserBooksItemsManyToMany;
+using WritersCorner.Data.Entities.EntitiesBook;
 
 namespace WritersCorner.Data.Entities
 {
@@ -10,17 +10,17 @@ namespace WritersCorner.Data.Entities
     {
         public User()
         {
-            this.Book = new List<Book>();
             this.SiteInfo = new List<SiteInfo>();
+            this.Book = new List<Book>();
 
-            this.UserCharacters = new List<UserCharacter>();
-            this.UserCreatures = new List<UserCreature>();
-            this.UserItems = new List<UserItem>();
-            this.UserPlaces = new List<UserPlace>();
-            this.UserStratums = new List<UserStratum>();
-            this.UserStructures = new List<UserStructure>();
-            this.UserTimelines = new List<UserTimeline>();
-            this.UserWorlds = new List<UserWorld>();
+            this.Characters = new List<Character>();
+            this.Creatures = new List<Creature>();
+            this.Items = new List<Item>();
+            this.Places = new List<Place>();
+            this.Stratums = new List<Stratum>();
+            this.Structures = new List<Structure>();
+            this.Timelines = new List<Timeline>();
+            this.Worlds = new List<World>();
         }
 
         [Required]
@@ -36,16 +36,17 @@ namespace WritersCorner.Data.Entities
         public string BanedFrom { get; set; }
         public DateTime? BanRemovedDate { get; set; }
 
-        public ICollection<Book> Book { get; set; }
+
         public ICollection<SiteInfo> SiteInfo { get; set; }
 
-        public ICollection<UserCharacter> UserCharacters { get; set; }
-        public ICollection<UserCreature> UserCreatures { get; set; }
-        public ICollection<UserItem> UserItems { get; set; }
-        public ICollection<UserPlace> UserPlaces { get; set; }
-        public ICollection<UserStratum> UserStratums { get; set; }
-        public ICollection<UserStructure> UserStructures { get; set; }
-        public ICollection<UserTimeline> UserTimelines { get; set; }
-        public ICollection<UserWorld> UserWorlds { get; set; }
+        public ICollection<Book> Book { get; set; }
+        public ICollection<Character> Characters { get; set; }
+        public ICollection<Creature> Creatures { get; set; }
+        public ICollection<Item> Items { get; set; }
+        public ICollection<Place> Places { get; set; }
+        public ICollection<Stratum> Stratums { get; set; }
+        public ICollection<Structure> Structures { get; set; }
+        public ICollection<Timeline> Timelines { get; set; }
+        public ICollection<World> Worlds { get; set; }
     }
 }

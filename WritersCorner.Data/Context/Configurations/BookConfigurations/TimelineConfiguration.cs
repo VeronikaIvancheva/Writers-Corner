@@ -1,8 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using WritersCorner.Data.Entities.EntitiesBook;
 
 namespace WritersCorner.Data.Context.Configurations.BookConfigurations
@@ -13,8 +10,8 @@ namespace WritersCorner.Data.Context.Configurations.BookConfigurations
         {
             builder.HasKey(t => t.Id);
 
-            builder.HasMany(bt => bt.UserTimelines)
-                 .WithOne(t => t.Timeline);
+            builder.HasOne(u => u.User)
+               .WithMany(tl => tl.Timelines);
         }
     }
 }

@@ -9,10 +9,10 @@
 <form asp-action="Create" asp-controller="Character" method="post">
     <div class="row">
         <div class="row-cols-sm-6">
-            @*TODO - Upload or link!*@ @*TODO - how to ?? on form OR remove value="none" and make it behind the scene*@
+            @*TODO - Upload or link!*@
             <div class="form-group">
                 <label asp-for="ImagePath" class="control-label"></label>
-                <input asp-for="ImagePath" class="form-control" value="none" />
+                <input asp-for="ImagePath" class="form-control" />
                 <span asp-validation-for="ImagePath" class="text-danger"></span>
             </div>
         </div>

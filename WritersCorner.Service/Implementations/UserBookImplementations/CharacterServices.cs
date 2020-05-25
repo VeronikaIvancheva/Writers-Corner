@@ -2,12 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using WritersCorner.Data.Context;
 using WritersCorner.Data.Entities;
 using WritersCorner.Data.Entities.EntitiesBook;
-using WritersCorner.Data.Entities.EntitiesBook.UserBooksItemsManyToMany;
 using WritersCorner.Service.Contracts;
 using WritersCorner.Service.CustomException;
 
@@ -30,22 +28,6 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
                 .FirstOrDefaultAsync(c => c.Id == id);
 
             return character;
-        }
-
-        public async Task<IEnumerable<UserCharacter>> GetAllCharactersByUserAsync(string userId)
-        {
-            try
-            {
-                IEnumerable<UserCharacter> allUserCharacters = await _context.UserCharacters
-                    .Where(u => u.UserId == userId)
-                    .ToListAsync();
-
-                return allUserCharacters;
-            }
-            catch (Exception)
-            {
-                throw new Exception(ExceptionMessage.NoCharacters);
-            }
         }
 
         public async Task<IEnumerable<Character>> GetAllCharactersAsync(int currentPage)
@@ -88,33 +70,33 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
         {
             try
             {
-                //User currUser = await _userServices.GetUserAsync(userId);
-                //IEnumerable<UserCharacter> userCharacters = await _context.UserCharacters
-                //    .Where(u => u.UserId == userId)
-                //    .ToListAsync();
+                IEnumerable<Character> allUserCharacters = await _context.Characters
+                    .Where(u => u.UserId == userId)
+                    .ToListAsync();
 
-                IEnumerable<UserCharacter> userCharacters = await GetAllCharactersByUserAsync(userId);
+                //IEnumerable<Character> allCharacters;
+                IEnumerable<Character> allCharacters = _context.Characters;
+                
 
-                IEnumerable<Character> allCharacters = null;
-
-                foreach (var item in userCharacters)
+                //Да взема самите Character - имам Id на user и character
+                foreach (var item in allUserCharacters)
                 {
-                    allCharacters = await _context.Characters
-                         .Where(u => u.Id == item.CharacterId)
-                         .OrderBy(u => u.Name)
-                         .ToListAsync();
+                    allCharacters = _context.Characters
+                        .Where(u => u.Id == item.Id);
                 }
 
                 if (currentPage == 1)
                 {
                     allCharacters = allCharacters
-                         .Take(10);
+                         .Take(10)
+                         .ToList();
                 }
                 else
                 {
                     allCharacters = allCharacters
                         .Skip((currentPage - 1) * 10)
-                        .Take(10);
+                        .Take(10)
+                        .ToList();
                 }
 
                 return allCharacters;
@@ -135,10 +117,26 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
                 await _context.Characters.AddAsync(character);
                 await _context.SaveChangesAsync();
 
-                User user = await _userServices.GetUserAsync(userId);
-                UserCharacter userCharacter = PassUserCharacterParams(character, user);
+                return newCharacter;
+            }
+            catch (Exception)
+            {
+                throw new Exception(ExceptionMessage.GlobalErrorMessage);
+            }
+        }
 
-                await _context.UserCharacters.AddAsync(userCharacter);
+        public async Task<Character> EditCharacterAsync(Character newCharacter)
+        {
+            Character currentCharacter = await GetCharacterAsync(newCharacter.Id);
+
+            if (currentCharacter == null)
+            {
+                throw new Exception(ExceptionMessage.NoEdit);
+            }
+
+            try
+            {
+                _context.Entry(currentCharacter).CurrentValues.SetValues(newCharacter);
                 await _context.SaveChangesAsync();
 
                 return newCharacter;
@@ -149,38 +147,21 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
             }
         }
 
-        public async Task<Character> EditCharacterAsync(int id)
-        {
-            Character currentCharacter = await GetCharacterAsync(id);
-
-            if (currentCharacter == null)
-            {
-                throw new Exception(ExceptionMessage.NoEdit);
-            }
-
-            try
-            {
-                return currentCharacter;
-            }
-            catch (Exception)
-            {
-                throw new Exception(ExceptionMessage.GlobalErrorMessage);
-            }
-        }
-
         public async Task<Character> DeleteCharacterAsync(int characterId, string userId)
         {
-            User user = await _userServices.GetUserAsync(userId);
-            Character character = await GetCharacterAsync(characterId);
+            Character characterForRemove = await GetCharacterAsync(characterId);
 
-            if (character == null)
+            if (characterForRemove == null)
             {
                 throw new Exception(ExceptionMessage.NoDelete);
             }
 
             try
             {
-                return character;
+                _context.Characters.Remove(characterForRemove);
+                await _context.SaveChangesAsync();
+
+                return characterForRemove;
             }
             catch (Exception)
             {
@@ -193,8 +174,8 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
         {
             try
             {
-                UserCharacter currentUserId = await _context.UserCharacters
-                    .FirstOrDefaultAsync(u => u.UserId == userId);
+                User currentUserId = await _context.User
+                    .FirstOrDefaultAsync(u => u.Id == userId);
 
                 IEnumerable<Character> searchResult = await _context.Characters
                     .Where(
@@ -239,6 +220,11 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
 
         public Character PassCharacterParams(Character viewModel)
         {
+            if (viewModel.ImagePath == null)
+            {
+                viewModel.ImagePath = "default.png";
+            }
+
             var newCharacter = new Character
             {
                 Name = viewModel.Name,
@@ -249,7 +235,7 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
                 Age = viewModel.Age,
                 Gender = viewModel.Gender,
 
-                ImagePath= viewModel.ImagePath,
+                ImagePath = viewModel.ImagePath,
                 Nickname = viewModel.Nickname,
                 AthleticAbility = viewModel.AthleticAbility,
                 SpecialAblilty = viewModel.SpecialAblilty,
@@ -305,20 +291,6 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
             };
 
             return newCharacter;
-        }
-
-        public UserCharacter PassUserCharacterParams(Character character, User user)
-        {
-            var newUserCharacter = new UserCharacter
-            {
-                User = user,
-                UserId = user.Id,
-
-                Character = character,
-                CharacterId = character.Id,
-            };
-
-            return newUserCharacter;
         }
 
         //public Character CheckIfNull(Character character)

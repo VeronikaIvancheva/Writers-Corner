@@ -16,28 +16,28 @@ namespace WritersCorner.Data.Context.Configurations
             builder.HasMany(b => b.Book)
                  .WithOne(u => u.User);
 
-            builder.HasMany(c => c.UserCharacters)
+            builder.HasMany(c => c.Characters)
                 .WithOne(b => b.User);
 
-            builder.HasMany(c => c.UserCreatures)
+            builder.HasMany(c => c.Creatures)
                 .WithOne(b => b.User);
 
-            builder.HasMany(c => c.UserItems)
+            builder.HasMany(c => c.Items)
                 .WithOne(b => b.User);
 
-            builder.HasMany(c => c.UserPlaces)
+            builder.HasMany(c => c.Places)
                 .WithOne(b => b.User);
 
-            builder.HasMany(c => c.UserStratums)
+            builder.HasMany(c => c.Stratums)
                 .WithOne(b => b.User);
 
-            builder.HasMany(c => c.UserStructures)
+            builder.HasMany(c => c.Structures)
                 .WithOne(b => b.User);
 
-            builder.HasMany(c => c.UserTimelines)
+            builder.HasMany(c => c.Timelines)
                 .WithOne(b => b.User);
 
-            builder.HasMany(c => c.UserWorlds)
+            builder.HasMany(c => c.Worlds)
                 .WithOne(b => b.User);
         }
     }

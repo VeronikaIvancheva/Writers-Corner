@@ -1,0 +1,225 @@
+﻿@model CharacterViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<form asp-controller="Character" asp-action="EditCharacter" method="post" class="form-horizontal" role="form">
+
+    <div class="form-group">
+        <input type="hidden" class="form-control" asp-for="Id" value="@Model.Id">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ImagePath"></label>
+        <input type="text" class="form-control" asp-for="ImagePath" value="@Model.ImagePath">
+    </div>
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input type="text" class="form-control" asp-for="Name" value="@Model.Name">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Age"></label>
+        <input type="text" class="form-control" asp-for="Age" value="@Model.Age">
+    </div>
+    <div class="form-group">
+        <label asp-for="Nickname"></label>
+        <input type="text" class="form-control" asp-for="Nickname" value="@Model.Nickname">
+    </div>
+    <div class="form-group">
+        <label asp-for="Birthday"></label>
+        <input type="text" class="form-control" asp-for="Birthday" value="@Model.Birthday">
+    </div>
+    <div class="form-group">
+        <label asp-for="Death"></label>
+        <input type="text" class="form-control" asp-for="Death" value="@Model.Death">
+    </div>
+    <div class="col-sm-4">
+        <label asp-for="Gender"></label>
+        <select style="background-color:orangered; color: white" name="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+    </div>
+    @*<div class="form-group">
+            <label asp-for="Gender"></label>
+
+            @Html.DropDownListFor(m => m.Gender,
+         new SelectList(Model.Gender.Select(x => new { Value = x.Id, Text = x.Name }), "Value", "Text"),
+         htmlAttributes: new { @class = "form-control border-input" })
+
+        </div>*@
+    <div class="form-group">
+        <label asp-for="AthleticAbility"></label>
+        <input type="text" class="form-control" asp-for="AthleticAbility" value="@Model.AthleticAbility">
+    </div>
+    <div class="form-group">
+        <label asp-for="SpecialAblilty"></label>
+        <input type="text" class="form-control" asp-for="SpecialAblilty" value="@Model.SpecialAblilty">
+    </div>
+    <div class="form-group">
+        <label asp-for="Background"></label>
+        <input type="text" class="form-control" asp-for="Background" value="@Model.Background">
+    </div>
+    <div class="form-group">
+        <label asp-for="Family"></label>
+        <input type="text" class="form-control" asp-for="Family" value="@Model.Family">
+    </div>
+    <div class="form-group">
+        <label asp-for="FamilyInfo"></label>
+        <input type="text" class="form-control" asp-for="FamilyInfo" value="@Model.FamilyInfo">
+    </div>
+    <div class="form-group">
+        <label asp-for="Education"></label>
+        <input type="text" class="form-control" asp-for="Education" value="@Model.Education">
+    </div>
+    <div class="form-group">
+        <label asp-for="EyeColor"></label>
+        <input type="text" class="form-control" asp-for="EyeColor" value="@Model.EyeColor">
+    </div>
+    <div class="form-group">
+        <label asp-for="FaceShape"></label>
+        <input type="text" class="form-control" asp-for="FaceShape" value="@Model.FaceShape">
+    </div>
+    <div class="form-group">
+        <label asp-for="FacialHair"></label>
+        <input type="text" class="form-control" asp-for="FacialHair" value="@Model.FacialHair">
+    </div>
+    <div class="form-group">
+        <label asp-for="HairColor"></label>
+        <input type="text" class="form-control" asp-for="HairColor" value="@Model.HairColor">
+    </div>
+    <div class="form-group">
+        <label asp-for="HairTexture"></label>
+        <input type="text" class="form-control" asp-for="HairTexture" value="@Model.HairTexture">
+    </div>
+    <div class="form-group">
+        <label asp-for="SkinTone"></label>
+        <input type="text" class="form-control" asp-for="SkinTone" value="@Model.SkinTone">
+    </div>
+    <div class="form-group">
+        <label asp-for="BodyType"></label>
+        <input type="text" class="form-control" asp-for="BodyType" value="@Model.BodyType">
+    </div>
+    <div class="form-group">
+        <label asp-for="Height"></label>
+        <input type="text" class="form-control" asp-for="Height" value="@Model.Height">
+    </div>
+    <div class="form-group">
+        <label asp-for="Clothes"></label>
+        <input type="text" class="form-control" asp-for="Clothes" value="@Model.Clothes">
+    </div>
+    <div class="form-group">
+        <label asp-for="Tatoos"></label>
+        <input type="text" class="form-control" asp-for="Tatoos" value="@Model.Tatoos">
+    </div>
+    <div class="form-group">
+        <label asp-for="Piercing"></label>
+        <input type="text" class="form-control" asp-for="Piercing" value="@Model.Piercing">
+    </div>
+    <div class="form-group">
+        <label asp-for="Birthmarks"></label>
+        <input type="text" class="form-control" asp-for="Birthmarks" value="@Model.Birthmarks">
+    </div>
+    <div class="form-group">
+        <label asp-for="Scars"></label>
+        <input type="text" class="form-control" asp-for="Scars" value="@Model.Scars">
+    </div>
+    <div class="form-group">
+        <label asp-for="Fears"></label>
+        <input type="text" class="form-control" asp-for="Fears" value="@Model.Fears">
+    </div>
+    <div class="form-group">
+        <label asp-for="Vices"></label>
+        <input type="text" class="form-control" asp-for="Vices" value="@Model.Vices">
+    </div>
+    <div class="form-group">
+        <label asp-for="Regrets"></label>
+        <input type="text" class="form-control" asp-for="Regrets" value="@Model.Regrets">
+    </div>
+    <div class="form-group">
+        <label asp-for="Despise"></label>
+        <input type="text" class="form-control" asp-for="Despise" value="@Model.Despise">
+    </div>
+    <div class="form-group">
+        <label asp-for="Motivation"></label>
+        <input type="text" class="form-control" asp-for="Motivation" value="@Model.Motivation">
+    </div>
+    <div class="form-group">
+        <label asp-for="Goals"></label>
+        <input type="text" class="form-control" asp-for="Goals" value="@Model.Goals">
+    </div>
+    <div class="form-group">
+        <label asp-for="AdmireOf"></label>
+        <input type="text" class="form-control" asp-for="AdmireOf" value="@Model.AdmireOf">
+    </div>
+    <div class="form-group">
+        <label asp-for="InternalConflicts"></label>
+        <input type="text" class="form-control" asp-for="InternalConflicts" value="@Model.InternalConflicts">
+    </div>
+    <div class="form-group">
+        <label asp-for="ExternalConflicts"></label>
+        <input type="text" class="form-control" asp-for="ExternalConflicts" value="@Model.ExternalConflicts">
+    </div>
+    <div class="form-group">
+        <label asp-for="Race"></label>
+        <input type="text" class="form-control" asp-for="Race" value="@Model.Race">
+    </div>
+    <div class="form-group">
+        <label asp-for="Religion"></label>
+        <input type="text" class="form-control" asp-for="Religion" value="@Model.Religion">
+    </div>
+    <div class="form-group">
+        <label asp-for="Occupation"></label>
+        <input type="text" class="form-control" asp-for="Occupation" value="@Model.Occupation">
+    </div>
+    <div class="form-group">
+        <label asp-for="MaritalStatus"></label>
+        <input type="text" class="form-control" asp-for="MaritalStatus" value="@Model.MaritalStatus">
+    </div>
+    <div class="form-group">
+        <label asp-for="Stratum"></label>
+        <input type="text" class="form-control" asp-for="Stratum" value="@Model.Stratum">
+    </div>
+    <div class="form-group">
+        <label asp-for="Disabilities"></label>
+        <input type="text" class="form-control" asp-for="Disabilities" value="@Model.Disabilities">
+    </div>
+    <div class="form-group">
+        <label asp-for="Personality"></label>
+        <input type="text" class="form-control" asp-for="Personality" value="@Model.Personality">
+    </div>
+    <div class="form-group">
+        <label asp-for="Hobbies"></label>
+        <input type="text" class="form-control" asp-for="Hobbies" value="@Model.Hobbies">
+    </div>
+    <div class="form-group">
+        <label asp-for="Habits"></label>
+        <input type="text" class="form-control" asp-for="Habits" value="@Model.Habits">
+    </div>
+    <div class="form-group">
+        <label asp-for="Odds"></label>
+        <input type="text" class="form-control" asp-for="Odds" value="@Model.Odds">
+    </div>
+    <div class="form-group">
+        <label asp-for="Skills"></label>
+        <input type="text" class="form-control" asp-for="Skills" value="@Model.Skills">
+    </div>
+    <div class="form-group">
+        <label asp-for="SkillsTheyLack"></label>
+        <input type="text" class="form-control" asp-for="SkillsTheyLack" value="@Model.SkillsTheyLack">
+    </div>
+    <div class="form-group">
+        <label asp-for="EmotionalState"></label>
+        <input type="text" class="form-control" asp-for="EmotionalState" value="@Model.EmotionalState">
+    </div>
+
+    <div class="form-group">
+        <div class="btn-group col-md-offset-2 col-md-6">
+            <input class="btn btn-primary" type="submit" name="" value="Update" /> @*&nbsp;*@
+        </div>
+    </div>
+</form>

@@ -1,17 +1,10 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using WritersCorner.Data.Contracts;
-using WritersCorner.Data.Entities.EntitiesBook.UserBooksItemsManyToMany;
 
 namespace WritersCorner.Data.Entities.EntitiesBook
 {
     public class World : IGeneral, ICivilizationEssentials
     {
-        public World()
-        {
-            this.UserWorlds = new List<UserWorld>();
-        }
-
         [Key]
         public int Id { get; set; }
 
@@ -44,6 +37,7 @@ namespace WritersCorner.Data.Entities.EntitiesBook
         public string Characteristics { get; set; }
         public string EmotionalState { get; set; }
 
-        public ICollection<UserWorld> UserWorlds { get; set; }
+        public string UserId { get; set; }
+        public User User { get; set; }
     }
 }

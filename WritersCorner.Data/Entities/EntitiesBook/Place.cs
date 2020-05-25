@@ -1,19 +1,11 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using WritersCorner.Data.Contracts;
-using WritersCorner.Data.Entities.EntitiesBook.UserBooksItemsManyToMany;
 
 namespace WritersCorner.Data.Entities.EntitiesBook
 {
     public class Place : IGeneral, ICivilizationEssentials, ICivilizationEssentialsDistinguishingMarks,
         ICivilizationMilitary, ICivilizationRelationships, ICivilizationSpiritually, IWorldEssential
     {
-        public Place()
-        {
-            this.UserPlaces = new List<UserPlace>();
-        }
-
         [Key]
         public int Id { get; set; }
 
@@ -88,6 +80,7 @@ namespace WritersCorner.Data.Entities.EntitiesBook
         public string Characteristics { get; set; }
         public string EmotionalState { get; set; }
 
-        public ICollection<UserPlace> UserPlaces { get; set; }
+        public string UserId { get; set; }
+        public User User { get; set; }
     }
 }

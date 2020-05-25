@@ -1,19 +1,11 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using WritersCorner.Data.Contracts;
-using WritersCorner.Data.Entities.EntitiesBook.UserBooksItemsManyToMany;
 
 namespace WritersCorner.Data.Entities.EntitiesBook
 {
     public class Stratum : IGeneral, ICivilizationEssentials, ICivilizationEssentialsDistinguishingMarks,
         ICivilizationMilitary, ICivilizationRelationships, ICivilizationSpiritually, IWorldEssential
     {
-        public Stratum()
-        {
-            this.UserStratums = new List<UserStratum>();
-        }
-
         [Key]
         public int Id { get; set; }
 
@@ -88,6 +80,7 @@ namespace WritersCorner.Data.Entities.EntitiesBook
         public string Characteristics { get; set; }
         public string EmotionalState { get; set; }
 
-        public ICollection<UserStratum> UserStratums { get; set; }
+        public string UserId { get; set; }
+        public User User { get; set; }
     }
 }

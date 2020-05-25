@@ -1,8 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using WritersCorner.Data.Entities.EntitiesBook;
 
 namespace WritersCorner.Data.Context.Configurations.BookConfigurations
@@ -16,8 +13,8 @@ namespace WritersCorner.Data.Context.Configurations.BookConfigurations
             builder.Property(bn => bn.Name)
                 .IsRequired();
 
-            builder.HasMany(bc => bc.UserCreatures)
-                 .WithOne(c => c.Creature);
+            builder.HasOne(u => u.User)
+                .WithMany(c => c.Creatures);
         }
     }
 }

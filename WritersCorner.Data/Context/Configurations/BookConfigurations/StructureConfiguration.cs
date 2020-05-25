@@ -13,8 +13,8 @@ namespace WritersCorner.Data.Context.Configurations.BookConfigurations
             builder.Property(bn => bn.Name)
                 .IsRequired();
 
-            builder.HasMany(bs => bs.UserStructures)
-                 .WithOne(s => s.Structure);
+            builder.HasOne(u => u.User)
+                .WithMany(s => s.Structures);
         }
     }
 }
