@@ -8,6 +8,7 @@ using WritersCorner.Data.Entities.EntitiesBook;
 using WritersCorner.Mappers.CharacterM;
 using WritersCorner.Models.CharacterVM;
 using WritersCorner.Service.Contracts;
+using WritersCorner.Service.CustomException;
 
 namespace WritersCorner.Controllers
 {
@@ -63,7 +64,7 @@ namespace WritersCorner.Controllers
 
                 return View(characterIVM);
             }
-            catch (Exception e)
+            catch (GlobalException e)
             {
                 //TODO
                 return BadRequest(e.Message);
@@ -79,7 +80,7 @@ namespace WritersCorner.Controllers
 
                 return View("Detail", userModel);
             }
-            catch (Exception e)
+            catch (GlobalException e)
             {
                 //TODO
                 return BadRequest(e.Message);
@@ -105,7 +106,7 @@ namespace WritersCorner.Controllers
 
                 return RedirectToAction("Index", new { id = character.Id });
             }
-            catch (Exception e)
+            catch (GlobalException e)
             {
                 return BadRequest(e.Message);
             }
@@ -134,7 +135,7 @@ namespace WritersCorner.Controllers
 
                 return View("Detail", mapCharacter);
             }
-            catch (Exception e)
+            catch (GlobalException e)
             {
                 //TODO
                 return BadRequest(e.Message);
@@ -153,7 +154,7 @@ namespace WritersCorner.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch (Exception e)
+            catch (GlobalException e)
             {
                 return BadRequest(e.Message);
             }
@@ -186,7 +187,7 @@ namespace WritersCorner.Controllers
                 CharacterIndexViewModel characterIVM = CharacterMapper.MapFromCharacterIndex(characterListing,
                     currPage, totalPages);
 
-                //For pagination buttons and distribution
+                #region For pagination buttons and distribution
                 characterIVM.CurrentPage = currPage;
                 characterIVM.TotalPages = totalPages;
 
@@ -199,10 +200,11 @@ namespace WritersCorner.Controllers
                 {
                     characterIVM.PreviousPage = currPage - 1;
                 }
+                #endregion
 
                 return View(characterIVM);
             }
-            catch (Exception e)
+            catch (GlobalException e)
             {
                 //TODO
                 return BadRequest(e.Message);

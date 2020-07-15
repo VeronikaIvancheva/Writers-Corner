@@ -28,7 +28,7 @@ namespace WritersCorner.Service.Implementations
 
             if (siteContactUs == null)
             {
-                throw new Exception(ExceptionMessage.NoContactUs);
+                throw new ArgumentNullException(ExceptionMessage.NoContactUs);
             }
 
             return siteContactUs;
@@ -40,7 +40,7 @@ namespace WritersCorner.Service.Implementations
 
             if (currentContactUs == null)
             {
-                throw new Exception(ExceptionMessage.NoContactUs);
+                throw new ArgumentNullException(ExceptionMessage.NoContactUs);
             }
 
             try
@@ -51,9 +51,9 @@ namespace WritersCorner.Service.Implementations
 
                 return currentContactUs;
             }
-            catch (Exception)
+            catch (GlobalException)
             {
-                throw new Exception(ExceptionMessage.GlobalErrorMessage);
+                throw new GlobalException(ExceptionMessage.GlobalErrorMessage);
             }
         }
 
@@ -63,7 +63,7 @@ namespace WritersCorner.Service.Implementations
 
             if (getContactUs == null)
             {
-                throw new Exception(ExceptionMessage.NoContactUs);
+                throw new ArgumentNullException(ExceptionMessage.NoContactUs);
             }
 
             try
@@ -74,9 +74,9 @@ namespace WritersCorner.Service.Implementations
 
                 return getContactUs;
             }
-            catch (Exception)
+            catch (GlobalException)
             {
-                throw new Exception(ExceptionMessage.GlobalErrorMessage);
+                throw new GlobalException(ExceptionMessage.GlobalErrorMessage);
             }
 
         }
@@ -92,7 +92,7 @@ namespace WritersCorner.Service.Implementations
 
             if (siteAboutUs == null)
             {
-                throw new Exception(ExceptionMessage.NoAboutUs);
+                throw new ArgumentNullException(ExceptionMessage.NoAboutUs);
             }
 
             return siteAboutUs;
@@ -104,7 +104,7 @@ namespace WritersCorner.Service.Implementations
 
             if (currentAboutUs == null)
             {
-                throw new Exception(ExceptionMessage.NoAboutUs);
+                throw new ArgumentNullException(ExceptionMessage.NoAboutUs);
             }
 
             try
@@ -115,9 +115,9 @@ namespace WritersCorner.Service.Implementations
 
                 return currentAboutUs;
             }
-            catch (Exception)
+            catch (GlobalException)
             {
-                throw new Exception(ExceptionMessage.GlobalErrorMessage);
+                throw new GlobalException(ExceptionMessage.GlobalErrorMessage);
             }
         }
 
@@ -127,7 +127,7 @@ namespace WritersCorner.Service.Implementations
 
             if (getAboutUs == null)
             {
-                throw new Exception(ExceptionMessage.NoAboutUs);
+                throw new ArgumentNullException(ExceptionMessage.NoAboutUs);
             }
 
             try
@@ -138,9 +138,9 @@ namespace WritersCorner.Service.Implementations
 
                 return getAboutUs;
             }
-            catch (Exception)
+            catch (GlobalException)
             {
-                throw new Exception(ExceptionMessage.GlobalErrorMessage);
+                throw new GlobalException(ExceptionMessage.GlobalErrorMessage);
             }
 
         }
@@ -156,7 +156,7 @@ namespace WritersCorner.Service.Implementations
 
             if (siteFAQ == null)
             {
-                throw new Exception(ExceptionMessage.NoFAQ);
+                throw new ArgumentNullException(ExceptionMessage.NoFAQ);
             }
 
             return siteFAQ;
@@ -168,7 +168,7 @@ namespace WritersCorner.Service.Implementations
 
             if (currentFAQ == null)
             {
-                throw new Exception(ExceptionMessage.NoFAQ);
+                throw new ArgumentNullException(ExceptionMessage.NoFAQ);
             }
 
             try
@@ -179,9 +179,9 @@ namespace WritersCorner.Service.Implementations
 
                 return currentFAQ;
             }
-            catch (Exception)
+            catch (GlobalException)
             {
-                throw new Exception(ExceptionMessage.GlobalErrorMessage);
+                throw new GlobalException(ExceptionMessage.GlobalErrorMessage);
             }
         }
 
@@ -191,7 +191,7 @@ namespace WritersCorner.Service.Implementations
 
             if (getFAQ == null)
             {
-                throw new Exception(ExceptionMessage.NoFAQ);
+                throw new ArgumentNullException(ExceptionMessage.NoFAQ);
             }
 
             try
@@ -202,9 +202,9 @@ namespace WritersCorner.Service.Implementations
 
                 return getFAQ;
             }
-            catch (Exception)
+            catch (GlobalException)
             {
-                throw new Exception(ExceptionMessage.GlobalErrorMessage);
+                throw new GlobalException(ExceptionMessage.GlobalErrorMessage);
             }
 
         }

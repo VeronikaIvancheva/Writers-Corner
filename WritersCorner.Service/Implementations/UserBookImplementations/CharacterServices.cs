@@ -60,9 +60,9 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
 
                 return allCharacters;
             }
-            catch (Exception)
+            catch (GlobalException)
             {
-                throw new Exception(ExceptionMessage.NoCharacters);
+                throw new GlobalException(ExceptionMessage.NoCharacters);
             }
         }
 
@@ -101,9 +101,9 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
 
                 return allCharacters;
             }
-            catch (Exception)
+            catch (GlobalException)
             {
-                throw new Exception(ExceptionMessage.NoCharacters);
+                throw new GlobalException(ExceptionMessage.NoCharacters);
             }
         }
 
@@ -119,9 +119,9 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
 
                 return newCharacter;
             }
-            catch (Exception)
+            catch (GlobalException)
             {
-                throw new Exception(ExceptionMessage.GlobalErrorMessage);
+                throw new GlobalException(ExceptionMessage.GlobalErrorMessage);
             }
         }
 
@@ -131,7 +131,7 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
 
             if (currentCharacter == null)
             {
-                throw new Exception(ExceptionMessage.NoEdit);
+                throw new ArgumentNullException(ExceptionMessage.NoEdit);
             }
 
             try
@@ -141,9 +141,9 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
 
                 return newCharacter;
             }
-            catch (Exception)
+            catch (GlobalException)
             {
-                throw new Exception(ExceptionMessage.GlobalErrorMessage);
+                throw new GlobalException(ExceptionMessage.GlobalErrorMessage);
             }
         }
 
@@ -153,7 +153,7 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
 
             if (characterForRemove == null)
             {
-                throw new Exception(ExceptionMessage.NoDelete);
+                throw new ArgumentNullException(ExceptionMessage.NoDelete);
             }
 
             try
@@ -163,10 +163,10 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
 
                 return characterForRemove;
             }
-            catch (Exception)
+            catch (GlobalException)
             {
 
-                throw new Exception(ExceptionMessage.GlobalErrorMessage);
+                throw new GlobalException(ExceptionMessage.GlobalErrorMessage);
             }
         }
 
@@ -202,9 +202,9 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
 
                 return searchResult;
             }
-            catch (Exception)
+            catch (GlobalException)
             {
-                throw new Exception(ExceptionMessage.GlobalErrorMessage);
+                throw new GlobalException(ExceptionMessage.GlobalErrorMessage);
             }
         }
 

@@ -9,6 +9,7 @@ using WritersCorner.Mappers;
 using WritersCorner.Models;
 using WritersCorner.Models.HomeVM;
 using WritersCorner.Service.Contracts;
+using WritersCorner.Service.CustomException;
 
 namespace WritersCorner.Controllers
 {
@@ -58,7 +59,7 @@ namespace WritersCorner.Controllers
                 return View(siteInfoModel);
                 //return View("Index");
             }
-            catch (Exception e)
+            catch (GlobalException e)
             {
                 //TODO - pop-up message - not new page?
                 return BadRequest(e.Message);

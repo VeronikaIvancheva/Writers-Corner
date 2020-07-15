@@ -9,6 +9,7 @@ using WritersCorner.Data.Entities;
 using WritersCorner.Mappers;
 using WritersCorner.Models.UserVM;
 using WritersCorner.Service.Contracts;
+using WritersCorner.Service.CustomException;
 
 namespace WritersCorner.Controllers
 {
@@ -79,7 +80,7 @@ namespace WritersCorner.Controllers
 
                 return View("Detail", userModel);
             }
-            catch (Exception e)
+            catch (GlobalException e)
             {
                 //TODO - pop-up message - not new page?
                 return BadRequest(e.Message);
@@ -98,7 +99,7 @@ namespace WritersCorner.Controllers
 
                 return View("Detail", userModel);
             }
-            catch (Exception e)
+            catch (GlobalException e)
             {
                 //TODO
                 return BadRequest(e.Message);

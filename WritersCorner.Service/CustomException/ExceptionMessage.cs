@@ -13,8 +13,10 @@ namespace WritersCorner.Service.CustomException
         public const string NoAboutUs = "No about us found.";
         public const string NoFAQ = "No FAQ found.";
 
-        public const string NoCharacters = "No characters found.";
         public const string NoEdit = "You can't edit something that does not exist.";
         public const string NoDelete = "You can't delete something that does not exist in the first place.";
+
+        public const string NoCharacters = "No characters found.";
+
     }
 }

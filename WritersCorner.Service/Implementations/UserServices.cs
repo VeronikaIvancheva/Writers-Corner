@@ -27,24 +27,24 @@ namespace WritersCorner.Service.Implementations
                  .OrderBy(u => u.UserName)
                  .ToListAsync();
 
-            if (currentPage == 1)
-            {
-                users = users
-                     .Take(10);
-            }
-            else
-            {
-                users = users
-                    .Skip((currentPage - 1) * 10)
-                    .Take(10);
-            }
+                if (currentPage == 1)
+                {
+                    users = users
+                         .Take(10);
+                }
+                else
+                {
+                    users = users
+                        .Skip((currentPage - 1) * 10)
+                        .Take(10);
+                }
 
-            return users;
+                return users;
             }
-            catch (Exception)
+            catch (GlobalException)
             {
 
-                throw new Exception(ExceptionMessage.NoUser);
+                throw new GlobalException(ExceptionMessage.NoUser);
             }
         }
 
@@ -55,12 +55,12 @@ namespace WritersCorner.Service.Implementations
                 User user = await _context.User
                     .FirstOrDefaultAsync(u => u.Id == id);
 
-            return user;
+                return user;
             }
-            catch (Exception)
+            catch (GlobalException)
             {
 
-                throw new Exception(ExceptionMessage.NoUser);
+                throw new GlobalException(ExceptionMessage.NoUser);
             }
         }
 
@@ -71,7 +71,7 @@ namespace WritersCorner.Service.Implementations
 
             if (user == null)
             {
-                throw new Exception(ExceptionMessage.NoUser);
+                throw new ArgumentNullException(ExceptionMessage.NoUser);
             }
 
             if (user.LockoutEnabled == false)
@@ -95,17 +95,25 @@ namespace WritersCorner.Service.Implementations
                     return user;
                 }
             }
-            catch (Exception)
+            catch (GlobalException)
             {
 
-                throw new Exception(ExceptionMessage.GlobalErrorMessage);
+                throw new GlobalException(ExceptionMessage.GlobalErrorMessage);
             }
 
-            throw new Exception(ExceptionMessage.BanErrorMessage);
+            throw new GlobalException(ExceptionMessage.BanErrorMessage);
         }
 
         public async Task<User> RemoveBanAsync(string id)
         {
+            User checkUser = await _context.User
+                .FirstOrDefaultAsync(u => u.Id == id);
+
+            if (checkUser == null)
+            {
+                throw new ArgumentNullException(ExceptionMessage.NoUser);
+            }
+
             try
             {
                 User user = await _context.User
@@ -119,10 +127,10 @@ namespace WritersCorner.Service.Implementations
 
                 return user;
             }
-            catch (Exception)
+            catch (GlobalException)
             {
 
-                throw new Exception(ExceptionMessage.GlobalErrorMessage);
+                throw new GlobalException(ExceptionMessage.GlobalErrorMessage);
             }
         }
 
@@ -150,10 +158,10 @@ namespace WritersCorner.Service.Implementations
 
                 return searchResult;
             }
-            catch (Exception)
+            catch (GlobalException)
             {
 
-                throw new Exception(ExceptionMessage.GlobalErrorMessage);
+                throw new GlobalException(ExceptionMessage.GlobalErrorMessage);
             }
         }
 
