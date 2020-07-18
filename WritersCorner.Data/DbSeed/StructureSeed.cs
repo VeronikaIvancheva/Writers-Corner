@@ -22,6 +22,8 @@ namespace WritersCorner.Data.DbSeed
                 Rareness = "common",
 
                 ImagePath = "woodenshack.jpg",
+
+                UserId = "1"
             });
         }
     }

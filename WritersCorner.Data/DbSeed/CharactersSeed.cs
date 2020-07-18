@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using WritersCorner.Data.Entities;
 using WritersCorner.Data.Entities.EntitiesBook;
 
 namespace WritersCorner.Data.DbSeed
@@ -70,10 +71,12 @@ namespace WritersCorner.Data.DbSeed
                 Personality = "Indecisive",
                 Hobbies = "Woodcarving",
                 Habits = "to make non-magical items",
-                Odds = "",
-                Skills = "",
-                SkillsTheyLack = "",
-                EmotionalState = "",
+                Odds = "His left eye change it's color to blue when night",
+                Skills = "Woodcrafting",
+                SkillsTheyLack = "He is shy so have problems with communication. Can't swim.",
+                EmotionalState = "Stable - he have no problem with it when there is someone around",
+
+                UserId = "1"
             });
         }
     }

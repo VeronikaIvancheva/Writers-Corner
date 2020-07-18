@@ -8,7 +8,6 @@ namespace WritersCorner.Data.Entities.EntitiesBook
         [Key]
         public int Id { get; set; }
 
-        [Required]
         public string Name { get; set; }
 
         #region Appearance and Features

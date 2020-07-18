@@ -14,12 +14,10 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
     public class CharacterServices : ICharacterServices
     {
         private readonly WritersCornerContext _context;
-        private readonly IUserServices _userServices;
 
-        public CharacterServices(WritersCornerContext context, IUserServices userServices)
+        public CharacterServices(WritersCornerContext context)
         {
             this._context = context ?? throw new ArgumentNullException(nameof(context));
-            this._userServices = userServices ?? throw new ArgumentNullException(nameof(userServices));
         }
 
         public async Task<Character> GetCharacterAsync(int id)
@@ -74,9 +72,14 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
                     .Where(u => u.UserId == userId)
                     .ToListAsync();
 
-                //IEnumerable<Character> allCharacters;
-                IEnumerable<Character> allCharacters = _context.Characters;
-                
+                int getUserCharCount = allUserCharacters.Count();
+
+                IEnumerable<Character> allCharacters;
+
+                if (getUserCharCount == 0 )
+                {
+                    throw new ArgumentNullException(ExceptionMessage.NoCharacters);
+                }
 
                 //Да взема самите Character - имам Id на user и character
                 foreach (var item in allUserCharacters)
@@ -87,13 +90,13 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
 
                 if (currentPage == 1)
                 {
-                    allCharacters = allCharacters
+                    allCharacters = allUserCharacters
                          .Take(10)
                          .ToList();
                 }
                 else
                 {
-                    allCharacters = allCharacters
+                    allCharacters = allUserCharacters
                         .Skip((currentPage - 1) * 10)
                         .Take(10)
                         .ToList();
@@ -111,8 +114,7 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
         {
             try
             {
-                //Character character = CheckIfNull(newCharacter);
-                Character character = PassCharacterParams(newCharacter);
+                Character character = PassCharacterParams(newCharacter, userId);
 
                 await _context.Characters.AddAsync(character);
                 await _context.SaveChangesAsync();
@@ -218,7 +220,7 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
             return totalPages;
         }
 
-        public Character PassCharacterParams(Character viewModel)
+        public Character PassCharacterParams(Character viewModel, string userId)
         {
             if (viewModel.ImagePath == null)
             {
@@ -287,7 +289,9 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
                 Odds = viewModel.Odds,
                 Skills = viewModel.Skills,
                 SkillsTheyLack = viewModel.SkillsTheyLack,
-                EmotionalState = viewModel.EmotionalState
+                EmotionalState = viewModel.EmotionalState,
+
+                UserId = userId
             };
 
             return newCharacter;

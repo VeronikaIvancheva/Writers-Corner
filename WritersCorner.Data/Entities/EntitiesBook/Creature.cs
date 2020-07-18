@@ -10,7 +10,6 @@ namespace WritersCorner.Data.Entities.EntitiesBook
         public int Id { get; set; }
 
         #region Essentials
-        [Required]
         public string Name { get; set; }
 
         public string Location { get; set; }

@@ -108,7 +108,8 @@ namespace WritersCorner.Controllers
             }
             catch (GlobalException e)
             {
-                return BadRequest(e.Message);
+                //return BadRequest(e.Message);
+                return NotFound();
             }
         }
 

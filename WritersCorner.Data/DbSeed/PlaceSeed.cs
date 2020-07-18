@@ -14,15 +14,15 @@ namespace WritersCorner.Data.DbSeed
                 Name = "The easten forest",
 
                 Desctiption = "Forest from tall oak trees that is uninhabitable from other people",
-                History = "",
+                History = "No one know how old is the forest but there are rumors that it is there even before the humanknid",
 
                 Travelling = "on foot",
 
                 Environment = "Oak trees",
 
-                CreationOn = "",
+                CreationOn = "Unknown",
                 Resources = "wood, forest fruits",
-                Hierarchy = "",
+                Hierarchy = "Unknown",
 
                 Rulers = "Executive Forest Agency",
 
@@ -69,6 +69,8 @@ namespace WritersCorner.Data.DbSeed
                 Punishments = "",
                 Characteristics = "beautiful and peaceful",
                 EmotionalState = "peaceful",
+
+                UserId = "1"
             });
         }
     }

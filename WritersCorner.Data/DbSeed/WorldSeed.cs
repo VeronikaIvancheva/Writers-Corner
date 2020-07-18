@@ -33,6 +33,8 @@ namespace WritersCorner.Data.DbSeed
                 Punishments = "prison",
                 Characteristics = "",
                 EmotionalState = "unstable",
+
+                UserId = "1"
             });
         }
     }
