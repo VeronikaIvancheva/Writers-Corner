@@ -10,8 +10,7 @@ namespace WritersCorner.Data.Context.Configurations.BookConfigurations
         {
             builder.HasKey(i => i.Id);
 
-            builder.Property(bn => bn.Name)
-                .IsRequired();
+            builder.Property(bn => bn.Name);
 
             builder.HasOne(u => u.User)
                 .WithMany(i => i.Items);

@@ -26,22 +26,12 @@ namespace WritersCorner.Service.Implementations
             SiteInfo siteContactUs = await _context.SiteInfos
                 .FirstOrDefaultAsync(c => c.ContactUs == contactUs);
 
-            if (siteContactUs == null)
-            {
-                throw new ArgumentNullException(ExceptionMessage.NoContactUs);
-            }
-
             return siteContactUs;
         }
 
         public async Task<SiteInfo> EditContactUsAsync(string oldContactUs, string newContactUs)
         {
             SiteInfo currentContactUs = await GetContactUsAsync(oldContactUs);
-
-            if (currentContactUs == null)
-            {
-                throw new ArgumentNullException(ExceptionMessage.NoContactUs);
-            }
 
             try
             {
@@ -53,6 +43,7 @@ namespace WritersCorner.Service.Implementations
             }
             catch (GlobalException)
             {
+                //TODO - To add LOGGING for the errors
                 throw new GlobalException(ExceptionMessage.GlobalErrorMessage);
             }
         }
@@ -60,11 +51,6 @@ namespace WritersCorner.Service.Implementations
         public async Task<SiteInfo> DeleteContactUsAsync(string contactUs)
         {
             SiteInfo getContactUs = await GetContactUsAsync(contactUs);
-
-            if (getContactUs == null)
-            {
-                throw new ArgumentNullException(ExceptionMessage.NoContactUs);
-            }
 
             try
             {
@@ -76,6 +62,7 @@ namespace WritersCorner.Service.Implementations
             }
             catch (GlobalException)
             {
+                //TODO - To add LOGGING for the errors
                 throw new GlobalException(ExceptionMessage.GlobalErrorMessage);
             }
 
@@ -90,22 +77,12 @@ namespace WritersCorner.Service.Implementations
             SiteInfo siteAboutUs = await _context.SiteInfos
                 .FirstOrDefaultAsync(c => c.AboutUs == aboutUs);
 
-            if (siteAboutUs == null)
-            {
-                throw new ArgumentNullException(ExceptionMessage.NoAboutUs);
-            }
-
             return siteAboutUs;
         }
 
         public async Task<SiteInfo> EditAboutUsAsync(string oldAboutUs, string newAboutUs)
         {
             SiteInfo currentAboutUs = await GetAboutUsAsync(oldAboutUs);
-
-            if (currentAboutUs == null)
-            {
-                throw new ArgumentNullException(ExceptionMessage.NoAboutUs);
-            }
 
             try
             {
@@ -117,6 +94,7 @@ namespace WritersCorner.Service.Implementations
             }
             catch (GlobalException)
             {
+                //TODO - To add LOGGING for the errors
                 throw new GlobalException(ExceptionMessage.GlobalErrorMessage);
             }
         }
@@ -124,11 +102,6 @@ namespace WritersCorner.Service.Implementations
         public async Task<SiteInfo> DeleteAboutUsAsync(string aboutUs)
         {
             SiteInfo getAboutUs = await GetAboutUsAsync(aboutUs);
-
-            if (getAboutUs == null)
-            {
-                throw new ArgumentNullException(ExceptionMessage.NoAboutUs);
-            }
 
             try
             {
@@ -140,6 +113,7 @@ namespace WritersCorner.Service.Implementations
             }
             catch (GlobalException)
             {
+                //TODO - To add LOGGING for the errors
                 throw new GlobalException(ExceptionMessage.GlobalErrorMessage);
             }
 
@@ -154,22 +128,12 @@ namespace WritersCorner.Service.Implementations
             SiteInfo siteFAQ = await _context.SiteInfos
                 .FirstOrDefaultAsync(f => f.FAQ == faq);
 
-            if (siteFAQ == null)
-            {
-                throw new ArgumentNullException(ExceptionMessage.NoFAQ);
-            }
-
             return siteFAQ;
         }
 
         public async Task<SiteInfo> EditFAQAsync(string oldFAQ, string newFAQ)
         {
             SiteInfo currentFAQ = await GetFAQAsync(oldFAQ);
-
-            if (currentFAQ == null)
-            {
-                throw new ArgumentNullException(ExceptionMessage.NoFAQ);
-            }
 
             try
             {
@@ -181,6 +145,7 @@ namespace WritersCorner.Service.Implementations
             }
             catch (GlobalException)
             {
+                //TODO - To add LOGGING for the errors
                 throw new GlobalException(ExceptionMessage.GlobalErrorMessage);
             }
         }
@@ -188,11 +153,6 @@ namespace WritersCorner.Service.Implementations
         public async Task<SiteInfo> DeleteFAQAsync(string faq)
         {
             SiteInfo getFAQ = await GetFAQAsync(faq);
-
-            if (getFAQ == null)
-            {
-                throw new ArgumentNullException(ExceptionMessage.NoFAQ);
-            }
 
             try
             {
@@ -204,6 +164,7 @@ namespace WritersCorner.Service.Implementations
             }
             catch (GlobalException)
             {
+                //TODO - To add LOGGING for the errors
                 throw new GlobalException(ExceptionMessage.GlobalErrorMessage);
             }
 

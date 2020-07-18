@@ -43,7 +43,7 @@ namespace WritersCorner.Service.Implementations
             }
             catch (GlobalException)
             {
-
+                //TODO - To add LOGGING for the errors
                 throw new GlobalException(ExceptionMessage.NoUser);
             }
         }
@@ -59,7 +59,7 @@ namespace WritersCorner.Service.Implementations
             }
             catch (GlobalException)
             {
-
+                //TODO - To add LOGGING for the errors
                 throw new GlobalException(ExceptionMessage.NoUser);
             }
         }
@@ -68,11 +68,6 @@ namespace WritersCorner.Service.Implementations
         {
             User user = await _context.User
                 .FirstOrDefaultAsync(u => u.Id == id);
-
-            if (user == null)
-            {
-                throw new ArgumentNullException(ExceptionMessage.NoUser);
-            }
 
             if (user.LockoutEnabled == false)
             {
@@ -97,7 +92,7 @@ namespace WritersCorner.Service.Implementations
             }
             catch (GlobalException)
             {
-
+                //TODO - To add LOGGING for the errors
                 throw new GlobalException(ExceptionMessage.GlobalErrorMessage);
             }
 
@@ -108,11 +103,6 @@ namespace WritersCorner.Service.Implementations
         {
             User checkUser = await _context.User
                 .FirstOrDefaultAsync(u => u.Id == id);
-
-            if (checkUser == null)
-            {
-                throw new ArgumentNullException(ExceptionMessage.NoUser);
-            }
 
             try
             {
@@ -129,7 +119,7 @@ namespace WritersCorner.Service.Implementations
             }
             catch (GlobalException)
             {
-
+                //TODO - To add LOGGING for the errors
                 throw new GlobalException(ExceptionMessage.GlobalErrorMessage);
             }
         }
@@ -160,7 +150,7 @@ namespace WritersCorner.Service.Implementations
             }
             catch (GlobalException)
             {
-
+                //TODO - To add LOGGING for the errors
                 throw new GlobalException(ExceptionMessage.GlobalErrorMessage);
             }
         }

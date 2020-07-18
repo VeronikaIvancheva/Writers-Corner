@@ -10,8 +10,7 @@ namespace WritersCorner.Data.Context.Configurations
         {
             builder.HasKey(b => b.Id);
 
-            builder.Property(bn => bn.Name)
-                .IsRequired();
+            builder.Property(bn => bn.Name);
 
             builder.Property(bip => bip.ImagePath);
 

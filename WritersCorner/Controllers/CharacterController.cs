@@ -68,6 +68,8 @@ namespace WritersCorner.Controllers
             {
                 //TODO
                 return BadRequest(e.Message);
+                //ModelState.AddModelError(string.Empty, ExceptionMessage.GlobalErrorMessage);
+                //return RedirectToAction("Index", "Home");
             }
         }
 
@@ -121,7 +123,6 @@ namespace WritersCorner.Controllers
             CharacterViewModel mapCharacter = CharacterMapper.MapCharacter(character);
 
             return View("Edit", mapCharacter);
-            //return RedirectToAction("Edit", new { id = mapCharacter.Id });
         }
 
         [HttpPost]
@@ -150,14 +151,14 @@ namespace WritersCorner.Controllers
             try
             {
                 string userId = FindCurrentUserId();
-
                 await _characterServices.DeleteCharacterAsync(Id, userId);
 
                 return RedirectToAction("Index");
             }
             catch (GlobalException e)
             {
-                return BadRequest(e.Message);
+                return NotFound();
+                //return BadRequest(e.Message);
             }
         }
 

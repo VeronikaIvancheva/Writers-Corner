@@ -60,6 +60,7 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
             }
             catch (GlobalException)
             {
+                //TODO - To add LOGGING for the errors
                 throw new GlobalException(ExceptionMessage.NoCharacters);
             }
         }
@@ -72,16 +73,8 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
                     .Where(u => u.UserId == userId)
                     .ToListAsync();
 
-                int getUserCharCount = allUserCharacters.Count();
-
                 IEnumerable<Character> allCharacters;
 
-                if (getUserCharCount == 0 )
-                {
-                    throw new ArgumentNullException(ExceptionMessage.NoCharacters);
-                }
-
-                //Да взема самите Character - имам Id на user и character
                 foreach (var item in allUserCharacters)
                 {
                     allCharacters = _context.Characters
@@ -106,6 +99,7 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
             }
             catch (GlobalException)
             {
+                //TODO - To add LOGGING for the errors
                 throw new GlobalException(ExceptionMessage.NoCharacters);
             }
         }
@@ -123,6 +117,7 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
             }
             catch (GlobalException)
             {
+                //TODO - To add LOGGING for the errors
                 throw new GlobalException(ExceptionMessage.GlobalErrorMessage);
             }
         }
@@ -130,11 +125,6 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
         public async Task<Character> EditCharacterAsync(Character newCharacter)
         {
             Character currentCharacter = await GetCharacterAsync(newCharacter.Id);
-
-            if (currentCharacter == null)
-            {
-                throw new ArgumentNullException(ExceptionMessage.NoEdit);
-            }
 
             try
             {
@@ -145,6 +135,7 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
             }
             catch (GlobalException)
             {
+                //TODO - To add LOGGING for the errors
                 throw new GlobalException(ExceptionMessage.GlobalErrorMessage);
             }
         }
@@ -167,7 +158,7 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
             }
             catch (GlobalException)
             {
-
+                //TODO - To add LOGGING for the errors
                 throw new GlobalException(ExceptionMessage.GlobalErrorMessage);
             }
         }
@@ -206,6 +197,7 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
             }
             catch (GlobalException)
             {
+                //TODO - To add LOGGING for the errors
                 throw new GlobalException(ExceptionMessage.GlobalErrorMessage);
             }
         }
