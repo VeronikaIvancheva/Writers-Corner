@@ -28,4 +28,9 @@
     <ProjectReference Include="..\WritersCorner.Service\WritersCorner.Service.csproj" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Pictures\Images\CharacterImages\" />
+  </ItemGroup>
+
 </Project>

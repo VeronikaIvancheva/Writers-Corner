@@ -36,8 +36,13 @@
                     <tr>
                         <td>
                             <div>
+                                <a>
+                                    @*src="~/Pictures/DbSeed/@*@
+                                    @*<img src="~/Pictures/Images/CharacterImages/@(Model.ImagePath)"
+                                        height="300" width="250" />*@
+                                </a>
                                 <a href="/Character/Detail/@character.Id">
-                                    <img src="~/Pictures/DbSeed/@(character.ImagePath ?? "default.png")"
+                                    <img src="~/Pictures/Images/CharacterImages/@(character.ImagePath ?? "default.png")"
                                          alt="pic" height="100" width="80" />
                                 </a>
                             </div>
@@ -55,7 +60,7 @@
                     </tr>
                 }
             }
-            </tbody>
+        </tbody>
     </table>
 
     <p></p>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -9,16 +10,19 @@ using WritersCorner.Mappers.CharacterM;
 using WritersCorner.Models.CharacterVM;
 using WritersCorner.Service.Contracts;
 using WritersCorner.Service.CustomException;
+using WritersCorner.Service.Providers;
 
 namespace WritersCorner.Controllers
 {
     public class CharacterController : Controller
     {
         private readonly ICharacterServices _characterServices;
+        private readonly IFileService _fileService;
 
-        public CharacterController(ICharacterServices characterServices)
+        public CharacterController(ICharacterServices characterServices, IFileService fileService)
         {
             this._characterServices = characterServices;
+            this._fileService = fileService;
         }
 
         public async Task<IActionResult> Index(int? currentPage, string search = null)
@@ -101,6 +105,8 @@ namespace WritersCorner.Controllers
         {
             try
             {
+                SaveFile(viewModel);
+
                 string userId = FindCurrentUserId();
 
                 Character mapCharacter = CharacterMapper.MapCharacter(viewModel);
@@ -150,6 +156,7 @@ namespace WritersCorner.Controllers
         {
             try
             {
+                //TODO: Да направя confirm прозорец при триене
                 string userId = FindCurrentUserId();
                 await _characterServices.DeleteCharacterAsync(Id, userId);
 
@@ -218,6 +225,27 @@ namespace WritersCorner.Controllers
             string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             return userId;
+        }
+
+        public void SaveFile(CharacterViewModel viewModel)
+        {
+            string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Pictures\\Images\\CharacterImages");
+            _fileService.CreateFolder(uploadsFolder);
+
+            string imageName = Path.GetFileName(viewModel.File.FileName);
+            string fullFilePath = Path.Combine(uploadsFolder, imageName);
+
+            viewModel.ImagePath = imageName;
+
+            using (FileStream stream = new FileStream(fullFilePath, FileMode.Create))
+            {
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+                    viewModel.File.CopyToAsync(memoryStream);
+                    byte[] x = memoryStream.ToArray();
+                    stream.Write(x, 0, x.Length);
+                }
+            }
         }
     }
 }

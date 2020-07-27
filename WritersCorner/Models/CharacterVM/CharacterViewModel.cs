@@ -1,4 +1,5 @@
-﻿using WritersCorner.Data.Entities.EntitiesBook;
+﻿using Microsoft.AspNetCore.Http;
+using WritersCorner.Data.Entities.EntitiesBook;
 using WritersCorner.Data.Enums;
 
 namespace WritersCorner.Models.CharacterVM
@@ -138,5 +139,7 @@ namespace WritersCorner.Models.CharacterVM
         public string Skills { get; set; }
         public string SkillsTheyLack { get; set; }
         public string EmotionalState { get; set; }
+
+        public IFormFile File { get; set; }
     }
 }
