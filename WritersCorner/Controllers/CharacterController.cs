@@ -229,22 +229,29 @@ namespace WritersCorner.Controllers
 
         public void SaveFile(CharacterViewModel viewModel)
         {
-            string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Pictures\\Images\\CharacterImages");
-            _fileService.CreateFolder(uploadsFolder);
-
-            string imageName = Path.GetFileName(viewModel.File.FileName);
-            string fullFilePath = Path.Combine(uploadsFolder, imageName);
-
-            viewModel.ImagePath = imageName;
-
-            using (FileStream stream = new FileStream(fullFilePath, FileMode.Create))
+            if (viewModel.ImagePath != null)
             {
-                using (MemoryStream memoryStream = new MemoryStream())
+                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Pictures\\Images\\CharacterImages");
+                _fileService.CreateFolder(uploadsFolder);
+
+                string imageName = Path.GetFileName(viewModel.File.FileName);
+                string fullFilePath = Path.Combine(uploadsFolder, imageName);
+
+                viewModel.ImagePath = imageName;
+
+                using (FileStream stream = new FileStream(fullFilePath, FileMode.Create))
                 {
-                    viewModel.File.CopyToAsync(memoryStream);
-                    byte[] x = memoryStream.ToArray();
-                    stream.Write(x, 0, x.Length);
+                    using (MemoryStream memoryStream = new MemoryStream())
+                    {
+                        viewModel.File.CopyToAsync(memoryStream);
+                        byte[] x = memoryStream.ToArray();
+                        stream.Write(x, 0, x.Length);
+                    }
                 }
+            }
+            else
+            {
+                viewModel.ImagePath = "default.png";
             }
         }
     }

@@ -24,6 +24,9 @@ namespace WritersCorner.Data.Entities.EntitiesBook
         public string AthleticAbility { get; set; }
         public string SpecialAblilty { get; set; }
         public string LanguagesSpoken { get; set; }
+        public string Voice { get; set; }
+        public string Trait { get; set; }
+        public string Bond { get; set; } 
 
         #region Background
         public string Background { get; set; }
@@ -70,6 +73,8 @@ namespace WritersCorner.Data.Entities.EntitiesBook
         //Conflicts
         public string InternalConflicts { get; set; }
         public string ExternalConflicts { get; set; }
+
+        public string Ideal { get; set; }
         #endregion
 
         #region Public to people (Secret if needed)
@@ -78,6 +83,7 @@ namespace WritersCorner.Data.Entities.EntitiesBook
         public string Occupation { get; set; }
         public string MaritalStatus { get; set; }
         public string Stratum { get; set; }
+        public string Profession { get; set; }
         #endregion
 
         #region Personality
@@ -89,6 +95,7 @@ namespace WritersCorner.Data.Entities.EntitiesBook
         public string Skills { get; set; }
         public string SkillsTheyLack { get; set; }
         public string EmotionalState { get; set; }
+        public string Quirk { get; set; }
         #endregion
 
         public string UserId { get; set; }

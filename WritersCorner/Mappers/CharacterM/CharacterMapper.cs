@@ -29,7 +29,11 @@ namespace WritersCorner.Mappers.CharacterM
                 Nickname = character.Nickname,
                 AthleticAbility = character.AthleticAbility,
                 SpecialAblilty = character.SpecialAblilty,
-                LanguagesSpoken = character.SpecialAblilty,
+                LanguagesSpoken = character.LanguagesSpoken,
+
+                Bond = character.Bond,
+                Voice = character.Voice,
+                Trait = character.Trait,
 
                 Background = character.Background,
                 Family = character.Family,
@@ -40,16 +44,13 @@ namespace WritersCorner.Mappers.CharacterM
                 FaceShape = character.FaceShape,
                 FacialHair = character.FacialHair,
 
-
                 HairColor = character.HairColor,
                 HairTexture = character.HairTexture,
-
 
                 SkinTone = character.SkinTone,
                 BodyType = character.BodyType,
                 Height = character.Height,
                 Clothes = character.Clothes,
-
 
                 Tatoos = character.Tatoos,
                 Piercing = character.Piercing,
@@ -67,12 +68,14 @@ namespace WritersCorner.Mappers.CharacterM
 
                 InternalConflicts = character.InternalConflicts,
                 ExternalConflicts = character.ExternalConflicts,
+                Ideal = character.Ideal,
 
                 Race = character.Race,
                 Religion = character.Religion,
                 Occupation = character.Occupation,
                 MaritalStatus = character.MaritalStatus,
                 Stratum = character.Stratum,
+                Profession = character.Profession,
 
                 Disabilities = character.Disabilities,
                 Personality = character.Personality,
@@ -82,6 +85,7 @@ namespace WritersCorner.Mappers.CharacterM
                 Skills = character.Skills,
                 SkillsTheyLack = character.SkillsTheyLack,
                 EmotionalState = character.EmotionalState,
+                Quirk = character.Quirk,
             };
 
             return siteInfoVM;
@@ -89,81 +93,85 @@ namespace WritersCorner.Mappers.CharacterM
         #endregion
 
         #region Map from view model
-        public static Character MapCharacter(this CharacterViewModel character)
+        public static Character MapCharacter(this CharacterViewModel characterVM)
         {
-            if (character == null)
+            if (characterVM == null)
             {
                 return null;
             }
 
             Character siteInfoVM = new Character
             {
-                Id = character.Id,
-                Name = character.Name,
+                Id = characterVM.Id,
+                Name = characterVM.Name,
 
-                Birthday = character.Birthday,
-                Death = character.Death,
+                Birthday = characterVM.Birthday,
+                Death = characterVM.Death,
 
-                Age = character.Age,
-                Gender = character.Gender,
+                Age = characterVM.Age,
+                Gender = characterVM.Gender,
 
-                ImagePath = character.ImagePath,
-                Nickname = character.Nickname,
-                AthleticAbility = character.AthleticAbility,
-                SpecialAblilty = character.SpecialAblilty,
-                LanguagesSpoken = character.SpecialAblilty,
+                ImagePath = characterVM.ImagePath,
+                Nickname = characterVM.Nickname,
+                AthleticAbility = characterVM.AthleticAbility,
+                SpecialAblilty = characterVM.SpecialAblilty,
+                LanguagesSpoken = characterVM.LanguagesSpoken,
 
-                Background = character.Background,
-                Family = character.Family,
-                FamilyInfo = character.FamilyInfo,
-                Education = character.Education,
+                Bond = characterVM.Bond,
+                Voice = characterVM.Voice,
+                Trait = characterVM.Trait,
 
-                EyeColor = character.EyeColor,
-                FaceShape = character.FaceShape,
-                FacialHair = character.FacialHair,
+                Background = characterVM.Background,
+                Family = characterVM.Family,
+                FamilyInfo = characterVM.FamilyInfo,
+                Education = characterVM.Education,
 
+                EyeColor = characterVM.EyeColor,
+                FaceShape = characterVM.FaceShape,
+                FacialHair = characterVM.FacialHair,
 
-                HairColor = character.HairColor,
-                HairTexture = character.HairTexture,
+                HairColor = characterVM.HairColor,
+                HairTexture = characterVM.HairTexture,
 
+                SkinTone = characterVM.SkinTone,
+                BodyType = characterVM.BodyType,
+                Height = characterVM.Height,
+                Clothes = characterVM.Clothes,
 
-                SkinTone = character.SkinTone,
-                BodyType = character.BodyType,
-                Height = character.Height,
-                Clothes = character.Clothes,
+                Tatoos = characterVM.Tatoos,
+                Piercing = characterVM.Piercing,
+                Birthmarks = characterVM.Birthmarks,
+                Scars = characterVM.Scars,
 
+                Fears = characterVM.Fears,
+                Vices = characterVM.Vices,
+                Regrets = characterVM.Regrets,
+                Despise = characterVM.Despise,
 
-                Tatoos = character.Tatoos,
-                Piercing = character.Piercing,
-                Birthmarks = character.Birthmarks,
-                Scars = character.Scars,
+                Motivation = characterVM.Motivation,
+                Goals = characterVM.Goals,
+                AdmireOf = characterVM.AdmireOf,
 
-                Fears = character.Fears,
-                Vices = character.Vices,
-                Regrets = character.Regrets,
-                Despise = character.Despise,
+                InternalConflicts = characterVM.InternalConflicts,
+                ExternalConflicts = characterVM.ExternalConflicts,
+                Ideal = characterVM.Ideal,
 
-                Motivation = character.Motivation,
-                Goals = character.Goals,
-                AdmireOf = character.AdmireOf,
+                Race = characterVM.Race,
+                Religion = characterVM.Religion,
+                Occupation = characterVM.Occupation,
+                MaritalStatus = characterVM.MaritalStatus,
+                Stratum = characterVM.Stratum,
+                Profession = characterVM.Profession,
 
-                InternalConflicts = character.InternalConflicts,
-                ExternalConflicts = character.ExternalConflicts,
-
-                Race = character.Race,
-                Religion = character.Religion,
-                Occupation = character.Occupation,
-                MaritalStatus = character.MaritalStatus,
-                Stratum = character.Stratum,
-
-                Disabilities = character.Disabilities,
-                Personality = character.Personality,
-                Hobbies = character.Hobbies,
-                Habits = character.Habits,
-                Odds = character.Odds,
-                Skills = character.Skills,
-                SkillsTheyLack = character.SkillsTheyLack,
-                EmotionalState = character.EmotionalState,
+                Disabilities = characterVM.Disabilities,
+                Personality = characterVM.Personality,
+                Hobbies = characterVM.Hobbies,
+                Habits = characterVM.Habits,
+                Odds = characterVM.Odds,
+                Skills = characterVM.Skills,
+                SkillsTheyLack = characterVM.SkillsTheyLack,
+                EmotionalState = characterVM.EmotionalState,
+                Quirk = characterVM.Quirk,
             };
 
             return siteInfoVM;

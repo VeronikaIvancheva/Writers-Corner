@@ -214,11 +214,6 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
 
         public Character PassCharacterParams(Character viewModel, string userId)
         {
-            if (viewModel.ImagePath == null)
-            {
-                viewModel.ImagePath = "default.png";
-            }
-
             var newCharacter = new Character
             {
                 Name = viewModel.Name,
@@ -233,6 +228,11 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
                 Nickname = viewModel.Nickname,
                 AthleticAbility = viewModel.AthleticAbility,
                 SpecialAblilty = viewModel.SpecialAblilty,
+                LanguagesSpoken = viewModel.LanguagesSpoken,
+
+                Trait = viewModel.Trait,
+                Voice = viewModel.Voice,
+                Bond = viewModel.Bond,
 
                 Background = viewModel.Background,
                 Family = viewModel.Family,
@@ -268,11 +268,14 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
                 InternalConflicts = viewModel.InternalConflicts,
                 ExternalConflicts = viewModel.ExternalConflicts,
 
+                Ideal = viewModel.Ideal,
+
                 Race = viewModel.Race,
                 Religion = viewModel.Religion,
                 Occupation = viewModel.Occupation,
                 MaritalStatus = viewModel.MaritalStatus,
                 Stratum = viewModel.Stratum,
+                Profession = viewModel.Profession,
 
                 Disabilities = viewModel.Disabilities,
                 Personality = viewModel.Personality,
@@ -282,6 +285,7 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
                 Skills = viewModel.Skills,
                 SkillsTheyLack = viewModel.SkillsTheyLack,
                 EmotionalState = viewModel.EmotionalState,
+                Quirk = viewModel.Quirk,
 
                 UserId = userId
             };

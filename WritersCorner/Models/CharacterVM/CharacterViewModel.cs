@@ -25,6 +25,10 @@ namespace WritersCorner.Models.CharacterVM
             this.SpecialAblilty = character.SpecialAblilty;
             this.LanguagesSpoken = character.LanguagesSpoken;
 
+            this.Voice = character.Voice;
+            this.Trait = character.Trait;
+            this.Bond = character.Bond;
+
             this.Background = character.Background;
             this.Family = character.Family;
             this.FamilyInfo = character.FamilyInfo;
@@ -55,6 +59,7 @@ namespace WritersCorner.Models.CharacterVM
             this.Motivation = character.Motivation;
             this.Goals = character.Goals;
             this.AdmireOf = character.AdmireOf;
+            this.Ideal = character.Ideal;
 
             this.InternalConflicts = character.InternalConflicts;
             this.ExternalConflicts = character.ExternalConflicts;
@@ -64,6 +69,7 @@ namespace WritersCorner.Models.CharacterVM
             this.Occupation = character.Occupation;
             this.MaritalStatus = character.MaritalStatus;
             this.Stratum = character.Stratum;
+            this.Profession = character.Profession;
 
             this.Disabilities = character.Disabilities;
             this.Personality = character.Personality;
@@ -73,6 +79,7 @@ namespace WritersCorner.Models.CharacterVM
             this.Skills = character.Skills;
             this.SkillsTheyLack = character.SkillsTheyLack;
             this.EmotionalState = character.EmotionalState;
+            this.Quirk = character.Quirk;
         }
 
         public int Id { get; set; }
@@ -90,6 +97,10 @@ namespace WritersCorner.Models.CharacterVM
         public string AthleticAbility { get; set; }
         public string SpecialAblilty { get; set; }
         public string LanguagesSpoken { get; set; }
+
+        public string Voice { get; set; }
+        public string Trait { get; set; }
+        public string Bond { get; set; } 
 
         public string Background { get; set; }
         public string Family { get; set; }
@@ -121,15 +132,17 @@ namespace WritersCorner.Models.CharacterVM
         public string Motivation { get; set; }
         public string Goals { get; set; }
         public string AdmireOf { get; set; }
+        public string Ideal { get; set; }
 
         public string InternalConflicts { get; set; }
         public string ExternalConflicts { get; set; }
-        
+
         public string Race { get; set; }
         public string Religion { get; set; }
         public string Occupation { get; set; }
         public string MaritalStatus { get; set; }
         public string Stratum { get; set; }
+        public string Profession { get; set; }
 
         public string Disabilities { get; set; }
         public string Personality { get; set; }
@@ -139,6 +152,7 @@ namespace WritersCorner.Models.CharacterVM
         public string Skills { get; set; }
         public string SkillsTheyLack { get; set; }
         public string EmotionalState { get; set; }
+        public string Quirk { get; set; }
 
         public IFormFile File { get; set; }
     }
