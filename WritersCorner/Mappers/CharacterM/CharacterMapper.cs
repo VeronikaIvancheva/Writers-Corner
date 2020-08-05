@@ -85,7 +85,6 @@ namespace WritersCorner.Mappers.CharacterM
                 Skills = character.Skills,
                 SkillsTheyLack = character.SkillsTheyLack,
                 EmotionalState = character.EmotionalState,
-                Quirk = character.Quirk,
             };
 
             return siteInfoVM;
@@ -171,7 +170,6 @@ namespace WritersCorner.Mappers.CharacterM
                 Skills = characterVM.Skills,
                 SkillsTheyLack = characterVM.SkillsTheyLack,
                 EmotionalState = characterVM.EmotionalState,
-                Quirk = characterVM.Quirk,
             };
 
             return siteInfoVM;

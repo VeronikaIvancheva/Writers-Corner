@@ -95,7 +95,6 @@ namespace WritersCorner.Data.Entities.EntitiesBook
         public string Skills { get; set; }
         public string SkillsTheyLack { get; set; }
         public string EmotionalState { get; set; }
-        public string Quirk { get; set; }
         #endregion
 
         public string UserId { get; set; }

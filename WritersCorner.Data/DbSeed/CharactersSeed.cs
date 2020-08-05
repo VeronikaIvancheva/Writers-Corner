@@ -82,7 +82,6 @@ namespace WritersCorner.Data.DbSeed
                 Skills = "Woodcrafting",
                 SkillsTheyLack = "He is shy so have problems with communication. Can't swim",
                 EmotionalState = "Stable - he have no problem with it when there is someone around",
-                Quirk = "Can spend time alone for weeks without that to bother him", 
 
                 UserId = "1"
             });

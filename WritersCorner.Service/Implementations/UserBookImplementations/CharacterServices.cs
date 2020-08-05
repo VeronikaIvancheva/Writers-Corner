@@ -285,7 +285,6 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
                 Skills = viewModel.Skills,
                 SkillsTheyLack = viewModel.SkillsTheyLack,
                 EmotionalState = viewModel.EmotionalState,
-                Quirk = viewModel.Quirk,
 
                 UserId = userId
             };

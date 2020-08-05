@@ -79,7 +79,6 @@ namespace WritersCorner.Models.CharacterVM
             this.Skills = character.Skills;
             this.SkillsTheyLack = character.SkillsTheyLack;
             this.EmotionalState = character.EmotionalState;
-            this.Quirk = character.Quirk;
         }
 
         public int Id { get; set; }
@@ -152,7 +151,6 @@ namespace WritersCorner.Models.CharacterVM
         public string Skills { get; set; }
         public string SkillsTheyLack { get; set; }
         public string EmotionalState { get; set; }
-        public string Quirk { get; set; }
 
         public IFormFile File { get; set; }
     }
