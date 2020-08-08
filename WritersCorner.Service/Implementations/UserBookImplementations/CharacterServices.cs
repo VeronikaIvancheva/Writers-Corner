@@ -125,6 +125,7 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
         public async Task<Character> EditCharacterAsync(Character newCharacter)
         {
             Character currentCharacter = await GetCharacterAsync(newCharacter.Id);
+            newCharacter.UserId = currentCharacter.UserId;
 
             try
             {

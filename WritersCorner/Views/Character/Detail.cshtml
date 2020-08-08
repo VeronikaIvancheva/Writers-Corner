@@ -4,121 +4,325 @@
     ViewData["Title"] = "Details";
 }
 
-<div class="container">
-    <div class="header clearfix detailHeading">
-        <h2 class="text-muted">@Model.Name</h2>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <div>
-                <h2>@Model.Nickname</h2>
-                <div>
-                    <div>
-                        <div>
-                            @*TODO:
-                            Да фиксна появяването на снимките в Catalogue и Detail - Index и тук - да видя как
-                                да ги взема от 2-те различни папки или да сложа default-ната снимка при останалите
-                            Да направя снимката да варира в height и width*@
-                            <a>
-                                <img src="~/Pictures/Images/CharacterImages/@(Model.ImagePath)" height="300" width="250" />
-                            </a>
-                        </div>
-                    </div>
-                    <div><b>Name:</b> @Model.Name</div>
-                    <div><b>Nickname:</b> @Model.Nickname</div>
-                    <div><b>Gender:</b> @Model.Gender</div>
-                    <div><b>Age:</b> @Model.Age</div>
 
-                    <div><b>Birthday:</b> @Model.Birthday</div>
-                    <div><b>Death:</b> @Model.Death</div>
+<div class="header clearfix detailHeading">
+    <h2 class="text-muted">@Model.Name</h2>
+</div>
+<div class="row">
+    <div>
+        @*TODO:
+            Да фиксна появяването на снимките в Catalogue и Detail - Index и тук - да видя как
+                да ги взема от 2-те различни папки или да сложа default-ната снимка при останалите
+            Да направя снимката да варира в height и width*@
+        <a>
+            <img src="~/Pictures/Images/CharacterImages/@(Model.ImagePath)" height="300" width="250" />
+        </a>
 
-                    <div><b>Athletic ability:</b> @Model.AthleticAbility</div>
-                    <div><b>Special ablilty:</b> @Model.SpecialAblilty</div>
-
-                    <div><b>Languages Spoken:</b> @Model.LanguagesSpoken</div>
-
-                    <div><b>Voice:</b> @Model.Voice</div>
-                    <div><b>Trait:</b> @Model.Trait</div>
-
-                    <div><b>Background:</b> @Model.Background</div>
-                    <div><b>Family:</b> @Model.Family</div>
-                    <div><b>Family information:</b> @Model.FamilyInfo</div>
-                    <div><b>Bond:</b> @Model.Bond</div>
-                    <div><b>Education:</b> @Model.Education</div>
-
-                    <div><b>Eye color:</b> @Model.EyeColor</div>
-                    <div><b>Face shape:</b> @Model.FaceShape</div>
-                    <div><b>Facial hair:</b> @Model.FacialHair</div>
-                    <div><b>Hair color:</b> @Model.HairColor</div>
-                    <div><b>Hair texture:</b> @Model.HairTexture</div>
-                    <div><b>Skin tone:</b> @Model.SkinTone</div>
-                    <div><b>Body type:</b> @Model.BodyType</div>
-                    <div><b>Height:</b> @Model.Height</div>
-                    <div><b>Clothes:</b> @Model.Clothes</div>
-
-                    <div><b>Tatoos:</b> @Model.Tatoos</div>
-                    <div><b>Piercing:</b> @Model.Piercing</div>
-                    <div><b>Birthmarks:</b> @Model.Birthmarks</div>
-                    <div><b>Scars:</b> @Model.Scars</div>
-
-                    <div><b>Fears:</b> @Model.Fears</div>
-                    <div><b>Vices:</b> @Model.Vices</div>
-                    <div><b>Regrets:</b> @Model.Regrets</div>
-
-                    <div><b>Motivation:</b> @Model.Motivation</div>
-                    <div><b>Goals:</b> @Model.Goals</div>
-                    <div><b>Admire of:</b> @Model.AdmireOf</div>
-                    <div><b>Despise:</b> @Model.Despise</div>
-                    <div><b>Ideal:</b> @Model.Ideal</div>
-
-                    <div><b>Internal conflicts:</b> @Model.InternalConflicts</div>
-                    <div><b>External conflicts:</b> @Model.ExternalConflicts</div>
-
-                    <div><b>Race:</b> @Model.Race</div>
-                    <div><b>Religion:</b> @Model.Religion</div>
-                    <div><b>Occupation:</b> @Model.Occupation</div>
-                    <div><b>Marital status:</b> @Model.MaritalStatus</div>
-                    <div><b>Stratum:</b> @Model.Stratum</div>
-                    <div><b>Profession:</b> @Model.Profession</div>
-
-                    <div><b>Disabilities:</b> @Model.Disabilities</div>
-                    <div><b>Personality:</b> @Model.Personality</div>
-                    <div><b>Hobbies:</b> @Model.Hobbies</div>
-                    <div><b>Habits:</b> @Model.Habits</div>
-                    <div><b>Odds:</b> @Model.Odds</div>
-                    <div><b>Skills:</b> @Model.Skills</div>
-                    <div><b>Skills they lack:</b> @Model.SkillsTheyLack</div>
-                    <div><b>Emotional state:</b> @Model.EmotionalState</div>
+        <h2>Overall</h2>
+        <div class="row">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div><strong>Name:</strong> @Model.Name</div>
+                </div>
+                <div class="col-sm-2">
+                    <div><strong>Age:</strong> @Model.Age</div>
+                </div>
+                <div class="col-sm-2">
+                    <div><strong>Gender:</strong> @Model.Gender</div>
+                </div>
+                <div class="col-sm-4">
+                    <div><strong>Nickname:</strong> @Model.Nickname</div>
+                </div>
+                <div class="col-sm-4">
+                    <div><strong>Race:</strong> @Model.Race</div>
+                </div>
+                <div class="col-sm-4">
+                    <div><strong>Religion:</strong> @Model.Religion</div>
+                </div>
+                <div class="col-sm-6">
+                    <div><strong>Birthday</strong> (date and/or birthday oddity): @Model.Birthday</div>
+                </div>
+                <div class="col-sm-6">
+                    <div><strong>Death</strong> (date and/or cause): @Model.Death</div>
+                </div>
+                <div class="col-sm-12">
+                    <div><strong>Bond</strong> (physical, spiritual/mental): @Model.Bond</div>
+                </div>
+                <div class="col-sm-12">
+                    <div><strong>Disabilities:</strong> @Model.Disabilities</div>
+                </div>
+                <div class="col-sm-12">
+                    <div><strong>Occupation:</strong> @Model.Occupation</div>
                 </div>
 
-                @*TODO: BETTER Authent*@
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <div class="main main-raised">
-                        <div class="profile-content">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div>
-                                            <form asp-controller="Character" asp-action="Edit" method="post" asp-route-Id="@Model.Id">
-                                                <button type="submit" class="btn btn-secondary">Edit</button>
-                                            </form>
-                                            <form asp-controller="Character" asp-action="DeleteCharacter" method="post" asp-route-Id="@Model.Id">
-                                                <button type="submit" class="btn btn-danger">Delete</button>
-                                            </form>
-                                        </div>
-                                    </div>
+                <div class="col-sm-12">
+                    <div><strong>Profession:</strong> @Model.Profession</div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div><strong>Hobbies:</strong> @Model.Hobbies</div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div><strong>Skills:</strong> @Model.Skills</div>
+                </div>
+                <div class="col-sm-12">
+                    <div><strong>Skills they lack:</strong> @Model.SkillsTheyLack</div>
+                </div>
+            </div>
+            <p></p>
+
+
+            <h2>Family, chilhood and past</h2>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div><strong>Stratum:</strong> @Model.Stratum</div>
+                </div>
+                <div class="col-sm-6">
+                    <div><strong>Marital status:</strong> @Model.MaritalStatus</div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div><strong>Family:</strong> @Model.Family</div>
+                </div>
+                <div class="col-sm-12">
+                    <div><strong>Family information:</strong> @Model.FamilyInfo</div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div><strong>Education:</strong> @Model.Education</div>
+                </div>
+                <div class="col-sm-12">
+                    <div><strong>Languages spoken:</strong> @Model.LanguagesSpoken</div>
+                </div>
+                <div class="col-sm-12">
+                    <div><strong>Background:</strong> @Model.Background</div>
+                </div>
+            </div>
+            <p></p>
+
+
+            <h2>Physical and special abilities</h2>
+            <div class="col-sm-12">
+                <div><strong>Athletic ability:</strong> @Model.AthleticAbility</div>
+            </div>
+            <div class="col-sm-12">
+                <div><strong>Special ablilty:</strong> @Model.SpecialAblilty</div>
+            </div>
+            <p></p>
+
+
+            <h2>Face and head characteristic</h2>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div><strong>Eyes color:</strong> @Model.EyeColor</div>
+                </div>
+                <div class="col-sm-4">
+                    <div><strong>Hair color:</strong> @Model.HairColor</div>
+                </div>
+                <div class="col-sm-4">
+                    <div><strong>Face shape:</strong> @Model.FaceShape</div>
+                </div>
+                <div class="col-sm-5">
+                    <div><strong>Facial hair:</strong> @Model.FacialHair</div>
+                </div>
+                <div class="col-sm-7">
+                    <div><strong>Hair texture:</strong> @Model.HairTexture</div>
+                </div>
+            </div>
+            <p></p>
+
+
+            <h2>Physical traits</h2>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div><strong>Skin tone:</strong> @Model.SkinTone</div>
+                </div>
+                <div class="col-sm-3">
+                    <div><strong>Height:</strong> @Model.Height</div>
+                </div>
+                <div class="col-sm-5">
+                    <div><strong>Body type:</strong> @Model.BodyType</div>
+                </div>
+                <div class="col-sm-12">
+                    <div><strong>Clothes:</strong> @Model.Clothes</div>
+                </div>
+            </div>
+            <p></p>
+
+
+            <h2>Distinctive features</h2>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div><strong>Habits:</strong> @Model.Habits</div>
+                </div>
+                <div class="col-sm-12">
+                    <div><strong>Odds:</strong> @Model.Odds</div>
+                </div>
+                <div class="col-sm-12">
+                    <div><strong>Trait:</strong> @Model.Trait</div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div><strong>Birthmarks:</strong> @Model.Birthmarks</div>
+                </div>
+                <div class="col-sm-6">
+                    <div><strong>Scars:</strong> @Model.Scars</div>
+                </div>
+                <div class="col-sm-6">
+                    <div><strong>Tatoos:</strong> @Model.Tatoos</div>
+                </div>
+                <div class="col-sm-6">
+                    <div><strong>Piercing:</strong> @Model.Piercing</div>
+                </div>
+
+                <div class="col-sm-8">
+                    <div><strong>Voice:</strong> @Model.Voice</div>
+                </div>
+            </div>
+            <p></p>
+
+
+            <h2>Mental traits</h2>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div><strong>Personality:</strong> @Model.Personality</div>
+                </div>
+                <div class="col-sm-12">
+                    <div><strong>Emotional state:</strong> @Model.EmotionalState</div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div><strong>Motivation:</strong> @Model.Motivation</div>
+                </div>
+                <div class="col-sm-6">
+                    <div><strong>Fears:</strong> @Model.Fears</div>
+                </div>
+                <div class="col-sm-6">
+                    <div><strong>Goals:</strong> @Model.Goals</div>
+                </div>
+                <div class="col-sm-6">
+                    <div><strong>Regrets:</strong> @Model.Regrets</div>
+                </div>
+                <div class="col-sm-6">
+                    <div><strong>Admires of/Like:</strong> @Model.AdmireOf</div>
+                </div>
+                <div class="col-sm-6">
+                    <div><strong>Dispise/Dislike:</strong> @Model.Despise</div>
+                </div>
+                <div class="col-sm-6">
+                    <div><strong>Ideal:</strong> @Model.Ideal</div>
+                </div>
+                <div class="col-sm-6">
+                    <div><strong>Vices:</strong> @Model.Vices</div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div><strong>Internal conflicts:</strong> @Model.InternalConflicts</div>
+                </div>
+                <div class="col-sm-12">
+                    <div><strong>External conflicts:</strong> @Model.ExternalConflicts</div>
+                </div>
+            </div>
+            <p></p>
+        </div>
+
+
+
+
+        @*<div><b>Nickname:</b> @Model.Nickname</div>
+                <div><b>Gender:</b> @Model.Gender</div>
+                <div><b>Age:</b> @Model.Age</div>
+
+                <div><b>Birthday:</b> @Model.Birthday</div>
+                <div><b>Death:</b> @Model.Death</div>
+
+                <div><b>Athletic ability:</b> @Model.AthleticAbility</div>
+                <div><b>Special ablilty:</b> @Model.SpecialAblilty</div>
+
+                <div><b>Languages Spoken:</b> @Model.LanguagesSpoken</div>
+
+                <div><b>Voice:</b> @Model.Voice</div>
+                <div><b>Trait:</b> @Model.Trait</div>
+
+                <div><b>Background:</b> @Model.Background</div>
+                <div><b>Family:</b> @Model.Family</div>
+                <div><b>Family information:</b> @Model.FamilyInfo</div>
+                <div><b>Bond:</b> @Model.Bond</div>
+                <div><b>Education:</b> @Model.Education</div>
+
+                <div><b>Eye color:</b> @Model.EyeColor</div>
+                <div><b>Face shape:</b> @Model.FaceShape</div>
+                <div><b>Facial hair:</b> @Model.FacialHair</div>
+                <div><b>Hair color:</b> @Model.HairColor</div>
+                <div><b>Hair texture:</b> @Model.HairTexture</div>
+                <div><b>Skin tone:</b> @Model.SkinTone</div>
+                <div><b>Body type:</b> @Model.BodyType</div>
+                <div><b>Height:</b> @Model.Height</div>
+                <div><b>Clothes:</b> @Model.Clothes</div>
+
+                <div><b>Tatoos:</b> @Model.Tatoos</div>
+                <div><b>Piercing:</b> @Model.Piercing</div>
+                <div><b>Birthmarks:</b> @Model.Birthmarks</div>
+                <div><b>Scars:</b> @Model.Scars</div>
+
+                <div><b>Fears:</b> @Model.Fears</div>
+                <div><b>Vices:</b> @Model.Vices</div>
+                <div><b>Regrets:</b> @Model.Regrets</div>
+
+                <div><b>Motivation:</b> @Model.Motivation</div>
+                <div><b>Goals:</b> @Model.Goals</div>
+                <div><b>Admire of:</b> @Model.AdmireOf</div>
+                <div><b>Despise:</b> @Model.Despise</div>
+                <div><b>Ideal:</b> @Model.Ideal</div>
+
+                <div><b>Internal conflicts:</b> @Model.InternalConflicts</div>
+                <div><b>External conflicts:</b> @Model.ExternalConflicts</div>
+
+                <div><b>Race:</b> @Model.Race</div>
+                <div><b>Religion:</b> @Model.Religion</div>
+                <div><b>Occupation:</b> @Model.Occupation</div>
+                <div><b>Marital status:</b> @Model.MaritalStatus</div>
+                <div><b>Stratum:</b> @Model.Stratum</div>
+                <div><b>Profession:</b> @Model.Profession</div>
+
+                <div><b>Disabilities:</b> @Model.Disabilities</div>
+                <div><b>Personality:</b> @Model.Personality</div>
+                <div><b>Hobbies:</b> @Model.Hobbies</div>
+                <div><b>Habits:</b> @Model.Habits</div>
+                <div><b>Odds:</b> @Model.Odds</div>
+                <div><b>Skills:</b> @Model.Skills</div>
+                <div><b>Skills they lack:</b> @Model.SkillsTheyLack</div>
+                <div><b>Emotional state:</b> @Model.EmotionalState</div>
+            </div>*@
+
+        @*TODO: BETTER Authent*@
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="main main-raised">
+                <div class="profile-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div>
+                                    <form asp-controller="Character" asp-action="Edit" method="post" asp-route-Id="@Model.Id">
+                                        <button type="submit" class="btn btn-secondary">Edit</button>
+                                    </form>
+                                    <form asp-controller="Character" asp-action="DeleteCharacter" method="post" asp-route-Id="@Model.Id">
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                }
-                <div>
-                    <p></p>
-                    <p>User's _____: (imagine) drop-down list of user's things + button</p>
-                    <p>Top rated user's books</p>
                 </div>
             </div>
+        }
+        @*TODO*@
+        <div>
+            <p></p>
+            <p>User's _____: (imagine) drop-down list of user's things + button</p>
+            <p>Top rated user's books</p>
         </div>
     </div>
 </div>

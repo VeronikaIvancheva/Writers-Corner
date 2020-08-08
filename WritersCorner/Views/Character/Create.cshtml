@@ -6,7 +6,7 @@
 
 <h1>Create Character</h1>
 
-<form asp-action="Create" asp-controller="Character" method="post" EncType="multipart/form-data">
+<form asp-controller="Character" asp-action="Create" method="post" EncType="multipart/form-data">
     <p></p>
 
     <h2>Overall</h2>
@@ -175,7 +175,7 @@
             </div>
             <div class="col-sm-12">
                 <div class="form-group">
-                    <label asp-for="LanguagesSpoken" class="control-label"><strong>Languages Spoken</strong></label>
+                    <label asp-for="LanguagesSpoken" class="control-label"><strong>Languages spoken</strong></label>
                     <input asp-for="LanguagesSpoken" class="form-control" />
                     <span asp-validation-for="LanguagesSpoken" class="text-danger"></span>
                 </div>
@@ -440,8 +440,6 @@
                     <span asp-validation-for="ExternalConflicts" class="text-danger"></span>
                 </div>
             </div>
-
-
         </div>
         <p></p>
     </div>
