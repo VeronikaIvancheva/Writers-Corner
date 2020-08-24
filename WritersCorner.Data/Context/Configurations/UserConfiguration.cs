@@ -19,6 +19,15 @@ namespace WritersCorner.Data.Context.Configurations
             builder.HasMany(c => c.Characters)
                 .WithOne(b => b.User);
 
+            builder.HasMany(c => c.Countries)
+                .WithOne(b => b.User);
+
+            builder.HasMany(c => c.Floras)
+                .WithOne(b => b.User);
+
+            builder.HasMany(c => c.Governments)
+                .WithOne(b => b.User);
+
             builder.HasMany(c => c.Creatures)
                 .WithOne(b => b.User);
 
@@ -28,7 +37,7 @@ namespace WritersCorner.Data.Context.Configurations
             builder.HasMany(c => c.Places)
                 .WithOne(b => b.User);
 
-            builder.HasMany(c => c.Stratums)
+            builder.HasMany(c => c.SocialStratifications)
                 .WithOne(b => b.User);
 
             builder.HasMany(c => c.Structures)

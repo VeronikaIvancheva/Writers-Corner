@@ -3,7 +3,7 @@ using WritersCorner.Data.Contracts;
 
 namespace WritersCorner.Data.Entities.EntitiesBook
 {
-    public class Stratum : IGeneral, ICivilizationEssentials, ICivilizationEssentialsDistinguishingMarks,
+    public class Country : IGeneral, ICivilizationEssentials, ICivilizationEssentialsDistinguishingMarks,
         ICivilizationMilitary, ICivilizationRelationships, ICivilizationSpiritually, IWorldEssential
     {
         [Key]

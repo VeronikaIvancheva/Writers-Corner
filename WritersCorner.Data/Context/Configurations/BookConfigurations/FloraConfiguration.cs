@@ -4,16 +4,16 @@ using WritersCorner.Data.Entities.EntitiesBook;
 
 namespace WritersCorner.Data.Context.Configurations.BookConfigurations
 {
-    public class PlaceConfiguration : IEntityTypeConfiguration<Place>
+    public class FloraConfiguration : IEntityTypeConfiguration<Flora>
     {
-        public void Configure(EntityTypeBuilder<Place> builder)
+        public void Configure(EntityTypeBuilder<Flora> builder)
         {
-            builder.HasKey(p => p.Id);
+            builder.HasKey(c => c.Id);
 
-            builder.Property(n => n.Name);
+            builder.Property(bn => bn.Name);
 
             builder.HasOne(u => u.User)
-                .WithMany(p => p.Places);
+                .WithMany(c => c.Floras);
         }
     }
 }

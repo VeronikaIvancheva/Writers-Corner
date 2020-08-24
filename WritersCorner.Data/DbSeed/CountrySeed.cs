@@ -3,11 +3,11 @@ using WritersCorner.Data.Entities.EntitiesBook;
 
 namespace WritersCorner.Data.DbSeed
 {
-    public static class StratumSeed
+    public static class CountrySeed
     {
-        public static void UpdateStratum(this ModelBuilder modelBuilder)
+        public static void UpdateCountry(this ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Stratum>().HasData(new Stratum
+            modelBuilder.Entity<Country>().HasData(new Country
             {
                 Id = 1,
 

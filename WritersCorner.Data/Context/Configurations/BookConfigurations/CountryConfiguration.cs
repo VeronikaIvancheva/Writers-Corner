@@ -4,16 +4,16 @@ using WritersCorner.Data.Entities.EntitiesBook;
 
 namespace WritersCorner.Data.Context.Configurations.BookConfigurations
 {
-    public class StratumConfiguration : IEntityTypeConfiguration<Stratum>
+    public class CountryConfiguration : IEntityTypeConfiguration<Country>
     {
-        public void Configure(EntityTypeBuilder<Stratum> builder)
+        public void Configure(EntityTypeBuilder<Country> builder)
         {
             builder.HasKey(s => s.Id);
 
             builder.Property(bn => bn.Name);
 
             builder.HasOne(u => u.User)
-                .WithMany(s => s.Stratums);
+                .WithMany(c => c.Countries);
         }
     }
 }
