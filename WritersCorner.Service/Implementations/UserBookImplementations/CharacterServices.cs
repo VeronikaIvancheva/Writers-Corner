@@ -32,31 +32,21 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
         {
             try
             {
-                IEnumerable<Character> allUserCharacters = await _context.Characters
-                    .ToListAsync();
-
-                IEnumerable<Character> allCharacters = null;
-
-                foreach (var item in allUserCharacters)
-                {
-                    allCharacters = await _context.Characters
-                         .OrderBy(u => u.Name)
-                         .ToListAsync();
-                }
+                IEnumerable<Character> allUserCharacters = _context.Characters;
 
                 if (currentPage == 1)
                 {
-                    allCharacters = allCharacters
+                    allUserCharacters = allUserCharacters
                          .Take(10);
                 }
                 else
                 {
-                    allCharacters = allCharacters
+                    allUserCharacters = allUserCharacters
                         .Skip((currentPage - 1) * 10)
                         .Take(10);
                 }
 
-                return allCharacters;
+                return allUserCharacters.ToList();
             }
             catch (GlobalException)
             {
@@ -69,33 +59,22 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
         {
             try
             {
-                IEnumerable<Character> allUserCharacters = await _context.Characters
-                    .Where(u => u.UserId == userId)
-                    .ToListAsync();
-
-                IEnumerable<Character> allCharacters;
-
-                foreach (var item in allUserCharacters)
-                {
-                    allCharacters = _context.Characters
-                        .Where(u => u.Id == item.Id);
-                }
+                IEnumerable<Character> allUserCharacters = _context.Characters
+                    .Where(u => u.UserId == userId);
 
                 if (currentPage == 1)
                 {
-                    allCharacters = allUserCharacters
-                         .Take(10)
-                         .ToList();
+                    allUserCharacters = allUserCharacters
+                         .Take(10);
                 }
                 else
                 {
-                    allCharacters = allUserCharacters
+                    allUserCharacters = allUserCharacters
                         .Skip((currentPage - 1) * 10)
-                        .Take(10)
-                        .ToList();
+                        .Take(10);
                 }
 
-                return allCharacters;
+                return allUserCharacters.ToList();
             }
             catch (GlobalException)
             {
@@ -171,7 +150,7 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
                 User currentUserId = await _context.User
                     .FirstOrDefaultAsync(u => u.Id == userId);
 
-                IEnumerable<Character> searchResult = await _context.Characters
+                IEnumerable<Character> searchResult = _context.Characters
                     .Where(
                            b => b.Name.Contains(search) ||
                            b.Nickname.Contains(search) ||
@@ -179,8 +158,7 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
                            b.Stratum.Contains(search) ||
                            b.Gender.ToString().ToLower().Contains(search.ToLower())
                            )
-                    .OrderByDescending(b => b.Name)
-                    .ToListAsync();
+                    .OrderByDescending(b => b.Name);
 
                 if (currentPage == 1)
                 {
@@ -194,7 +172,7 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
                     .Take(10);
                 }
 
-                return searchResult;
+                return searchResult.ToList();
             }
             catch (GlobalException)
             {
@@ -205,17 +183,17 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
 
         public async Task<int> GetPageCount(int charactersPerPage)
         {
-            var allCharacters = await _context.Characters
+            int allCharacters = await _context.Characters
                 .CountAsync();
 
-            var totalPages = (allCharacters - 1) / charactersPerPage + 1;
+            int totalPages = (allCharacters - 1) / charactersPerPage + 1;
 
             return totalPages;
         }
 
         public Character PassCharacterParams(Character viewModel, string userId)
         {
-            var newCharacter = new Character
+            Character newCharacter = new Character
             {
                 Name = viewModel.Name,
 
@@ -238,7 +216,10 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
                 Background = viewModel.Background,
                 Family = viewModel.Family,
                 FamilyInfo = viewModel.FamilyInfo,
+                FamilyCrest = viewModel.FamilyCrest,
                 Education = viewModel.Education,
+                ChronicalDisease = viewModel.ChronicalDisease,
+                Inheritance = viewModel.Inheritance,
 
                 EyeColor = viewModel.EyeColor,
                 FaceShape = viewModel.FaceShape,

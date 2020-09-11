@@ -89,6 +89,9 @@
                 <div class="col-sm-12">
                     <div><strong>Family information:</strong> @Model.FamilyInfo</div>
                 </div>
+                <div class="col-sm-12">
+                    <div><strong>Family crest:</strong> @Model.FamilyCrest</div>
+                </div>
 
                 <div class="col-sm-12">
                     <div><strong>Education:</strong> @Model.Education</div>
@@ -98,6 +101,12 @@
                 </div>
                 <div class="col-sm-12">
                     <div><strong>Background:</strong> @Model.Background</div>
+                </div>
+                <div class="col-sm-12">
+                    <div><strong>Inheritance:</strong> @Model.Inheritance</div>
+                </div>
+                <div class="col-sm-12">
+                    <div><strong>Chronical disease:</strong> @Model.ChronicalDisease</div>
                 </div>
             </div>
             <p></p>
@@ -227,75 +236,6 @@
             </div>
             <p></p>
         </div>
-
-
-
-
-        @*<div><b>Nickname:</b> @Model.Nickname</div>
-                <div><b>Gender:</b> @Model.Gender</div>
-                <div><b>Age:</b> @Model.Age</div>
-
-                <div><b>Birthday:</b> @Model.Birthday</div>
-                <div><b>Death:</b> @Model.Death</div>
-
-                <div><b>Athletic ability:</b> @Model.AthleticAbility</div>
-                <div><b>Special ablilty:</b> @Model.SpecialAblilty</div>
-
-                <div><b>Languages Spoken:</b> @Model.LanguagesSpoken</div>
-
-                <div><b>Voice:</b> @Model.Voice</div>
-                <div><b>Trait:</b> @Model.Trait</div>
-
-                <div><b>Background:</b> @Model.Background</div>
-                <div><b>Family:</b> @Model.Family</div>
-                <div><b>Family information:</b> @Model.FamilyInfo</div>
-                <div><b>Bond:</b> @Model.Bond</div>
-                <div><b>Education:</b> @Model.Education</div>
-
-                <div><b>Eye color:</b> @Model.EyeColor</div>
-                <div><b>Face shape:</b> @Model.FaceShape</div>
-                <div><b>Facial hair:</b> @Model.FacialHair</div>
-                <div><b>Hair color:</b> @Model.HairColor</div>
-                <div><b>Hair texture:</b> @Model.HairTexture</div>
-                <div><b>Skin tone:</b> @Model.SkinTone</div>
-                <div><b>Body type:</b> @Model.BodyType</div>
-                <div><b>Height:</b> @Model.Height</div>
-                <div><b>Clothes:</b> @Model.Clothes</div>
-
-                <div><b>Tatoos:</b> @Model.Tatoos</div>
-                <div><b>Piercing:</b> @Model.Piercing</div>
-                <div><b>Birthmarks:</b> @Model.Birthmarks</div>
-                <div><b>Scars:</b> @Model.Scars</div>
-
-                <div><b>Fears:</b> @Model.Fears</div>
-                <div><b>Vices:</b> @Model.Vices</div>
-                <div><b>Regrets:</b> @Model.Regrets</div>
-
-                <div><b>Motivation:</b> @Model.Motivation</div>
-                <div><b>Goals:</b> @Model.Goals</div>
-                <div><b>Admire of:</b> @Model.AdmireOf</div>
-                <div><b>Despise:</b> @Model.Despise</div>
-                <div><b>Ideal:</b> @Model.Ideal</div>
-
-                <div><b>Internal conflicts:</b> @Model.InternalConflicts</div>
-                <div><b>External conflicts:</b> @Model.ExternalConflicts</div>
-
-                <div><b>Race:</b> @Model.Race</div>
-                <div><b>Religion:</b> @Model.Religion</div>
-                <div><b>Occupation:</b> @Model.Occupation</div>
-                <div><b>Marital status:</b> @Model.MaritalStatus</div>
-                <div><b>Stratum:</b> @Model.Stratum</div>
-                <div><b>Profession:</b> @Model.Profession</div>
-
-                <div><b>Disabilities:</b> @Model.Disabilities</div>
-                <div><b>Personality:</b> @Model.Personality</div>
-                <div><b>Hobbies:</b> @Model.Hobbies</div>
-                <div><b>Habits:</b> @Model.Habits</div>
-                <div><b>Odds:</b> @Model.Odds</div>
-                <div><b>Skills:</b> @Model.Skills</div>
-                <div><b>Skills they lack:</b> @Model.SkillsTheyLack</div>
-                <div><b>Emotional state:</b> @Model.EmotionalState</div>
-            </div>*@
 
         @*TODO: BETTER Authent*@
         @if (User.Identity.IsAuthenticated)

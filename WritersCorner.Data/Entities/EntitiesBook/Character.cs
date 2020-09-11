@@ -32,7 +32,10 @@ namespace WritersCorner.Data.Entities.EntitiesBook
         public string Background { get; set; }
         public string Family { get; set; }
         public string FamilyInfo { get; set; }
+        public string FamilyCrest { get; set; }
         public string Education { get; set; }
+        public string Inheritance { get; set; }
+        public string ChronicalDisease { get; set; }
         #endregion
 
         #region Appearance

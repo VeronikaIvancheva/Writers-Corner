@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using WritersCorner.Data.Context;
 using WritersCorner.Data.Entities;
@@ -175,10 +174,10 @@ namespace WritersCorner.Service.Implementations
 
         public async Task<IEnumerable<SiteInfo>> GetAllAsync()
         {
-            IEnumerable<SiteInfo> allSi = await _context.SiteInfos
+            IEnumerable<SiteInfo> allSiteInfo = await _context.SiteInfos
                 .ToListAsync();
 
-            return allSi;
+            return allSiteInfo;
         }
         #endregion
     }

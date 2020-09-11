@@ -23,9 +23,8 @@ namespace WritersCorner.Service.Implementations
         {
             try
             {
-                IEnumerable<User> users = await _context.User
-                 .OrderBy(u => u.UserName)
-                 .ToListAsync();
+                IEnumerable<User> users = _context.User
+                 .OrderBy(u => u.UserName);
 
                 if (currentPage == 1)
                 {
@@ -39,7 +38,7 @@ namespace WritersCorner.Service.Implementations
                         .Take(10);
                 }
 
-                return users;
+                return users.ToList();
             }
             catch (GlobalException)
             {
@@ -104,18 +103,20 @@ namespace WritersCorner.Service.Implementations
             User checkUser = await _context.User
                 .FirstOrDefaultAsync(u => u.Id == id);
 
+            if (checkUser == null)
+            {
+                throw new GlobalException(ExceptionMessage.NoUser);
+            }
+
             try
             {
-                User user = await _context.User
-                    .FirstOrDefaultAsync(u => u.Id == id);
-
-                user.LockoutEnd = DateTime.Now;
-                user.BanRemovedDate = DateTime.Now;
-                user.IsBanned = false;
+                checkUser.LockoutEnd = DateTime.Now;
+                checkUser.BanRemovedDate = DateTime.Now;
+                checkUser.IsBanned = false;
 
                 await _context.SaveChangesAsync();
 
-                return user;
+                return checkUser;
             }
             catch (GlobalException)
             {
@@ -128,11 +129,10 @@ namespace WritersCorner.Service.Implementations
         {
             try
             {
-                IEnumerable<User> searchResult = await _context.User
+                IEnumerable<User> searchResult = _context.User
                 .Where(u => u.UserName.Contains(search) || u.Email.Contains(search))
                 .OrderBy(u => u.UserName)
-                .ThenBy(u => u.Email)
-                .ToListAsync();
+                .ThenBy(u => u.Email);
 
                 if (currentPage == 1)
                 {
@@ -146,7 +146,7 @@ namespace WritersCorner.Service.Implementations
                         .Take(10);
                 }
 
-                return searchResult;
+                return searchResult.ToList();
             }
             catch (GlobalException)
             {

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Claims;
@@ -121,6 +120,7 @@ namespace WritersCorner.Controllers
             }
         }
 
+        //За пълнене на формата със стойности
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int Id)
@@ -164,8 +164,8 @@ namespace WritersCorner.Controllers
             }
             catch (GlobalException e)
             {
-                return NotFound();
-                //return BadRequest(e.Message);
+                //return NotFound();
+                return BadRequest(e.Message);
             }
         }
 

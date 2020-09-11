@@ -38,7 +38,10 @@ namespace WritersCorner.Mappers.CharacterM
                 Background = character.Background,
                 Family = character.Family,
                 FamilyInfo = character.FamilyInfo,
+                FamilyCrest = character.FamilyCrest,
                 Education = character.Education,
+                Inheritance = character.Inheritance,
+                ChronicalDisease = character.ChronicalDisease,
 
                 EyeColor = character.EyeColor,
                 FaceShape = character.FaceShape,
@@ -123,7 +126,10 @@ namespace WritersCorner.Mappers.CharacterM
                 Background = characterVM.Background,
                 Family = characterVM.Family,
                 FamilyInfo = characterVM.FamilyInfo,
+                FamilyCrest = characterVM.FamilyCrest,
                 Education = characterVM.Education,
+                Inheritance = characterVM.Inheritance,
+                ChronicalDisease = characterVM.ChronicalDisease,
 
                 EyeColor = characterVM.EyeColor,
                 FaceShape = characterVM.FaceShape,

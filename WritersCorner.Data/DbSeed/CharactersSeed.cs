@@ -35,7 +35,10 @@ namespace WritersCorner.Data.DbSeed
                 Family = "Mia Anvil, Pether Anvil",
                 FamilyInfo = "They lived and die in England. The mother was born in Spain and lived there till she met" +
                 " Pether and fall in love with him",
+                FamilyCrest = "Old oak tree",
                 Education = "Secondary",
+                Inheritance = "A small amount of sum and an old toolbag for woodcrafting which belonged to his grandfather.",
+                ChronicalDisease = "None",
 
                 EyeColor = "Green",
                 FaceShape = "Oval",

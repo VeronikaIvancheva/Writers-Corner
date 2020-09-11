@@ -16,16 +16,20 @@
             </div>
         </div>
     </form>
+    <p class="small">*You can search by: Nick name, Name, Race, Stratum or Gender.</p>
 
     <p></p>
 
     <table>
         <thead>
             <tr>
-                <th>IMAGE</th>
+                <th></th>
                 <th>Name</th>
+                <th>Nick name</th>
                 <th>Gender</th>
                 <th>Age</th>
+                <th>Race</th>
+                <th>Stratum</th>
             </tr>
         </thead>
         <tbody>
@@ -48,8 +52,11 @@
                             </div>
                         </td>
                         <td>@character.Name</td>
+                        <td>@character.Nickname</td>
                         <td>@character.Gender</td>
                         <td>@character.Age</td>
+                        <td>@character.Race</td>
+                        <td>@character.Stratum</td>
                         <td>
                             <form asp-route-Id="@character.Id" asp-action="Detail" asp-controller="Character">
                                 <button type="submit" class="btn btn-primary float-lg-left tm-md-align-center">Details</button>

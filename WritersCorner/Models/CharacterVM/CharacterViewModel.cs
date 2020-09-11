@@ -32,7 +32,10 @@ namespace WritersCorner.Models.CharacterVM
             this.Background = character.Background;
             this.Family = character.Family;
             this.FamilyInfo = character.FamilyInfo;
+            this.FamilyCrest = character.FamilyCrest;
             this.Education = character.Education;
+            this.Inheritance = character.Inheritance;
+            this.ChronicalDisease = character.ChronicalDisease;
 
             this.EyeColor = character.EyeColor;
             this.FaceShape = character.FaceShape;
@@ -104,7 +107,10 @@ namespace WritersCorner.Models.CharacterVM
         public string Background { get; set; }
         public string Family { get; set; }
         public string FamilyInfo { get; set; }
+        public string FamilyCrest { get; set; }
         public string Education { get; set; }
+        public string Inheritance { get; set; }
+        public string ChronicalDisease { get; set; }
 
         public string EyeColor { get; set; }
         public string FaceShape { get; set; }
