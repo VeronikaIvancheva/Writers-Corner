@@ -11,6 +11,6 @@ namespace WritersCorner.Service.Contracts
         Task<User> BanUserAsync(string id, int days, string banReason, string bannedFrom);
         Task<User> RemoveBanAsync(string id);
         Task<IEnumerable<User>> SearchUserAsync(string search, int currentPage);
-        Task<int> GetPageCountAsync(int usersPerPage);
+        Task<int> GetPageCountAsync();
     }
 }

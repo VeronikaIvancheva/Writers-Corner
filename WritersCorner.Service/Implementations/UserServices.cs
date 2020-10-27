@@ -26,19 +26,9 @@ namespace WritersCorner.Service.Implementations
                 IEnumerable<User> users = _context.User
                  .OrderBy(u => u.UserName);
 
-                if (currentPage == 1)
-                {
-                    users = users
-                         .Take(10);
-                }
-                else
-                {
-                    users = users
-                        .Skip((currentPage - 1) * 10)
-                        .Take(10);
-                }
+                IEnumerable<User> distributedResult = DistributeUsersPerPage(currentPage, users);
 
-                return users.ToList();
+                return distributedResult.ToList();
             }
             catch (GlobalException)
             {
@@ -134,19 +124,9 @@ namespace WritersCorner.Service.Implementations
                 .OrderBy(u => u.UserName)
                 .ThenBy(u => u.Email);
 
-                if (currentPage == 1)
-                {
-                    searchResult = searchResult
-                        .Take(10);
-                }
-                else
-                {
-                    searchResult = searchResult
-                        .Skip((currentPage - 1) * 10)
-                        .Take(10);
-                }
+                IEnumerable<User> distributedResult = DistributeUsersPerPage(currentPage, searchResult);
 
-                return searchResult.ToList();
+                return distributedResult.ToList();
             }
             catch (GlobalException)
             {
@@ -155,14 +135,33 @@ namespace WritersCorner.Service.Implementations
             }
         }
 
-        public async Task<int> GetPageCountAsync(int usersPerPage)
+        public async Task<int> GetPageCountAsync()
         {
+            int usersPerPage = 10;
+
             int allUsers = await _context.User
                 .CountAsync();
 
             int totalPages = (allUsers - 1) / usersPerPage + 1;
 
             return totalPages;
+        }
+
+        private IEnumerable<User> DistributeUsersPerPage(int currentPage, IEnumerable<User> users)
+        {
+            if (currentPage == 1)
+            {
+                users = users
+                    .Take(10);
+            }
+            else
+            {
+                users = users
+                    .Skip((currentPage - 1) * 10)
+                    .Take(10);
+            }
+
+            return users;
         }
     }
 }

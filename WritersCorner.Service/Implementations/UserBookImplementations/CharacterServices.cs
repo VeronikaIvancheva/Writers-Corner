@@ -181,8 +181,10 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
             }
         }
 
-        public async Task<int> GetPageCount(int charactersPerPage)
+        public async Task<int> GetPageCount()
         {
+            int charactersPerPage = 10;
+
             int allCharacters = await _context.Characters
                 .CountAsync();
 
@@ -191,7 +193,7 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
             return totalPages;
         }
 
-        public Character PassCharacterParams(Character viewModel, string userId)
+        private Character PassCharacterParams(Character viewModel, string userId)
         {
             Character newCharacter = new Character
             {
@@ -274,7 +276,7 @@ namespace WritersCorner.Service.Implementations.UserBookImplementations
             return newCharacter;
         }
 
-        //public Character CheckIfNull(Character character)
+        //private Character CheckIfNull(Character character)
         //{
         //    var check = new List<Character>() { character };
 

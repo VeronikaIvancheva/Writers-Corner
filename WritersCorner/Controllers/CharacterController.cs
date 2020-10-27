@@ -31,7 +31,7 @@ namespace WritersCorner.Controllers
                 string userId = FindCurrentUserId();
 
                 int currPage = currentPage ?? 1;
-                int totalPages = await _characterServices.GetPageCount(10);
+                int totalPages = await _characterServices.GetPageCount();
 
                 IEnumerable<Character> characterAllResults = null;
 
@@ -177,7 +177,7 @@ namespace WritersCorner.Controllers
                 string userId = FindCurrentUserId();
 
                 int currPage = currentPage ?? 1;
-                int totalPages = await _characterServices.GetPageCount(10);
+                int totalPages = await _characterServices.GetPageCount();
 
                 IEnumerable<Character> characterAllResults = null;
 

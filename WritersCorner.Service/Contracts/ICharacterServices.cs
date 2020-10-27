@@ -14,7 +14,7 @@ namespace WritersCorner.Service.Contracts
         Task<Character> EditCharacterAsync(Character newCharacter);
         Task<Character> DeleteCharacterAsync(int characterId, string userId);
 
-        Task<int> GetPageCount(int charactersPerPage);
+        Task<int> GetPageCount();
         Task<IEnumerable<Character>> SearchCharacter(string search, int currentPage, string userId);
     }
 }

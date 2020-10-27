@@ -25,7 +25,7 @@ namespace WritersCorner.Controllers
         public async Task<IActionResult> Index(int? currentPage, string search = null)
         {
             int currentP = currentPage ?? 1;
-            int totalPages = await _userService.GetPageCountAsync(10);
+            int totalPages = await _userService.GetPageCountAsync();
 
             IEnumerable<User> allUsers = null;
 
